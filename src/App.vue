@@ -1,0 +1,136 @@
+<template>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+//import NProgress from 'nprogress';
+
+export default {
+  name: 'App',
+  created() {
+    //NProgress.start()
+    this.$router.beforeEach((to, from, next) => {
+     // NProgress.start()
+      next()
+    })
+  }
+}
+
+</script>
+
+<style>
+
+#app {
+  font-family: -apple-system, BlinkMacSystemFont,
+  “Segoe UI”, “Roboto”, “Oxygen”,
+  “Ubuntu”, “Cantarell”, “Fira Sans”,
+  “Droid Sans”, “Helvetica Neue”, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: antiquewhite;
+  box-sizing: border-box;
+}
+
+body {background-color: #202020;}
+
+h1 {
+  font-size: xx-large;
+}
+
+h2 {
+  font-size: xx-large;
+}
+
+h5 {
+  letter-spacing: .004em;
+  font-weight: 400;
+}
+
+p {
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+::selection {
+  text-shadow: 2px 2px 2px #7D88B5;
+  background-color: #d7d4ed;
+}
+
+::-moz-selection {
+  text-shadow: 2px 2px 2px #7D88B5;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+.jumbotron{
+  border-radius: 0;
+}
+
+.container{
+  width: 100%;
+  max-width: 98rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.btn {
+  background-color: white;
+  border-radius: 2rem;
+  color: black;
+  display: inline-block;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.7rem;
+  transition: background-color 650ms;
+  width: 170px;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.background-picture {
+  width: 100%;
+  height: 85vh;
+  background-size: cover;
+  position: relative;
+}
+
+.background-picture::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 4.7rem;
+  background-size: cover;
+}
+
+.main-message {
+  width: fit-content;
+  color: #fafafa;
+  text-transform: uppercase;
+  transform: translateY(20%);
+}
+
+.main-message h1 {
+  font-family: 'Aldrich', sans-serif;
+  font-size: 3.0rem;
+  margin: 1rem 0;
+}
+</style>
