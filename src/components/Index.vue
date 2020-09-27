@@ -3,8 +3,8 @@
       <navbar :on_index="true"></navbar>
       <div class="container w-100">
         <div>
-          <img class="waves" alt="waves" src="../assets/audioWaves.png">
-          <h1>Nathan Erthal is gr8</h1>
+          <h1>Nathan Erthal</h1>
+          <!--<img alt="title" src="../assets/"> -->
           <img class="circular--landscape" alt="Nathan Erthal" src="../assets/Nathan&Kaiser.jpg">
           <h2> Software Engineer/ Audio Engineer</h2>
           <div>

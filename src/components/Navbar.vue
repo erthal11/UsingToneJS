@@ -103,7 +103,7 @@ export default {
   transform: translateX(-20px);
 }
 .navbar-custom {
-  background-color: #444444;
+  //background-color: #444444;
 }
 
 .navbar a:hover::before,
@@ -118,7 +118,7 @@ export default {
 }
 
 .onpage{
-  color: black;
+  color: #444444;
 }
 
 /*Screen Resolution with min-width: 700px*/
