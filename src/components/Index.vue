@@ -6,11 +6,11 @@
           <!--<img alt="title" src="../assets/"> -->
           <!--<img class="circular--landscape" alt="Nathan Erthal" src="../assets/Nathan&Kaiser.jpg">-->
           <div>
-            <img class="profileImage" alt="Nathan Erthal" src="../assets/Nathan_Profile.jpg">
+            <img class="profileImage" alt="Profile Image" src="../assets/Nathan_Profile.jpg">
           </div>
 
           <div>
-            <h2> Software Engineer/ Audio Engineer</h2>
+            <h3> Software Engineer/ Audio Engineer</h3>
           </div>
           <div>
             <img class="waves" alt="waves" src="../assets/audioWaves.png">

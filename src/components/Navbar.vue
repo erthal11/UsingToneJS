@@ -74,7 +74,7 @@ export default {
 }
 
 .nav-link:hover {
-  color: #fdf497;
+  color: #D4AF37;
 }
 
 /* Brackets effect for navbar links */
@@ -114,7 +114,7 @@ export default {
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
-  color: #fdf497;
+  color: #D4AF37;
 }
 
 .onpage{

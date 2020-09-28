@@ -1,8 +1,9 @@
 <template>
-  <div class="projects">
+  <div class="projects text-center">
       <navbar :on_projects="true"></navbar>
       <div class="container w-100 ">
-        <h2 class="text-center text-lg-left">Projects</h2>
+        <img alt="Nathan & Kaiser" src="../assets/Nathan&Kaiser.jpg">
+        <h2 class="text-center">Projects</h2>
         <h5> Coming soon...</h5>
       </div>
 
@@ -26,5 +27,12 @@ name: "Projects",
 </script>
 
 <style scoped>
+
+  img{
+    max-width:30%;
+    height:auto;
+    border: 5px solid black;
+    border-radius: 6%;
+  }
 
 </style>
