@@ -1,8 +1,7 @@
 <template>
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
-      <div class="">
-        <div>
+        <div class="container w-100 ">
           <h1>Nathan Erthal</h1>
           <!--<img alt="title" src="../assets/"> -->
           <!--<img class="circular--landscape" alt="Nathan Erthal" src="../assets/Nathan&Kaiser.jpg">-->
@@ -32,7 +31,6 @@
           </div>
 
         </div>
-      </div>
   </div>
 </template>
 <script>
@@ -70,7 +68,7 @@ name: "Index",
   height: 250px;
   object-fit: none;
     max-width: 100%;
-  color: #e14594
+  filter: brightness(50%);
 }
 
 /* Style all font awesome icons */
@@ -125,6 +123,6 @@ name: "Index",
   max-width:30%;
   height:auto;
   border: 5px solid black;
-  border-radius: 8%;
+  border-radius: 6%;
 }
 </style>

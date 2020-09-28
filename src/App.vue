@@ -47,6 +47,7 @@ body {
 
 h1 {
   font-size: 80px;
+  //color: #fdf497;
 }
 
 h2 {
