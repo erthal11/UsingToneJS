@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="center fixed">
     <router-view></router-view>
   </div>
 </template>
@@ -23,24 +23,34 @@ export default {
 <style>
 
 #app {
-  font-family: -apple-system, BlinkMacSystemFont,
-  “Segoe UI”, “Roboto”, “Oxygen”,
-  “Ubuntu”, “Cantarell”, “Fira Sans”,
-  “Droid Sans”, “Helvetica Neue”, sans-serif;
+  //font-family: -apple-system, BlinkMacSystemFont,
+  //“Segoe UI”, “Roboto”, “Oxygen”,
+  //“Ubuntu”, “Cantarell”, “Fira Sans”,
+  //“Droid Sans”, “Helvetica Neue”, sans-serif;
+  //font-family: "Big Caslon";
+  font-family: "Georgia";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: antiquewhite;
   box-sizing: border-box;
 }
 
-body {background-color: #202020;}
+body {
+  background-image:url('./assets/WebPageBackground.jpg');
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  //background-color: #202020;
+}
 
 h1 {
-  font-size: xx-large;
+  font-size: 80px;
 }
 
 h2 {
-  font-size: xx-large;
+  font-size: 50px;
 }
 
 h5 {
@@ -133,4 +143,10 @@ ul {
   font-size: 3.0rem;
   margin: 1rem 0;
 }
+
+div {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 </style>

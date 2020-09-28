@@ -1,12 +1,18 @@
 <template>
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
-      <div class="container w-100">
+      <div class="">
         <div>
           <h1>Nathan Erthal</h1>
           <!--<img alt="title" src="../assets/"> -->
-          <img class="circular--landscape" alt="Nathan Erthal" src="../assets/Nathan&Kaiser.jpg">
-          <h2> Software Engineer/ Audio Engineer</h2>
+          <!--<img class="circular--landscape" alt="Nathan Erthal" src="../assets/Nathan&Kaiser.jpg">-->
+          <div>
+            <img class="profileImage" alt="Nathan Erthal" src="../assets/Nathan_Profile.jpg">
+          </div>
+
+          <div>
+            <h2> Software Engineer/ Audio Engineer</h2>
+          </div>
           <div>
             <img class="waves" alt="waves" src="../assets/audioWaves.png">
           </div>
@@ -113,5 +119,12 @@ name: "Index",
 .fa-linkedin{
   background: #0e76a8;
   color: white;
+}
+
+.profileImage{
+  max-width:30%;
+  height:auto;
+  border: 5px solid black;
+  border-radius: 8%;
 }
 </style>
