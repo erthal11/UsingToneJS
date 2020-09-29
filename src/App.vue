@@ -59,6 +59,8 @@ h2 {
 h5 {
   letter-spacing: .004em;
   font-weight: 400;
+  font-size: 17px;
+  padding-top: 13px;
 }
 
 p {
