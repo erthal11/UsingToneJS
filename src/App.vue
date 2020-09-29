@@ -52,6 +52,8 @@ h1 {
 
 h2 {
   font-size: 50px;
+  color: #D4AF37;
+
 }
 
 h5 {
