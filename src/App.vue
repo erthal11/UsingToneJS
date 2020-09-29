@@ -48,12 +48,21 @@ body {
 h1 {
   font-size: 80px;
   color: #D4AF37;
+  //text-shadow: 2px 2px black;
+  text-shadow: 0px 3px 10px rgba(0,0,0,.25);
 }
 
 h2 {
   font-size: 50px;
   color: #D4AF37;
+  //text-shadow: 2px 2px black;
+  text-shadow: 0px 3px 10px rgba(0,0,0,.25);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
+h3 {
+  text-shadow: 0px 3px 10px rgba(0,0,0,.25);
 }
 
 h5 {
@@ -153,5 +162,6 @@ div {
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
 
 </style>

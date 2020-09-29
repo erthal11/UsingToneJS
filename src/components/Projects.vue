@@ -31,8 +31,10 @@ name: "Projects",
   img{
     max-width:30%;
     height:auto;
-    border: 5px solid black;
+    //border: 5px solid black;
     border-radius: 6%;
+
+    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
   }
 
 </style>

@@ -122,7 +122,7 @@ name: "Index",
 .profileImage{
   max-width:30%;
   height:auto;
-  border: 5px solid black;
+  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
   border-radius: 6%;
 }
 </style>
