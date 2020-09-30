@@ -1,5 +1,14 @@
 <template>
   <div id="app" class="center fixed">
+    <vue-headful
+        title="Nathan Erthal"
+        description=""
+        keywords=""
+        image=""
+        lang=""
+        ogLocale=""
+        url=""
+    />
     <router-view></router-view>
   </div>
 </template>

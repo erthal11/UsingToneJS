@@ -1,6 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-custom justify-content-center">
 
+
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler justify-content-center mt-3"
             data-target=".dual-collapse2"
@@ -12,10 +13,10 @@
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item active text-center" v-show="on_index">
-          <router-link class="nav-link onpage" to="/">Home</router-link>
+          <router-link class="nav-link onpage" to="/">Nathan</router-link>
         </li>
         <li class="nav-item text-center" v-show="!on_index">
-          <router-link class="nav-link" to="/">Home</router-link>
+          <router-link class="nav-link" to="/">Nathan</router-link>
         </li>
 
         <li class="nav-item active text-center" v-show="on_projects">
@@ -43,9 +44,11 @@
       </ul>
     </div>
     <!-- <vue-headful title="BIM - Home"></vue-headful> -->
-    <vue-headful v-if="on_index" title="BIM - Home"></vue-headful>
-    <!-- TODO: Dynamically change the title based on username/company name. -->
-    <vue-headful v-if="on_projects" title="BIM - Projects"></vue-headful>
+    <vue-headful v-if="on_index" title="Nathan Erthal"></vue-headful>
+    <vue-headful v-if="on_projects" title="Nathan - Projects"></vue-headful>
+    <vue-headful v-if="on_discography" title="Nathan - Discography"></vue-headful>
+    <vue-headful v-if="on_aboutMe" title="Nathan - About Me"></vue-headful>
+
   </nav>
 </template>
 
