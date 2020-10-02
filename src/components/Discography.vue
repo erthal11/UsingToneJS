@@ -5,7 +5,7 @@
 
       <img class="NathanDrums" alt= "Drums" src="../assets/NathanDrums.jpg">
 
-      <h2>Singles</h2>
+      <h2>Discography</h2>
 
       <div class="box">
         <img class= "coverArt" alt="Cover Art" src="../assets/JustAlright.jpeg">
@@ -71,7 +71,7 @@ name: "Discography",
     height:auto;
     max-height: 30vh;
     max-width: 30vw;
-    float: left;
+    //float: left;
     align-self: center;
   }
 
@@ -112,7 +112,7 @@ name: "Discography",
       //background-color: #7D88B5;
       margin: 20px auto;
       padding: 10px 10px 10px 10px;
-      //display: flex;
+      display: block;
     }
   }
 
