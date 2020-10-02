@@ -6,6 +6,9 @@
             class="navbar-toggler justify-content-center mt-3"
             data-target=".dual-collapse2"
             data-toggle="collapse" style="border:none; outline: none" type="button">
+      <a class="navbar-brand text-center mx-auto pl-1" style="letter-spacing: 2px">
+        Menu
+      </a>
     </button>
 
     <!-- Navbar links -->
@@ -122,6 +125,15 @@ export default {
 
 .onpage{
   color: #444444;
+}
+
+a{
+  color: antiquewhite;
+  font-size: x-large;
+}
+
+a:hover {
+  color: #D4AF37;
 }
 
 /*Screen Resolution with min-width: 700px*/

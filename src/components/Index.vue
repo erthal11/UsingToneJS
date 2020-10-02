@@ -19,12 +19,12 @@
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
           <!-- Add font awesome icons -->
-          <div>
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-instagram"></a>
+          <div class="socialMedia">
+            <a href="https://www.facebook.com/Erthal11/" target="_blank" class="fa fa-facebook"></a>
+            <a href="https://www.instagram.com/nate.o.eight/?hl=en" target="_blank" class="fa fa-instagram"></a>
             <!-- <a href="#" class="fa fa-youtube"></a> -->
-            <a href="#" class="fa fa-github"></a>
-            <a href="#" class="fa fa-linkedin"></a>
+            <a href="https://github.com/erthal11" target="_blank" class="fa fa-github"></a>
+            <a href="https://www.linkedin.com/in/nathan-erthal-a62bb419a/" target="_blank" class="fa fa-linkedin"></a>
           </div>
           <div>
             <h3>...</h3>
@@ -80,6 +80,8 @@ name: "Index",
   text-decoration: none;
   border-radius: 50%;
   box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+
+
 }
 
 /* Add a hover effect if you want */
@@ -124,5 +126,9 @@ name: "Index",
   height:auto;
   box-shadow: 0px 3px 10px rgba(0,0,0,.25);
   border-radius: 6%;
+}
+
+.socialMedia{
+
 }
 </style>
