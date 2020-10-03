@@ -1,14 +1,14 @@
 <template>
   <div id="app" class="center fixed">
-    <vue-headful
-        title="Nathan Erthal"
-        description=""
-        keywords=""
-        image=""
-        lang=""
-        ogLocale=""
-        url=""
-    />
+<!--    <vue-headful-->
+<!--        title="Nathan Erthal"-->
+<!--        description=""-->
+<!--        keywords=""-->
+<!--        image=""-->
+<!--        lang=""-->
+<!--        ogLocale=""-->
+<!--        url=""-->
+<!--    />-->
     <router-view></router-view>
   </div>
 </template>
@@ -26,6 +26,8 @@ export default {
     })
   }
 }
+
+
 
 </script>
 
@@ -72,6 +74,8 @@ h2 {
 
 h3 {
   text-shadow: 0px 3px 10px rgba(0,0,0,.25);
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 h5 {
@@ -107,6 +111,14 @@ ul {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
+}
+
+.waves {
+  width: 900px;
+  height: 250px;
+  object-fit: none;
+  max-width: 100%;
+  filter: brightness(50%);
 }
 
 .jumbotron{

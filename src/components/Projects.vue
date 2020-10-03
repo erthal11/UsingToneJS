@@ -4,7 +4,12 @@
       <div class="container w-100 ">
         <img class="profileImage" alt="Nathan & Kaiser" src="../assets/Nathan&Kaiser.jpg">
         <h2 class="text-center">Projects</h2>
-        <h5> Coming soon...</h5>
+        <h4> Coming soon...</h4>
+
+        <div>
+          <img class="waves" alt="waves" src="../assets/audioWaves.png">
+        </div>
+
       </div>
 
     <div>

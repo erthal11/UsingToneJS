@@ -10,29 +10,33 @@
           </div>
 
           <div>
-            <h3> Software Engineer/ Audio Engineer</h3>
-          </div>
-          <div>
-            <img class="waves" alt="waves" src="../assets/audioWaves.png">
+            <h3 class="toggleLine"> Software Engineer <span class="coolStuff">/</span> Audio Engineer</h3>
           </div>
 
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-          <!-- Add font awesome icons -->
+          <!--font awesome icons -->
           <div class="socialMedia">
             <a href="https://www.facebook.com/Erthal11/" target="_blank" class="fa fa-facebook"></a>
             <a href="https://www.instagram.com/nate.o.eight/?hl=en" target="_blank" class="fa fa-instagram"></a>
             <!-- <a href="#" class="fa fa-youtube"></a> -->
             <a href="https://github.com/erthal11" target="_blank" class="fa fa-github"></a>
             <a href="https://www.linkedin.com/in/nathan-erthal-a62bb419a/" target="_blank" class="fa fa-linkedin"></a>
+            <div>
+            <!--<a href="../assets/Resume.pdf" target="_blank" class="fa fa-file"></a>-->
+              <a href="https://www.linkedin.com/in/nathan-erthal-a62bb419a/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAC7Ov-oBZB_afBVQmECsqoySOg1O7iqgxUc,1601664850899)/" target="_blank" class="fa fa-file"></a>
+            </div>
           </div>
+
           <div>
-            <h3>...</h3>
+            <img class="waves" alt="waves" src="../assets/audioWaves.png">
           </div>
+
 
         </div>
   </div>
 </template>
+
+
 <script>
 
 import Navbar from '@/components/Navbar'
@@ -44,9 +48,17 @@ name: "Index",
         Navbar
       },
 }
+
+
 </script>
 
 <style scoped>
+
+.coolStuff{
+  color: #D4AF37;
+  font-size: xx-large;
+}
+
 
 .circular--landscape {
   display: inline-block;
@@ -63,13 +75,6 @@ name: "Index",
   margin-left: -50px;
 }
 
-.waves {
-  width: 900px;
-  height: 250px;
-  object-fit: none;
-    max-width: 100%;
-  filter: brightness(50%);
-}
 
 /* Style all font awesome icons */
 .fa {
@@ -97,6 +102,10 @@ name: "Index",
   color: white;
 }
 
+.fa-file{
+  background: antiquewhite;
+  color: black;
+}
 
 .fa-youtube {
   background: #DC4539;
@@ -136,9 +145,13 @@ name: "Index",
     box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
     border-radius: 6%;
   }
+
+  .toggleLine{
+
+  }
 }
 
 .socialMedia{
-
+//padding-bottom: 40px;
 }
 </style>

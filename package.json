@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-headful": "^2.1.0",
+    "vue-mobile-detection": "^1.0.0",
     "vue-router": "^3.4.3"
   },
   "devDependencies": {
