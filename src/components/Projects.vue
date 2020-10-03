@@ -2,7 +2,7 @@
   <div class="projects text-center">
       <navbar :on_projects="true"></navbar>
       <div class="container w-100 ">
-        <img alt="Nathan & Kaiser" src="../assets/Nathan&Kaiser.jpg">
+        <img class="profileImage" alt="Nathan & Kaiser" src="../assets/Nathan&Kaiser.jpg">
         <h2 class="text-center">Projects</h2>
         <h5> Coming soon...</h5>
       </div>
@@ -28,13 +28,21 @@ name: "Projects",
 
 <style scoped>
 
-  img{
-    max-width:30%;
-    height:auto;
-    //border: 5px solid black;
-    border-radius: 6%;
+.profileImage {
+  max-width: 30vw;
+  min-width: 30vw;
+  height: auto;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
+  border-radius: 6%;
+}
 
-    box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+@media screen and (max-width: 600px) {
+  .profileImage {
+    min-width: 50vw;
+    height: auto;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
+    border-radius: 6%;
   }
+}
 
 </style>

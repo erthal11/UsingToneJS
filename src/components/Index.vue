@@ -121,11 +121,21 @@ name: "Index",
   color: white;
 }
 
-.profileImage{
-  max-width:30%;
-  height:auto;
-  box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+.profileImage {
+  max-width: 30vw;
+  min-width: 30vw;
+  height: auto;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
   border-radius: 6%;
+}
+
+@media screen and (max-width: 600px) {
+  .profileImage {
+    min-width: 50vw;
+    height: auto;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
+    border-radius: 6%;
+  }
 }
 
 .socialMedia{

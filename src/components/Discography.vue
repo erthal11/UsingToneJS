@@ -8,43 +8,54 @@
       <h2>Discography</h2>
 
       <div class="box">
-        <img class= "coverArt" alt="Cover Art" src="../assets/JustAlright.jpeg">
-        <div class ="align-self-center">
-          <a href="" target="_blank">Conscious & Carolena - "Just Alright"</a>
-          <h5>Credits: Production, Recording Engineering, Mix Engineering </h5>
-        </div>
+        <a href="https://songwhip.com/conscious3/just-all-right" target="_blank">
+          <img class= "coverArt" alt="Cover Art" src="../assets/JustAlright.jpeg">
+          <div class ="align-self-center">
+            <h4 >Conscious & Carolena - "Just Alright"</h4>
+            <h5>Credits: Production, Recording Engineering, Mix Engineering </h5>
+          </div>
+        </a>
       </div>
 
       <div class="box">
-        <img class= "coverArt" alt="Cover Art" src="../assets/WhereTo.jpg">
-        <div class ="align-self-center">
-          <a href="https://songwhip.com/nate08/where-to" target="_blank">Nate08 - "Where To?"</a>
-          <h5>Credits: Production, Recording Engineering, Mix Engineering </h5>
-        </div>
+        <a href="https://songwhip.com/nate08/where-to" target="_blank">
+          <img class= "coverArt" alt="Cover Art" src="../assets/WhereTo.jpg">
+          <div class ="align-self-center">
+            <h4>Nate08 - "Where To?"</h4>
+            <h5>Credits: Production, Recording Engineering, Mix Engineering </h5>
+          </div>
+        </a>
+      </div>
+
+      <!-- CENTER THIS -->
+      <div class="box">
+        <a href="https://songwhip.com/conscious3/save-me" target="_blank">
+          <img class= "coverArt" alt="Cover Art" src="../assets/SaveMe.jpg">
+          <div class ="align-self-center">
+            <h4>Conscious & Ricky Gonz - "Save Me"</h4>
+            <h5>Credits: Production, Recording Engineering </h5>
+          </div>
+        </a>
       </div>
 
       <div class="box">
-        <img class= "coverArt" alt="Cover Art" src="../assets/SaveMe.jpg">
-        <div class ="align-self-center">
-          <a href="https://songwhip.com/conscious3/save-me" target="_blank">Conscious & Ricky Gonz - "Save Me"</a>
-          <h5>Credits: Production, Recording Engineering </h5>
-        </div>
+        <a href="https://songwhip.com/carolena/invitation" target="_blank">
+          <img class= "coverArt" alt="Cover Art" src="../assets/Invitation.jpeg">
+          <div class ="align-self-center ">
+            <h4>Carolena & Conscious - "Invitation"</h4>
+            <h5>Credits: Production, Recording Engineering </h5>
+          </div>
+        </a>
       </div>
 
       <div class="box">
-        <img class= "coverArt" alt="Cover Art" src="../assets/Invitation.jpeg">
-        <div class ="align-self-center ">
-          <a href="https://songwhip.com/carolena/invitation" target="_blank">Carolena & Conscious - "Invitation"</a>
-          <h5>Credits: Production, Recording Engineering </h5>
-        </div>
-      </div>
-
-      <div class="box">
-        <img class= "coverArt" alt="Cover Art" src="../assets/DTM.jpeg">
-        <div class ="align-self-center">
-          <a href="https://songwhip.com/carolena/dame-tu-mano" target="_blank">Conscious & Carolena - "Dame Tu Mano"</a>
-          <h5>Credits: Production, Recording Engineering, Mix Engineering </h5>
-        </div>
+        <a href="https://songwhip.com/carolena/dame-tu-mano" target="_blank">
+          <img class= "coverArt" alt="Cover Art" src="../assets/DTM.jpeg">
+          <div class ="align-self-center">
+            <h4>Conscious & Carolena - "Dame Tu Mano"</h4>
+            <h5>Credits: Production, Recording Engineering, Mix Engineering </h5>
+          </div>
+        </a>
       </div>
 
     </div>
@@ -67,22 +78,29 @@ name: "Discography",
 <style scoped>
 
   .coverArt {
-    width: 40%;
+    //width: 40%;
     height:auto;
     max-height: 30vh;
     max-width: 30vw;
-    //float: left;
+    float: left;
     align-self: center;
+    transition: all .2s ease-in-out;
+  }
+
+  .coverArt:hover{
+    transform: scale(1.1);
   }
 
   @media screen and (max-width: 600px) {
     .coverArt {
-      min-width: 30vw;
+      min-width: 40vw;
+      //min-height: 40vh;
       //min-height: 30vh;
-      //max-width: 30vw;
-      //max-height: 30vh;
+      max-width: 40vw;
+      //max-height: 40vh;
       height:auto;
-      //float: top;
+
+      float: none;
     }
   }
 
@@ -99,7 +117,7 @@ name: "Discography",
     height: 200px;
     //background-color: #7D88B5;
     margin: 20px auto;
-    padding-bottom: 50px;
+    //padding-bottom: 10px;
     //padding-top: 50px;
     //background-color: #7D88B5;
     display: flex;
@@ -118,19 +136,24 @@ name: "Discography",
 
     a{
       letter-spacing: .004em;
-      font-weight: 400;
+      //font-weight: 400;
       color: antiquewhite;
-      font-size: 20px;
-      text-shadow: 2px 2px black;
+      //font-size: 20px;
+      //text-shadow: 2px 2px black;
 
     }
 
   a:hover {
     color: #D4AF37;
+    text-decoration: none;
   }
 
   img {
     box-shadow: 0px 3px 10px rgba(0,0,0,.25);
+  }
+
+  .center {
+    width: 50%;
   }
 
 </style>
