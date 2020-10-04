@@ -79,6 +79,8 @@ name: "Index",
 /* Style all font awesome icons */
 .fa {
   padding: 20px;
+  margin-left: 4px;
+  margin-right: 4px;
   font-size: 30px;
   width: 70px;
   text-align: center;
