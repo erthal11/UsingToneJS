@@ -7,5 +7,5 @@ export default [
     {name: 'Index', path: '/', component: Index},
     {name: 'Projects', path: '/projects', component: Projects},
     {name: 'Discography', path: '/discography', component: Discography},
-    {name: 'About Me', path: '/about_me', component: AboutMe},
+    {name: 'About Me', path: '/about', component: AboutMe},
 ]

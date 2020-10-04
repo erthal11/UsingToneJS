@@ -47,6 +47,8 @@ export default {
 
 }
 
+
+
 body {
   background-image:url('./assets/WebPageBackground.jpg');
   background-repeat: no-repeat;

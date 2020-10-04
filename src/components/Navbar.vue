@@ -35,14 +35,14 @@
         <li class="nav-item text-center" v-show="!on_discography">
           <router-link class="nav-link" to="/discography">Discography</router-link>
         </li>
-        <!--
+
         <li class="nav-item active text-center" v-show="on_aboutMe">
-          <router-link class="nav-link onpage" to="/about_me">About Me</router-link>
+          <router-link class="nav-link onpage" to="/about">About Me</router-link>
         </li>
         <li class="nav-item text-center" v-show="!on_aboutMe">
-          <router-link class="nav-link" to="/about_me">About Me</router-link>
+          <router-link class="nav-link" to="/about">About Me</router-link>
         </li>
-        -->
+
 
       </ul>
     </div>

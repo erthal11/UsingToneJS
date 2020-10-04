@@ -1,8 +1,11 @@
 <template>
-  <div class="aboutMe">
+  <div class="aboutMe ">
     <navbar :on_aboutMe="true"></navbar>
     <div class="container w-100 ">
-      <h1 class="text-center text-lg-left">About Me</h1>
+      <h2 class="text-center">About Me</h2>
+
+      <p></p>
+
     </div>
 
   </div>
