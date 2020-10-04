@@ -44,6 +44,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: antiquewhite;
   box-sizing: border-box;
+
 }
 
 body {

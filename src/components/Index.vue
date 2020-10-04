@@ -2,7 +2,7 @@
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
         <div class="container w-100 ">
-          <h1>Nathan Erthal</h1>
+          <h1>Nathan Erthal rocks</h1>
           <!--<img alt="title" src="../assets/"> -->
           <!--<img class="circular--landscape" alt="Nathan Erthal" src="../assets/Nathan&Kaiser.jpg">-->
           <div>
