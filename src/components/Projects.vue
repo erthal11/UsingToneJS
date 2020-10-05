@@ -4,17 +4,15 @@
       <div class="container w-100 ">
         <img class="profileImage" alt="Nathan & Kaiser" src="../assets/Nathan&Kaiser.jpg">
         <h2 class="text-center">Projects</h2>
-        <h4> Coming soon...</h4>
+
+        <h3 class="font-italic">“Success is the sum of small efforts repeated day in and day out.”</h3>
+        <h3 class="float-right">- Robert Collier</h3>
 
         <div>
           <img class="waves" alt="waves" src="../assets/audioWaves.png">
         </div>
 
       </div>
-
-    <div>
-
-    </div>
 
   </div>
 </template>
@@ -34,8 +32,8 @@ name: "Projects",
 <style scoped>
 
 .profileImage {
-  max-width: 30vw;
-  min-width: 30vw;
+  max-width: 25vw;
+  min-width: 25vw;
   height: auto;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
   border-radius: 6%;

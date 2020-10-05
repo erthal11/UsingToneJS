@@ -133,8 +133,8 @@ name: "Index",
 }
 
 .profileImage {
-  max-width: 30vw;
-  min-width: 30vw;
+  max-width: 25vw;
+  min-width: 25vw;
   height: auto;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, .25);
   border-radius: 6%;
