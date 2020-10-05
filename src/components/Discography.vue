@@ -7,6 +7,8 @@
 
       <h2>Discography</h2>
 
+      <div class="musicList">
+
       <div class="box">
         <a href="https://songwhip.com/conscious3/just-all-right" target="_blank">
           <img class= "coverArt" alt="Cover Art" src="../assets/JustAlright.jpeg">
@@ -59,6 +61,13 @@
       </div>
 
 
+      </div>
+
+      <h3 class="float-right"></h3>
+      <h3 class="font-italic">“Music can change the world because it can change people.”</h3>
+      <h3 class="float-right">- Bono</h3>
+
+
       <div>
         <img class="waves" alt="waves" src="../assets/audioWaves.png">
       </div>
@@ -81,6 +90,11 @@ name: "Discography",
 </script>
 
 <style scoped>
+
+  .musicList{
+    margin-top: 0px;
+    margin-bottom: 35px;
+  }
 
   .coverArt {
     //width: 40%;
@@ -128,6 +142,7 @@ name: "Discography",
     //padding-top: 50px;
     //background-color: #7D88B5;
     //display: flex;
+    margin-bottom: 30px;
   }
 
   .texPadding{
@@ -142,6 +157,7 @@ name: "Discography",
       margin: 20px auto;
       padding: 10px 10px 10px 10px;
       display: block;
+      margin-bottom: 20px;
     }
 
     .texPadding{

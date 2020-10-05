@@ -79,6 +79,8 @@ h3 {
   text-shadow: 0px 3px 10px rgba(0,0,0,.25);
   padding-bottom: 10px;
   padding-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 h5 {
