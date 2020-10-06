@@ -189,5 +189,27 @@ div {
   padding-bottom: 10px;
 }
 
+.quoteBox{
+    width: 800px;
+    height: 200px;
+    margin: 20px auto;
+  //padding-bottom: 10px;
+  //padding-top: 50px;
+  //background-color: #7D88B5;
+  //display: flex;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 900px) {
+  .quoteBox {
+    width: auto;
+    height: 300px;
+  //background-color: #7D88B5; margin: 20px auto;
+    padding: 10px 10px 10px 10px;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
 
 </style>

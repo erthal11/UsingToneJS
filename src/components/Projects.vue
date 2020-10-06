@@ -5,8 +5,10 @@
         <img class="profileImage" alt="Nathan & Kaiser" src="../assets/Nathan&Kaiser.jpg">
         <h2 class="text-center">Projects</h2>
 
-        <h3 class="font-italic">“Success is the sum of small efforts repeated day in and day out.”</h3>
-        <h3 class="float-right">- Robert Collier</h3>
+        <div class="quoteBox">
+          <h3 class="font-italic">“Success is the sum of small efforts repeated day in and day out.”</h3>
+          <h3 class="float-right">- Robert Collier</h3>
+        </div>
 
         <div>
           <img class="waves" alt="waves" src="../assets/audioWaves.png">
