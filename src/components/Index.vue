@@ -23,7 +23,7 @@
             <a href="https://www.linkedin.com/in/nathan-erthal-a62bb419a/" target="_blank" class="fa fa-linkedin"></a>
             <div>
             <!--<a href="../assets/Resume.pdf" target="_blank" class="fa fa-file"></a>-->
-              <a href="https://www.linkedin.com/in/nathan-erthal-a62bb419a/detail/overlay-view/urn:li:fsd_profileTreasuryMedia:(ACoAAC7Ov-oBZB_afBVQmECsqoySOg1O7iqgxUc,1601664850899)/" target="_blank" class="fa fa-file"></a>
+              <a href="https://drive.google.com/file/d/1vfQ52MmxCs7gAaxMX-tdQUz6lvK-ih4c/view?usp=sharing" target="_blank" class="fa fa-file"></a>
             </div>
           </div>
 
