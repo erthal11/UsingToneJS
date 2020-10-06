@@ -63,9 +63,10 @@
 
       </div>
 
-      <h3 class="float-right"></h3>
-      <h3 class="font-italic">“Music can change the world because it can change people.”</h3>
-      <h3 class="float-right">- Bono</h3>
+      <div class="quoteBox">
+        <h3 class="font-italic">“Success is falling nine times and getting up ten"”</h3>
+        <h3 class="float-right">- Jon Bon Jovi</h3>
+      </div>
 
 
       <div>

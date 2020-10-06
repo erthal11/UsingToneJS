@@ -13,8 +13,10 @@
         <h4><span class="coolStuff">Nationality:</span> Brazil</h4>
       </ul>
 
-      <h3 class="font-italic">“You Don’t Have To Be Great To Start, But You Have To Start To Be Great.”</h3>
-      <h3 class="float-right">– Zig Ziglar</h3>
+      <div class="quoteBox">
+        <h3 class="font-italic">“You Don’t Have To Be Great To Start, But You Have To Start To Be Great.”</h3>
+        <h3 class="float-right">– Zig Ziglar</h3>
+      </div>
 
       <div>
         <img class="waves" alt="waves" src="../assets/audioWaves.png">
