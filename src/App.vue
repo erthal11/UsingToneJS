@@ -39,12 +39,40 @@ export default {
   //“Ubuntu”, “Cantarell”, “Fira Sans”,
   //“Droid Sans”, “Helvetica Neue”, sans-serif;
   //font-family: "Big Caslon";
-  font-family: "Georgia";
+  font-family: "AudioFont";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: antiquewhite;
+  //color: antiquewhite;
   box-sizing: border-box;
 
+}
+
+@font-face {
+  font-family: 'AudioFont';
+  src: url('./assets/fonts/Audiowide-Regular.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('./assets/fonts/Audiowide-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+
+//Kanit-Medium
+@font-face {
+  font-family: 'Kanit-Medium';
+  src: url('./assets/fonts/Kanit-Medium.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('./assets/fonts/Kanit-Medium.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+//Kanit-ExtraLight
+@font-face {
+  font-family: 'Kanit-ExtraLight';
+  src: url('./assets/fonts/Kanit-ExtraLight.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('./assets/fonts/Kanit-ExtraLight.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+//Kanit-Thin
+@font-face {
+  font-family: 'Kanit-Thin';
+  src: url('./assets/fonts/Kanit-Thin.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  url('./assets/fonts/Kanit-Thin.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 }
 
 
@@ -61,14 +89,14 @@ body {
 
 h1 {
   font-size: 80px;
-  color: #D4AF37;
+  //color: #D4AF37;
   //text-shadow: 2px 2px black;
   text-shadow: 0px 3px 10px rgba(0,0,0,.25);
 }
 
 h2 {
   font-size: 50px;
-  color: #D4AF37;
+  //color: #D4AF37;
   //text-shadow: 2px 2px black;
   text-shadow: 0px 3px 10px rgba(0,0,0,.25);
   padding-top: 30px;
@@ -106,6 +134,11 @@ p {
 
 a {
   text-decoration: none;
+  color: #202020;
+}
+
+a:hover{
+  color: mediumpurple;
 }
 
 ul {
@@ -118,13 +151,6 @@ ul {
   box-sizing: inherit;
 }
 
-.waves {
-  width: 900px;
-  height: 250px;
-  object-fit: none;
-  max-width: 100%;
-  filter: brightness(50%);
-}
 
 .jumbotron{
   border-radius: 0;
@@ -154,29 +180,7 @@ ul {
   color: white;
 }
 
-.background-picture {
-  width: 100%;
-  height: 85vh;
-  background-size: cover;
-  position: relative;
-}
 
-.background-picture::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -5px;
-  width: 100%;
-  height: 4.7rem;
-  background-size: cover;
-}
-
-.main-message {
-  width: fit-content;
-  color: #fafafa;
-  text-transform: uppercase;
-  transform: translateY(20%);
-}
 
 .main-message h1 {
   font-family: 'Aldrich', sans-serif;
@@ -189,16 +193,7 @@ div {
   padding-bottom: 10px;
 }
 
-.quoteBox{
-    width: 800px;
-    height: 200px;
-    margin: 20px auto;
-  //padding-bottom: 10px;
-  //padding-top: 50px;
-  //background-color: #7D88B5;
-  //display: flex;
-    margin-bottom: 30px;
-}
+
 
 @media screen and (max-width: 900px) {
   .quoteBox {

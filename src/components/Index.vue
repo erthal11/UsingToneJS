@@ -2,7 +2,11 @@
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
         <div class="container w-100 ">
-          <h1>My Tone.JS App</h1>
+          <h1>Groove Stop</h1>
+
+          <div>
+            <a></a>
+          </div>
 
 
 

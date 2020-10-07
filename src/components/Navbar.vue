@@ -31,15 +31,19 @@
         </li>
         -->
 
+        <li class="nav-item active text-center" v-show="on_studio">
+          <router-link class="nav-link onpage" to="/studio">Studio</router-link>
+        </li>
+        <li class="nav-item text-center" v-show="!on_studio">
+          <router-link class="nav-link" to="/studio">Studio</router-link>
+        </li>
+
 
 
       </ul>
     </div>
-    <!-- <vue-headful title="BIM - Home"></vue-headful> -->
-    <vue-headful v-if="on_index" title="Nathan Erthal"></vue-headful>
-    <vue-headful v-if="on_projects" title="Nathan - Projects"></vue-headful>
-    <vue-headful v-if="on_discography" title="Nathan - Discography"></vue-headful>
-    <vue-headful v-if="on_aboutMe" title="Nathan - About Me"></vue-headful>
+    <vue-headful v-if="on_index" title="GrooveStop"></vue-headful>
+    <vue-headful v-if="on_projects" title="GS - Projects"></vue-headful>
 
   </nav>
 </template>
@@ -50,8 +54,7 @@ export default {
   props: {
     on_index: Boolean,
     on_projects: Boolean,
-    on_discography: Boolean,
-    on_aboutMe: Boolean,
+    on_studio: Boolean,
   },
 }
 </script>
@@ -65,11 +68,11 @@ export default {
 }
 
 .nav-link {
-  color: antiquewhite;
+  //color: antiquewhite;
 }
 
 .nav-link:hover {
-  color: #D4AF37;
+  //color: #D4AF37;
 }
 
 /* Brackets effect for navbar links */
@@ -80,22 +83,6 @@ export default {
   -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
   -moz-transition: -moz-transform 0.3s, opacity 0.2s;
   transition: transform 0.3s, opacity 0.2s;
-}
-
-.navbar a::before {
-  margin-right: 10px;
-  content: '(';
-  -webkit-transform: translateX(20px);
-  -moz-transform: translateX(20px);
-  transform: translateX(20px);
-}
-
-.navbar a::after {
-  margin-left: 10px;
-  content: ')';
-  -webkit-transform: translateX(-20px);
-  -moz-transform: translateX(-20px);
-  transform: translateX(-20px);
 }
 .navbar-custom {
   //background-color: #444444;
@@ -113,16 +100,16 @@ export default {
 }
 
 .onpage{
-  color: #444444;
+  //color: #444444;
 }
 
 a{
-  color: antiquewhite;
+  //color: antiquewhite;
   font-size: x-large;
 }
 
 a:hover {
-  color: #D4AF37;
+  //color: #D4AF37;
 }
 
 /*Screen Resolution with min-width: 700px*/
