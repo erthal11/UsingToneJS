@@ -2,34 +2,9 @@
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
         <div class="container w-100 ">
-          <h1>Nathan Erthal</h1>
-          <!--<img alt="title" src="../assets/"> -->
-          <!--<img class="circular--landscape" alt="Nathan Erthal" src="../assets/Nathan&Kaiser.jpg">-->
-          <div>
-            <img class="profileImage" alt="Profile Image" src="../assets/Nathan_Profile.jpg">
-          </div>
+          <h1>My Tone.JS App</h1>
 
-          <div>
-            <h3 class="toggleLine"> Software Engineer <span class="coolStuff">/</span> Audio Engineer</h3>
-          </div>
 
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-          <!--font awesome icons -->
-          <div class="socialMedia">
-            <a href="https://www.facebook.com/Erthal11/" target="_blank" class="fa fa-facebook"></a>
-            <a href="https://www.instagram.com/nate.o.eight/?hl=en" target="_blank" class="fa fa-instagram"></a>
-            <!-- <a href="#" class="fa fa-youtube"></a> -->
-            <a href="https://github.com/erthal11" target="_blank" class="fa fa-github"></a>
-            <a href="https://www.linkedin.com/in/nathan-erthal-a62bb419a/" target="_blank" class="fa fa-linkedin"></a>
-            <div>
-            <!--<a href="../assets/Resume.pdf" target="_blank" class="fa fa-file"></a>-->
-              <a href="https://drive.google.com/file/d/1vfQ52MmxCs7gAaxMX-tdQUz6lvK-ih4c/view?usp=sharing" target="_blank" class="fa fa-file"></a>
-            </div>
-          </div>
-
-          <div>
-            <img class="waves" alt="waves" src="../assets/audioWaves.png">
-          </div>
 
 
         </div>

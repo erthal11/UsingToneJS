@@ -50,7 +50,7 @@ export default {
 
 
 body {
-  background-image:url('./assets/WebPageBackground.jpg');
+  //background-image:url('./assets/WebPageBackground.jpg');
   background-repeat: no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;

@@ -16,10 +16,10 @@
       <ul class="navbar-nav ml-auto">
 
         <li class="nav-item active text-center" v-show="on_index">
-          <router-link class="nav-link onpage" to="/">Nathan</router-link>
+          <router-link class="nav-link onpage" to="/">Home</router-link>
         </li>
         <li class="nav-item text-center" v-show="!on_index">
-          <router-link class="nav-link" to="/">Nathan</router-link>
+          <router-link class="nav-link" to="/">Home</router-link>
         </li>
 
         <!--
@@ -31,19 +31,6 @@
         </li>
         -->
 
-        <li class="nav-item active text-center" v-show="on_discography">
-          <router-link class="nav-link onpage" to="/discography">Discography</router-link>
-        </li>
-        <li class="nav-item text-center" v-show="!on_discography">
-          <router-link class="nav-link" to="/discography">Discography</router-link>
-        </li>
-
-        <li class="nav-item active text-center" v-show="on_aboutMe">
-          <router-link class="nav-link onpage" to="/about">About Me</router-link>
-        </li>
-        <li class="nav-item text-center" v-show="!on_aboutMe">
-          <router-link class="nav-link" to="/about">About Me</router-link>
-        </li>
 
 
       </ul>
