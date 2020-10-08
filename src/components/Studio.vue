@@ -3,7 +3,9 @@
     <navbar :on_studio="true"></navbar>
     <div class="container w-100 ">
 
+      <input type = "button" v-on:click = "play()" value = "Play">
 
+      <!--
       <ul id="piano">
         <li data-note="C4" class="key">
           <div data-note="C#4" class="black-key">R</div>
@@ -32,6 +34,7 @@
           L
         </li>
       </ul>
+      -->
 
 
     </div>
@@ -44,20 +47,50 @@
 import Navbar from '@/components/Navbar'
 import * as Tone from 'tone'
 
+
+
 export default {
 name: "Studio",
+
   components: {
     Navbar
   },
+
+  data() {
+    return {
+
+    }
+  },
+
+  methods: {
+    play: function () {
+
+      const synth = new Tone.Synth()
+      const now = Tone.now();
+
+      // Tone.Synth is a basic synthesizer with a single oscillator
+      // Set the tone to sine
+      synth.oscillator.type = "sine";
+      // connect it to the master output (your speakers)
+      synth.toDestination()
+
+      // trigger the attack immediately
+      synth.triggerAttack("C4", now)
+      // wait one second before triggering the release
+      synth.triggerRelease(now + 1)
+
+      //attach a click listener to a play button
+      document.querySelector('button')?.addEventListener('click', async () => {
+        await Tone.start()
+        console.log('audio is ready')
+      });
+
+    },
+
+  }
+
 }
 
-
-// Tone.Synth is a basic synthesizer with a single oscillator
-const synth = new Tone.Synth();
-// Set the tone to sine
-synth.oscillator.type = "sine";
-// connect it to the master output (your speakers)
-synth.toDestination();
 
 
 </script>
