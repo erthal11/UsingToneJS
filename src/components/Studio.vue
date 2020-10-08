@@ -22,9 +22,14 @@
         <option @click="synthShape='sawtooth'" value="sawtooth">saw</option>
         <option @click="synthShape='square'" value="square">square</option>
       </select>
-      <ul id="piano" v-show="onPiano">
-        <li @mousedown="play('C4',synthShape,0)" @mouseup="play('C4',synthShape,1)" class="key">A</li>
-        <li @mousedown="play('C#4',synthShape,0)" @mouseup="play('C#4',synthShape,1)" class="black-key">W</li>
+
+      <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
+
+        <li v-if="clickDown=true" @mouseover="play('C4',synthShape,0)" @mouseleave="play('C4',synthShape,1)" class="key">A</li>
+        <li @mouseover="play('C#4',synthShape,0)" @mouseleave="play('C#4',synthShape,1)" class="black-key">W</li>
+
+
+
         <li @mousedown="play('D4',synthShape,0)" @mouseup="play('D4',synthShape,1)" class="key">S</li>
         <li @mousedown="play('D#4',synthShape,0)" @mouseup="play('D#4',synthShape,1)" class="black-key">E</li>
         <li @mousedown="play('E4',synthShape,0)" @mouseup="play('E4',synthShape,1)" class="key">D</li>
@@ -69,7 +74,8 @@ name: "Studio",
       onPiano: false,
       synthShape: "sine",
       octaveSwitch: 0,
-      synth: new Tone.Synth()
+      synth: new Tone.Synth(),
+      clickDown: false
     }
   },
 
