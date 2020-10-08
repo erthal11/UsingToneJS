@@ -2,7 +2,7 @@
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
         <div class="container w-100 ">
-          <h1>Loop Tools</h1>
+          <h1>Pro Loops</h1>
           <h5>Your online Studio</h5>
           <!--any name ideas?-->
 

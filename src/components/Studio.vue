@@ -6,7 +6,6 @@
       <!--To Do:
       listen for key input for playing with keyboard.
       Fix CSS for black keys
-      fix octave switching
       -->
       <button v-show="!onPiano" @click="onPiano=true">Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide</button>
@@ -76,11 +75,13 @@ name: "Studio",
   methods: {
     play: function (note,shape) {
 
-      //let octave = note.slice(-1);
+
       if (this.octaveSwitch != 0) {
-        let octave = parseInt(note) + this.octaveSwitch;
-        note = (note.slice(0, -1)).concat(octave);
+        let octaveOG = note.slice(-1);
+        let newOctave = parseInt(octaveOG) + this.octaveSwitch;
         console.log(note)
+        note = (note.slice(0, -1)).concat(newOctave);
+
       }
 
       const synth = new Tone.Synth()
@@ -95,13 +96,14 @@ name: "Studio",
 
       // trigger the attack immediately
       synth.triggerAttack(note, now)
+
+      console.log(note)
       // wait one second before triggering the release
       synth.triggerRelease(now + 1)
 
       //attach a click listener to a play button
       document.querySelector('button')?.addEventListener('click', async () => {
         await Tone.start()
-        console.log('audio is ready')
       });
 
     },
