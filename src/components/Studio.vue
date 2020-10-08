@@ -39,8 +39,8 @@
         <li @mousedown="play('C#5',synthShape,0)" @mouseup="play('C#5',synthShape,1)" class="black-key">O</li>
         <li @mousedown="play('D5',synthShape,0)" @mouseup="play('D5',synthShape,1)" class="key">L</li>
         <li @mousedown="play('D#5',synthShape,0)" @mouseup="play('D#5',synthShape,1)" class="black-key">P</li>
-        <li @mousedown="play('E5',synthShape,start)" @mouseup="play('E5',synthShape,1)" class="key">;</li>
-        <li @mousedown="play('F5',synthShape,start)" @mouseup="play('F5',synthShape,1)" class="key">'</li>
+        <li @mousedown="play('E5',synthShape,0)" @mouseup="play('E5',synthShape,1)" class="key">;</li>
+        <li @mousedown="play('F5',synthShape,0)" @mouseup="play('F5',synthShape,1)" class="key">'</li>
       </ul>
       </div>
 
@@ -155,10 +155,10 @@ ul .key:last-child {
 ul .black-key {
   position: relative;
   width: 60px;
-  height: 180px;
+  height: 115px;
   border: 1px solid black;
   border-right: none;
-  background: #fffff0;
+  background: #202020;
   border-radius: 5px;
   box-shadow: 0px 3px 5px #666;
   cursor: pointer;
@@ -167,6 +167,7 @@ ul .black-key {
   align-items: flex-end;
   padding-bottom: 10px;
   font-weight: bold;
+  color: ivory;
 }
 
 
