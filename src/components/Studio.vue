@@ -5,7 +5,7 @@
 
       <!--To Do:
       listen for key input for playing with keyboard.
-      Fix CSS for black keys
+      Make input for for keyboard buttons too
       -->
       <button v-show="!onPiano" @click="onPiano=true">Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide</button>
@@ -25,27 +25,24 @@
 
       <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
 
-        <li v-if="clickDown=true" @mouseover="play('C4',synthShape,0)" @mouseleave="play('C4',synthShape,1)" class="key">A</li>
-        <li @mouseover="play('C#4',synthShape,0)" @mouseleave="play('C#4',synthShape,1)" class="black-key">W</li>
-
-
-
-        <li @mousedown="play('D4',synthShape,0)" @mouseup="play('D4',synthShape,1)" class="key">S</li>
+        <li @mousedown="play('C4',synthShape,0)" @mouseup="play('C4',synthShape,1)" class="key">A</li>
+        <li @mousedown="play('C#4',synthShape,0)" @mouseup="play('C#4',synthShape,1)" class="black-key">W</li>
+        <li @mousedown="play('D4',synthShape,0)" @mouseup="play('D4',synthShape,1)" class="key thing">S</li>
         <li @mousedown="play('D#4',synthShape,0)" @mouseup="play('D#4',synthShape,1)" class="black-key">E</li>
-        <li @mousedown="play('E4',synthShape,0)" @mouseup="play('E4',synthShape,1)" class="key">D</li>
-        <li @mousedown="play('F4',synthShape,0)" @mouseup="play('F4',synthShape,1)" class="key">F</li>
+        <li @mousedown="play('E4',synthShape,0)" @mouseup="play('E4',synthShape,1)" class="key thing">D</li>
+        <li @mousedown="play('F4',synthShape,0)" @mouseup="play('F4',synthShape,1)" class="key ">F</li>
         <li @mousedown="play('F#4',synthShape,0)" @mouseup="play('F#4',synthShape,1)" class="black-key">T</li>
-        <li @mousedown="play('G4',synthShape,0)" @mouseup="play('G4',synthShape,1)" class="key">G</li>
+        <li @mousedown="play('G4',synthShape,0)" @mouseup="play('G4',synthShape,1)" class="key thing">G</li>
         <li @mousedown="play('G#4',synthShape,0)" @mouseup="play('G#4',synthShape,1)" class="black-key">Y</li>
-        <li @mousedown="play('A4',synthShape,0)" @mouseup="play('A4',synthShape,1)" class="key">H</li>
+        <li @mousedown="play('A4',synthShape,0)" @mouseup="play('A4',synthShape,1)" class="key thing">H</li>
         <li @mousedown="play('A#4',synthShape,0)" @mouseup="play('A#4',synthShape,1)" class="black-key">U</li>
-        <li @mousedown="play('B4',synthShape,0)" @mouseup="play('B4',synthShape,1)" class="key">J</li>
-        <li @mousedown="play('C5',synthShape,0)" @mouseup="play('C5',synthShape,1)" class="key">K</li>
+        <li @mousedown="play('B4',synthShape,0)" @mouseup="play('B4',synthShape,1)" class="key thing">J</li>
+        <li @mousedown="play('C5',synthShape,0)" @mouseup="play('C5',synthShape,1)" class="key ">K</li>
         <li @mousedown="play('C#5',synthShape,0)" @mouseup="play('C#5',synthShape,1)" class="black-key">O</li>
-        <li @mousedown="play('D5',synthShape,0)" @mouseup="play('D5',synthShape,1)" class="key">L</li>
+        <li @mousedown="play('D5',synthShape,0)" @mouseup="play('D5',synthShape,1)" class="key thing">L</li>
         <li @mousedown="play('D#5',synthShape,0)" @mouseup="play('D#5',synthShape,1)" class="black-key">P</li>
-        <li @mousedown="play('E5',synthShape,0)" @mouseup="play('E5',synthShape,1)" class="key">;</li>
-        <li @mousedown="play('F5',synthShape,0)" @mouseup="play('F5',synthShape,1)" class="key">'</li>
+        <li @mousedown="play('E5',synthShape,0)" @mouseup="play('E5',synthShape,1)" class="key thing">;</li>
+        <li @mousedown="play('F5',synthShape,0)" @mouseup="play('F5',synthShape,1)" class="key ">'</li>
       </ul>
       </div>
 
@@ -127,53 +124,101 @@ name: "Studio",
 
 <style scoped>
 
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
-body {
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+* {
+  box-sizing:border-box
 }
+
+body {
+  margin:0;
+  background:#222
+}
+
 ul {
+  height:18.875em;
+  width:50em;
+  margin:5em auto;
+  padding:3em 0 0 3em;
+  position:relative;
+  border:1px solid #160801;
+  border-radius:1em;
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),rebeccapurple;
+  box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5);
+
+}
+
+li {
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:relative;
+  float:left;
+
   list-style: none;
   display: flex;
+
 }
+
 ul .key {
-  position: relative;
-  width: 60px;
-  height: 180px;
-  border: 1px solid black;
-  border-right: none;
-  background: #fffff0;
-  border-radius: 5px;
-  box-shadow: 0px 3px 5px #666;
-  cursor: pointer;
+  height:16em;
+  width:4em;
+  z-index:1;
+  border-left:1px solid #bbb;
+  border-bottom:1px solid #bbb;
+  border-radius:0 0 5px 5px;
+  box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#eee 0%,#fff 100%);
+
   display: flex;
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 10px;
   font-weight: bold;
 }
-ul .key:last-child {
-  border-right: 1px solid black;
+
+ul .key:active {
+  border-top:1px solid #777;
+  border-left:1px solid #999;
+  border-bottom:1px solid #999;
+  box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2);
+  background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%)
 }
-ul .black-key {
-  position: relative;
-  width: 60px;
-  height: 115px;
-  border: 1px solid black;
-  border-right: none;
-  background: #202020;
-  border-radius: 5px;
-  box-shadow: 0px 3px 5px #666;
-  cursor: pointer;
+
+.black-key {
+  height:9em;
+  width:2em;
+  margin:0 0 0 -1em;
+  z-index:2;
+  border:1px solid #000;
+  border-radius:0 0 3px 3px;
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
+  background:linear-gradient(45deg,#222 0%,#555 100%);
+
+  //z-index: 999;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   padding-bottom: 10px;
-  font-weight: bold;
-  color: ivory;
+  color: white;
+
+}
+
+.black-key:active {
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+  background:linear-gradient(to right,#444 0%,#222 100%)
+}
+
+.thing {
+  margin:0 0 0 -1em
+}
+
+
+
+ul li:first-child {
+  border-radius:5px 0 5px 5px
+}
+
+ul li:last-child {
+  border-radius:0 5px 5px 5px
 }
 
 
