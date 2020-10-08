@@ -9,10 +9,11 @@
       -->
       <button v-show="!onPiano" @click="onPiano=true">Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide</button>
+      <div v-show="onPiano">
       <!--lower the octave -->
-      <button v-show="onPiano" @click="octaveSwitch --" >-</button>
+      <button @click="octaveSwitch --" >-</button>
       <!-- raise the octave-->
-      <button v-show="onPiano" @click="octaveSwitch ++">+</button>
+      <button @click="octaveSwitch ++">+</button>
       <!-- dropdown list to change wave shape (sine/triangle/saw/square) -->
       <select v-model="synthShape" v-show="onPiano" name="shape" id="shapes">
         <option @click="synthShape='sine'" value="sine">sine</option>
@@ -22,25 +23,26 @@
         <option @click="synthShape='square'" value="square">square</option>
       </select>
       <ul id="piano" v-show="onPiano">
-        <li @click="play('C4',synthShape)" class="key">A</li>
-        <li @click ="play('C#4',synthShape)" class="black-key">W</li>
-        <li @click ="play('D4',synthShape)" class="key">S</li>
-        <li @click ="play('D#4',synthShape)" class="black-key">E</li>
-        <li @click ="play('E4',synthShape)" class="key">D</li>
-        <li @click ="play('F4',synthShape)" class="key">F</li>
-        <li @click ="play('F#4',synthShape)" class="black-key">T</li>
-        <li @click ="play('G4',synthShape)" class="key">G</li>
-        <li @click ="play('G#4',synthShape)" class="black-key">Y</li>
-        <li @click ="play('A4',synthShape)" class="key">H</li>
-        <li @click ="play('A#4',synthShape)" class="black-key">U</li>
-        <li @click ="play('B4',synthShape)" class="key">J</li>
-        <li @click ="play('C5',synthShape)" class="key">K</li>
-        <li @click ="play('C#5',synthShape)" class="black-key">O</li>
-        <li @click ="play('D5',synthShape)" class="key">L</li>
-        <li @click ="play('D#5',synthShape)" class="black-key">P</li>
-        <li @click ="play('E5',synthShape)" class="key">;</li>
-        <li @click ="play('F5',synthShape)" class="key">'</li>
+        <li @mousedown="play('C4',synthShape,0)" @mouseup="play('C4',synthShape,1)" class="key">A</li>
+        <li @mousedown="play('C#4',synthShape,0)" @mouseup="play('C#4',synthShape,1)" class="black-key">W</li>
+        <li @mousedown="play('D4',synthShape,0)" @mouseup="play('D4',synthShape,1)" class="key">S</li>
+        <li @mousedown="play('D#4',synthShape,0)" @mouseup="play('D#4',synthShape,1)" class="black-key">E</li>
+        <li @mousedown="play('E4',synthShape,0)" @mouseup="play('E4',synthShape,1)" class="key">D</li>
+        <li @mousedown="play('F4',synthShape,0)" @mouseup="play('F4',synthShape,1)" class="key">F</li>
+        <li @mousedown="play('F#4',synthShape,0)" @mouseup="play('F#4',synthShape,1)" class="black-key">T</li>
+        <li @mousedown="play('G4',synthShape,0)" @mouseup="play('G4',synthShape,1)" class="key">G</li>
+        <li @mousedown="play('G#4',synthShape,0)" @mouseup="play('G#4',synthShape,1)" class="black-key">Y</li>
+        <li @mousedown="play('A4',synthShape,0)" @mouseup="play('A4',synthShape,1)" class="key">H</li>
+        <li @mousedown="play('A#4',synthShape,0)" @mouseup="play('A#4',synthShape,1)" class="black-key">U</li>
+        <li @mousedown="play('B4',synthShape,0)" @mouseup="play('B4',synthShape,1)" class="key">J</li>
+        <li @mousedown="play('C5',synthShape,0)" @mouseup="play('C5',synthShape,1)" class="key">K</li>
+        <li @mousedown="play('C#5',synthShape,0)" @mouseup="play('C#5',synthShape,1)" class="black-key">O</li>
+        <li @mousedown="play('D5',synthShape,0)" @mouseup="play('D5',synthShape,1)" class="key">L</li>
+        <li @mousedown="play('D#5',synthShape,0)" @mouseup="play('D#5',synthShape,1)" class="black-key">P</li>
+        <li @mousedown="play('E5',synthShape,start)" @mouseup="play('E5',synthShape,1)" class="key">;</li>
+        <li @mousedown="play('F5',synthShape,start)" @mouseup="play('F5',synthShape,1)" class="key">'</li>
       </ul>
+      </div>
 
 
     </div>
@@ -55,7 +57,6 @@ import * as Tone from 'tone'
 
 
 
-
 export default {
 name: "Studio",
 
@@ -67,39 +68,41 @@ name: "Studio",
     return {
       onPiano: false,
       synthShape: "sine",
-      octaveSwitch: 0
+      octaveSwitch: 0,
+      synth: new Tone.Synth()
     }
   },
 
 
+
   methods: {
-    play: function (note,shape) {
+    play: function (note,shape,time) {
 
 
       if (this.octaveSwitch != 0) {
         let octaveOG = note.slice(-1);
         let newOctave = parseInt(octaveOG) + this.octaveSwitch;
-        console.log(note)
         note = (note.slice(0, -1)).concat(newOctave);
 
       }
 
-      const synth = new Tone.Synth()
-
       const now = Tone.now();
       // Tone.Synth is a basic synthesizer with a single oscillator
       // Set the tone to sine
-      synth.oscillator.type = shape;
+      this.synth.oscillator.type = shape;
       //synth.oscillator.type = "sine2";
       // connect it to the master output (your speakers)
-      synth.toDestination()
+      this.synth.toDestination()
 
       // trigger the attack immediately
-      synth.triggerAttack(note, now)
+      if (time===0) {
+        this.synth.triggerAttack(note, now)
+        console.log(note)
+      }
 
-      console.log(note)
-      // wait one second before triggering the release
-      synth.triggerRelease(now + 1)
+      if (time===1) {
+        this.synth.triggerRelease(now)
+      }
 
       //attach a click listener to a play button
       document.querySelector('button')?.addEventListener('click', async () => {
@@ -165,5 +168,6 @@ ul .black-key {
   padding-bottom: 10px;
   font-weight: bold;
 }
+
 
 </style>

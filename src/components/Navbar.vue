@@ -42,8 +42,8 @@
 
       </ul>
     </div>
-    <vue-headful v-if="on_index" title="Loop Tools"></vue-headful>
-    <vue-headful v-if="on_projects" title="LT - Projects"></vue-headful>
+    <vue-headful v-if="on_index" title="Pro Loops"></vue-headful>
+    <vue-headful v-if="on_projects" title="PL - Projects"></vue-headful>
 
   </nav>
 </template>
