@@ -68,7 +68,7 @@ export default {
 }
 
 .nav-link {
-  //color: antiquewhite;
+  //color: white;
 }
 
 .nav-link:hover {
@@ -96,7 +96,7 @@ export default {
   -webkit-transform: translateX(0px);
   -moz-transform: translateX(0px);
   transform: translateX(0px);
-  color: #D4AF37;
+  color: white ;
 }
 
 .onpage{

@@ -3,7 +3,8 @@
       <navbar :on_index="true"></navbar>
         <div class="container w-100 ">
           <h1>Pro Loops</h1>
-          <h5>Your online Studio</h5>
+          <h4>Your online Studio</h4>
+          <h4>Specially crafted for the visually impaired!</h4>
           <!--any better name ideas?-->
 
           <div>

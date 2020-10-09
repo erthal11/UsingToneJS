@@ -146,7 +146,7 @@ p {
 
 a {
   text-decoration: none;
-  color: #202020;
+  color: white;
 }
 
 a:hover{
