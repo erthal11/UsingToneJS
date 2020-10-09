@@ -4,8 +4,7 @@
     <div class="container w-100 ">
 
       <!--To Do:
-      listen for key input for playing with keyboard.
-      Make input for for keyboard buttons too
+      fix bug on hold keyboard note
       -->
       <button v-show="!onPiano" @click="onPiano=true">Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide</button>
@@ -22,27 +21,28 @@
         <option @click="synthShape='sawtooth'" value="sawtooth">saw</option>
         <option @click="synthShape='square'" value="square">square</option>
       </select>
+        <button @click="playSynthKeys(synthShape)">Use Keyboard</button>
 
       <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
 
-        <li @mousedown="play('C4',synthShape,0)" @mouseup="play('C4',synthShape,1)" class="key">A</li>
-        <li @mousedown="play('C#4',synthShape,0)" @mouseup="play('C#4',synthShape,1)" class="black-key">W</li>
-        <li @mousedown="play('D4',synthShape,0)" @mouseup="play('D4',synthShape,1)" class="key thing">S</li>
-        <li @mousedown="play('D#4',synthShape,0)" @mouseup="play('D#4',synthShape,1)" class="black-key">E</li>
-        <li @mousedown="play('E4',synthShape,0)" @mouseup="play('E4',synthShape,1)" class="key thing">D</li>
-        <li @mousedown="play('F4',synthShape,0)" @mouseup="play('F4',synthShape,1)" class="key ">F</li>
-        <li @mousedown="play('F#4',synthShape,0)" @mouseup="play('F#4',synthShape,1)" class="black-key">T</li>
-        <li @mousedown="play('G4',synthShape,0)" @mouseup="play('G4',synthShape,1)" class="key thing">G</li>
-        <li @mousedown="play('G#4',synthShape,0)" @mouseup="play('G#4',synthShape,1)" class="black-key">Y</li>
-        <li @mousedown="play('A4',synthShape,0)" @mouseup="play('A4',synthShape,1)" class="key thing">H</li>
-        <li @mousedown="play('A#4',synthShape,0)" @mouseup="play('A#4',synthShape,1)" class="black-key">U</li>
-        <li @mousedown="play('B4',synthShape,0)" @mouseup="play('B4',synthShape,1)" class="key thing">J</li>
-        <li @mousedown="play('C5',synthShape,0)" @mouseup="play('C5',synthShape,1)" class="key ">K</li>
-        <li @mousedown="play('C#5',synthShape,0)" @mouseup="play('C#5',synthShape,1)" class="black-key">O</li>
-        <li @mousedown="play('D5',synthShape,0)" @mouseup="play('D5',synthShape,1)" class="key thing">L</li>
-        <li @mousedown="play('D#5',synthShape,0)" @mouseup="play('D#5',synthShape,1)" class="black-key">P</li>
-        <li @mousedown="play('E5',synthShape,0)" @mouseup="play('E5',synthShape,1)" class="key thing">;</li>
-        <li @mousedown="play('F5',synthShape,0)" @mouseup="play('F5',synthShape,1)" class="key ">'</li>
+        <li @mousedown="playSynth('C4',synthShape,0)" @mouseup="playSynth('C4',synthShape,1)" class="key">A</li>
+        <li @mousedown="playSynth('C#4',synthShape,0)" @mouseup="playSynth('C#4',synthShape,1)" class="black-key">W</li>
+        <li @mousedown="playSynth('D4',synthShape,0)" @mouseup="playSynth('D4',synthShape,1)" class="key thing">S</li>
+        <li @mousedown="playSynth('D#4',synthShape,0)" @mouseup="playSynth('D#4',synthShape,1)" class="black-key">E</li>
+        <li @mousedown="playSynth('E4',synthShape,0)" @mouseup="playSynth('E4',synthShape,1)" class="key thing">D</li>
+        <li @mousedown="playSynth('F4',synthShape,0)" @mouseup="playSynth('F4',synthShape,1)" class="key ">F</li>
+        <li @mousedown="playSynth('F#4',synthShape,0)" @mouseup="playSynth('F#4',synthShape,1)" class="black-key">T</li>
+        <li @mousedown="playSynth('G4',synthShape,0)" @mouseup="playSynth('G4',synthShape,1)" class="key thing">G</li>
+        <li @mousedown="playSynth('G#4',synthShape,0)" @mouseup="playSynth('G#4',synthShape,1)" class="black-key">Y</li>
+        <li @mousedown="playSynth('A4',synthShape,0)" @mouseup="playSynth('A4',synthShape,1)" class="key thing">H</li>
+        <li @mousedown="playSynth('A#4',synthShape,0)" @mouseup="playSynth('A#4',synthShape,1)" class="black-key">U</li>
+        <li @mousedown="playSynth('B4',synthShape,0)" @mouseup="playSynth('B4',synthShape,1)" class="key thing">J</li>
+        <li @mousedown="playSynth('C5',synthShape,0)" @mouseup="playSynth('C5',synthShape,1)" class="key ">K</li>
+        <li @mousedown="playSynth('C#5',synthShape,0)" @mouseup="playSynth('C#5',synthShape,1)" class="black-key">O</li>
+        <li @mousedown="playSynth('D5',synthShape,0)" @mouseup="playSynth('D5',synthShape,1)" class="key thing">L</li>
+        <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key">P</li>
+        <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing">;</li>
+        <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key ">'</li>
       </ul>
       </div>
 
@@ -76,10 +76,98 @@ name: "Studio",
     }
   },
 
-
-
   methods: {
-    play: function (note,shape,time) {
+
+    playSynthKeys: function(shape){
+
+      //for keyboard inputs
+      document.addEventListener("keydown", note => {
+        // e object has the key property to tell which key was pressed
+        switch (note.key) {
+          case "a":
+            this.playSynth("C4",shape,0)
+            break;
+          case "w":
+            this.playSynth("C#4",shape,0)
+            break;
+          case "s":
+            this.playSynth("D#4",shape,0)
+            break;
+          case "d":
+            this.playSynth("E4",shape,0)
+            break;
+          case "f":
+            this.playSynth("F4",shape,0)
+            break;
+          case "t":
+            this.playSynth("F#4",shape,0)
+            break;
+          case "g":
+            this.playSynth("G4",shape,0)
+            break;
+          case "y":
+            this.playSynth("G#4",shape,0)
+            break;
+          case "h":
+            this.playSynth("A4",shape,0)
+            break;
+          case "u":
+            this.playSynth("A#4",shape,0)
+            break;
+          case "j":
+            this.playSynth("B4",shape,0)
+            break;
+          case "k":
+            this.playSynth("C4",shape,0)
+            break;
+          case "o":
+            this.playSynth("C#5",shape,0)
+            break;
+          case "l":
+            this.playSynth("D5",shape,0)
+            break;
+          case "p":
+            this.playSynth("D#5",shape,0)
+            break;
+          case ";":
+            this.playSynth("E5",shape,0)
+            break;
+          case "'":
+            this.playSynth("F5",shape,0)
+            break;
+          default:
+            return;
+        }
+      })
+
+      //when the key is released, audio is released as well
+      document.addEventListener("keyup", e => {
+        switch (e.key) {
+          case "a":
+          case "w":
+          case "s":
+          case "d":
+          case "f":
+          case "t":
+          case "g":
+          case "y":
+          case "h":
+          case "u":
+          case "j":
+          case "k":
+          case "o":
+          case "l":
+          case "p":
+          case ";":
+          case "'":
+            this.playSynth("C4",shape,1)
+         }
+
+      });
+
+    },
+
+    playSynth: function (note,shape,time) {
 
 
       if (this.octaveSwitch != 0) {
@@ -185,7 +273,7 @@ ul .key:active {
 
 .black-key {
   height:9em;
-  width:2em;
+  width:3em;
   margin:0 0 0 -1em;
   z-index:2;
   border:1px solid #000;
@@ -208,7 +296,7 @@ ul .key:active {
 }
 
 .thing {
-  margin:0 0 0 -1em
+  margin:0 0 0 -2em
 }
 
 
