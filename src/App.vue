@@ -34,7 +34,7 @@ export default {
   font-family: "AudioFont";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  //color: antiquewhite;
+  color: #ffffff;
   box-sizing: border-box;
 
 }
@@ -76,15 +76,35 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  //background-color: #202020;
+  background-color: black;
 }
 
-h1 {
+
+
+h1{
   font-size: 80px;
-  //color: #D4AF37;
-  //text-shadow: 2px 2px black;
-  text-shadow: 0px 3px 10px rgba(0,0,0,.25);
+  position: relative;
+  color: #fff;
+  //text-shadow: 0px 3px 10px rgba(0,0,0,.25);
+  text-shadow: 0 0 50px #0f0,
+  0 0 100px #0f0,
+  0 0 200px #0f0,
+  0 0 500px #0f0;
+  animation: animate 5s linear infinite;
+  margin-bottom: 70px;
 }
+@keyframes animate
+{
+  0%
+  {
+    filter: hue-rotate(0deg);
+  }
+  100%
+  {
+    filter: hue-rotate(360deg);
+  }
+}
+
 
 h2 {
   font-size: 50px;

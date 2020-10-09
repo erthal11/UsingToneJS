@@ -21,7 +21,8 @@
         <option @click="synthShape='sawtooth'" value="sawtooth">saw</option>
         <option @click="synthShape='square'" value="square">square</option>
       </select>
-        <button @click="playSynthKeys(synthShape)">Use Keyboard</button>
+
+<!--        <button @click="playSynthKeys(synthShape)">Use Keyboard</button>-->
 
       <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
 
@@ -72,100 +73,125 @@ name: "Studio",
       synthShape: "sine",
       octaveSwitch: 0,
       synth: new Tone.Synth(),
-      clickDown: false
+      clickDown: false,
+      //keyRelease: false
     }
   },
 
   methods: {
 
-    playSynthKeys: function(shape){
+//   waitingKeypress: function() {
+//   return new Promise((resolve) => {
+//     document.addEventListener('keydown', onKeyHandler);
+//     function onKeyHandler(e) {
+//       if (e.keyCode === 13) {
+//         document.removeEventListener('keydown', onKeyHandler);
+//         resolve();
+//       }
+//     }
+//   });
+// },
 
-      //for keyboard inputs
-      document.addEventListener("keydown", note => {
-        // e object has the key property to tell which key was pressed
-        switch (note.key) {
-          case "a":
-            this.playSynth("C4",shape,0)
-            break;
-          case "w":
-            this.playSynth("C#4",shape,0)
-            break;
-          case "s":
-            this.playSynth("D#4",shape,0)
-            break;
-          case "d":
-            this.playSynth("E4",shape,0)
-            break;
-          case "f":
-            this.playSynth("F4",shape,0)
-            break;
-          case "t":
-            this.playSynth("F#4",shape,0)
-            break;
-          case "g":
-            this.playSynth("G4",shape,0)
-            break;
-          case "y":
-            this.playSynth("G#4",shape,0)
-            break;
-          case "h":
-            this.playSynth("A4",shape,0)
-            break;
-          case "u":
-            this.playSynth("A#4",shape,0)
-            break;
-          case "j":
-            this.playSynth("B4",shape,0)
-            break;
-          case "k":
-            this.playSynth("C4",shape,0)
-            break;
-          case "o":
-            this.playSynth("C#5",shape,0)
-            break;
-          case "l":
-            this.playSynth("D5",shape,0)
-            break;
-          case "p":
-            this.playSynth("D#5",shape,0)
-            break;
-          case ";":
-            this.playSynth("E5",shape,0)
-            break;
-          case "'":
-            this.playSynth("F5",shape,0)
-            break;
-          default:
-            return;
-        }
-      })
-
-      //when the key is released, audio is released as well
-      document.addEventListener("keyup", e => {
-        switch (e.key) {
-          case "a":
-          case "w":
-          case "s":
-          case "d":
-          case "f":
-          case "t":
-          case "g":
-          case "y":
-          case "h":
-          case "u":
-          case "j":
-          case "k":
-          case "o":
-          case "l":
-          case "p":
-          case ";":
-          case "'":
-            this.playSynth("C4",shape,1)
-         }
-
-      });
-
-    },
+    // playSynthKeys: function(shape){
+    //
+    //   //for keyboard inputs
+    //   document.addEventListener("keydown", note => {
+    //     // note object has the key property to tell which key was pressed
+    //     switch (note.key) {
+    //       case "a":
+    //         this.playSynth("C4",shape,0)
+    //         // document.addEventListener("keyup", note => {
+    //         //   switch (note.key) {
+    //         //     case "a":
+    //         //     this.playSynth("C4",shape,1)
+    //         //   }
+    //         // })
+    //         //   if (this.keyRelease==true){
+    //         //     break;
+    //         //   }
+    //         //   else{
+    //         //     break;
+    //         //   }
+    //           break;
+    //       case "w":
+    //         this.playSynth("C#4",shape,0)
+    //         break;
+    //       case "s":
+    //         this.playSynth("D#4",shape,0)
+    //         break;
+    //       case "d":
+    //         this.playSynth("E4",shape,0)
+    //         break;
+    //       case "f":
+    //         this.playSynth("F4",shape,0)
+    //         break;
+    //       case "t":
+    //         this.playSynth("F#4",shape,0)
+    //         break;
+    //       case "g":
+    //         this.playSynth("G4",shape,0)
+    //         break;
+    //       case "y":
+    //         this.playSynth("G#4",shape,0)
+    //         break;
+    //       case "h":
+    //         this.playSynth("A4",shape,0)
+    //         break;
+    //       case "u":
+    //         this.playSynth("A#4",shape,0)
+    //         break;
+    //       case "j":
+    //         this.playSynth("B4",shape,0)
+    //         break;
+    //       case "k":
+    //         this.playSynth("C4",shape,0)
+    //         break;
+    //       case "o":
+    //         this.playSynth("C#5",shape,0)
+    //         break;
+    //       case "l":
+    //         this.playSynth("D5",shape,0)
+    //         break;
+    //       case "p":
+    //         this.playSynth("D#5",shape,0)
+    //         break;
+    //       case ";":
+    //         this.playSynth("E5",shape,0)
+    //         break;
+    //       case "'":
+    //         this.playSynth("F5",shape,0)
+    //         break;
+    //       default:
+    //         return;
+    //     }
+    //   })
+    //
+    //   //when the key is released, audio is released as well
+    //   document.addEventListener("keyup", e => {
+    //     switch (e.key) {
+    //       case "a":
+    //       case "w":
+    //       case "s":
+    //       case "d":
+    //       case "f":
+    //       case "t":
+    //       case "g":
+    //       case "y":
+    //       case "h":
+    //       case "u":
+    //       case "j":
+    //       case "k":
+    //       case "o":
+    //       case "l":
+    //       case "p":
+    //       case ";":
+    //       case "'":
+    //         this.playSynth("C4",shape,1)
+    //      }
+    //
+    //   });
+    //
+    // },
 
     playSynth: function (note,shape,time) {
 
@@ -255,7 +281,7 @@ ul .key {
   border-radius:0 0 5px 5px;
   box-shadow:-1px 0 0 rgba(255,255,255,0.8) inset,0 0 5px #ccc inset,0 0 3px rgba(0,0,0,0.2);
   background:linear-gradient(to bottom,#eee 0%,#fff 100%);
-
+  color: black;
   display: flex;
   justify-content: center;
   align-items: flex-end;

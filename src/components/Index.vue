@@ -30,14 +30,6 @@ export default {
         Navbar
       },
 
-  data() {
-
-  },
-
-  methods: {
-
-    }
-
 }
 
 
