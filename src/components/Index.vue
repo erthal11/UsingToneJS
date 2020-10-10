@@ -2,7 +2,7 @@
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
         <div class="container w-100 , changing-color ">
-          <h1>Pro Loops</h1>
+          <h1>Wonder Beats</h1>
           <h1>Your online Studio</h1>
           <h1 style="padding-bottom: 150px;">Specially crafted for the visually impaired!</h1>
           <!--any better name ideas?-->

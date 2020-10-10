@@ -10,8 +10,9 @@
       fix bug on hold keyboard note
       make keys play on sliding from notes
       -->
+
       <button v-show="!onPiano" @click="onPiano=true">Synth</button>
-      <button v-show="onPiano" @click="onPiano=false">Hide</button>
+      <button v-show="onPiano" @click="onPiano=false">Hide Synth</button>
 
       <div v-show="onPiano">
         <!--lower the octave -->
@@ -61,16 +62,25 @@
       <!-- Drum Machine -->
 
       <button v-show="!onDrums" @click="onDrums=true">Drums</button>
-      <button v-show="onDrums" @click="onDrums=false">Hide</button>
+      <button v-show="onDrums" @click="onDrums=false">Hide Drums</button>
 
       <div v-show="onDrums">
 
         <ul>
           <li @click="playKick" class = drumPad >Kick</li>
           <li @click="playSnare" class = drumPad >Snare</li>
-          <li @click="playClosedHihat" class = drumPad >Hat</li>
+          <li @click="playCymbalSynth('closed')" class = drumPad >Hat</li>
+          <li @click="playCymbalSynth('open')" class = drumPad >Open Hat</li>
+          <li @click="playSample" class = drumPad >Chord 1</li>
+          <li @click="playSample2" class = drumPad >Chord 2</li>
         </ul>
 
+      </div>
+
+      <!-- How can we make this respond to the value on our output from the Tone.js variable "meter" ??? -->
+      <div class="levels" id="levels">
+        <div class="level" id="level1"></div>
+        <div class="level" id="level2"></div>
       </div>
 
 
@@ -100,35 +110,52 @@ export default {
       octaveSwitch: 0,
       synth: new Tone.Synth(),
       bassSynth: new Tone.MembraneSynth(),
-      //snare: new Tone.Player('samples/505/snare.mp3'),
+
+      meter:new Tone.Meter(),
+
+
 
       snare: new Tone.NoiseSynth(
           {
             noise  : {
-              type  : "brown"
+              type  : "pink"
             }  ,
             envelope  : {
               attack  : 0.005 ,
               decay  : 0.1 ,
-              sustain  : 0.02
-            }
+              sustain  : 0.02,
+            },
+            volume: +20,
           }
       ),
 
 
 
+
+      sampler: new Tone.Sampler({
+        urls: {
+          A1: "A1.mp3",
+          A2: "A2.mp3",
+        },
+        baseUrl: "https://tonejs.github.io/audio/casio/",
+      }).toDestination(),
+
       lowPass: new Tone.Filter({
         frequency: 14000,
       }).toDestination(),
 
-      hat: new Tone.NoiseSynth(
-          {
-        volume: -10,
-        envelope: {
-          attack: 0.001,
-          decay: 0.07
+      cymbalSynth: new Tone.MetalSynth({
+        "frequency": 250,
+        "envelope": {
+          "attack": 0.001,
+          "decay": 0.1,
+          "release": 0.01
         },
-      }),
+        "harmonicity": 3.1,
+        "modulationIndex": 16,
+        "resonance": 8000,
+        "octaves": 0.5
+      }).toDestination()
     }
   },
 
@@ -183,7 +210,7 @@ export default {
             this.playSynth("B4",shape,0)
             break;
           case "k":
-            this.playSynth("C4",shape,0)
+            this.playSynth("C5",shape,0)
             break;
           case "o":
             this.playSynth("C#5",shape,0)
@@ -200,6 +227,12 @@ export default {
           case "'":
             this.playSynth("F5",shape,0)
             break;
+          case 'z':
+            this.octaveSwitch --;
+            break;
+            case 'x':
+              this.octaveSwitch ++;
+              break;
           default:
             return;
         }
@@ -234,6 +267,8 @@ export default {
 
     playSynth: function (note,shape,time) {
 
+      // we can use the tone.js meter to create a cool visual
+      this.synth.connect(this.meter)
 
       if (this.octaveSwitch != 0) {
         let octaveOG = note.slice(-1);
@@ -279,10 +314,27 @@ export default {
       this.snare.triggerAttackRelease("8n");
     },
 
-    playClosedHihat: function(){
-      this.hat.toDestination()
-      this.hat.triggerAttackRelease("8n");
+
+    playCymbalSynth: function(type){
+      if (type=="closed"){
+        this.cymbalSynth.envelope.decay = 0.1
+      }
+      if (type=="open"){
+        this.cymbalSynth.envelope.decay = 0.5
+      }
+      this.cymbalSynth.toDestination()
+      this.cymbalSynth.triggerAttackRelease('32n', 0.3);
+    },
+
+
+    playSample: function() {
+      this.sampler.triggerAttackRelease(["C1", "E1", "G1", "B1"], 0.5);
+    },
+
+    playSample2: function() {
+      this.sampler.triggerAttackRelease(["G1", "B1", "E2", "C2"], 0.5);
     }
+
 
 
     // loopBeat: function() {
@@ -430,6 +482,82 @@ ul .drumPad {
   font-weight: bold;
   margin-left: 15px;
 }
+
+
+
+.levels {
+  height: 300px;
+  width: 30px;
+  background-color: #333;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  padding: 4px 3px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* paint not glowing LEDs */
+.level {
+  position: relative;
+  margin: 0 2px;
+  flex-grow: 1;
+  z-index: 3;
+  background-color: transparent;
+  background-repeat: repeat-y;
+  background-image:linear-gradient(to bottom, #666 3px, transparent 1px);
+  background-size: 100% 4px;
+}
+
+/* paint glowing LEDs */
+.level:before {
+  width: 100%;
+  height: 100%;
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-image:linear-gradient(to top, green 0%, yellow 80%, red 100%);
+  background-size: 100% 100%;
+  clip-path: inset(0% 0 0 0); /* switch off leds via clipping */
+  -webkit-clip-path: inset(0% 0 0 0); /* Safari */
+  animation: level-animation 500ms alternate infinite;
+}
+
+@keyframes level-animation {
+  0% {
+    clip-path: inset(0% 0 0 0);
+    -webkit-clip-path: inset(0% 0 0 0);
+  }
+  50% {
+    clip-path: inset(40% 0 0 0);
+    -webkit-clip-path: inset(40% 0 0 0);
+  }
+  100% {
+    clip-path: inset(20% 0 0 0);
+    -webkit-clip-path: inset(20% 0 0 0);
+  }
+}
+
+
+/* paint gap lines of LEDs */
+.level::after {
+  width: 100%;
+  height: 100%;
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  margin-top: 3px;
+  background-image:linear-gradient(to bottom, #333 1px /* space between leds*/ , transparent 1px);
+  background-repeat: repeat-y;
+  background-size: 100% 4px; /* 4px LED height */
+  background-color: transparent;
+}
+
 
 
 </style>
