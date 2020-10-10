@@ -162,7 +162,7 @@ export default {
   methods: {
     micPlayer: function(){},
 
-    micPlayer: function(){},
+    // micPlayer: function(){},
 
     playSynthKeys: function(shape){
 
