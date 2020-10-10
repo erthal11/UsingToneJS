@@ -4,7 +4,7 @@
     <div class="container w-100">
 
 
-      <button @click="loopBeat">Play</button>
+<!--      <button @click="loopBeat">Play</button>-->
 
       <!--To Do:
       fix bug on hold keyboard note
@@ -58,16 +58,17 @@
       </div>
 
 
+      <!-- Drum Machine -->
+
       <button v-show="!onDrums" @click="onDrums=true">Drums</button>
       <button v-show="onDrums" @click="onDrums=false">Hide</button>
 
       <div v-show="onDrums">
 
         <ul>
-          <li @mousedown="loopBeat" class = drumPad >Kick</li>
-          <li class = drumPad >Snare</li>
+          <li @click="playKick" class = drumPad >Kick</li>
+          <li @click="playSnare" class = drumPad >Snare</li>
           <li class = drumPad >Hat</li>
-
         </ul>
 
       </div>
@@ -99,8 +100,33 @@ export default {
       octaveSwitch: 0,
       synth: new Tone.Synth(),
       bassSynth: new Tone.MembraneSynth(),
-      clickDown: false,
-      //keyRelease: false
+      //snare: new Tone.Player('samples/505/snare.mp3'),
+
+      snare: new Tone.NoiseSynth(
+          {
+
+            noise  : {
+              type  : "brown"
+            }  ,
+            envelope  : {
+              attack  : 0.005 ,
+              decay  : 0.1 ,
+              sustain  : 0.02
+            }
+          }
+      ),
+
+      lowPass: new Tone.Filter({
+        frequency: 14000,
+      }).toDestination(),
+
+      // closedHiHat: new Tone.NoiseSynth({
+      //   volume: -10,
+      //   envelope: {
+      //     attack: 0.01,
+      //     decay: 0.15
+      //   },
+      // }).connect(this.lowPass),
     }
   },
 
@@ -237,20 +263,42 @@ export default {
 
     },
 
-    loopBeat: function() {
-      Tone.start();
+    playKick: function(){
+      this.bassSynth.toDestination()
+      this.bassSynth.triggerAttackRelease('c1', '4n', Tone.now())
 
-      //interval: time interval for which song is updated (4n=quarter note)
-      const loopBeat = new Tone.Loop(this.song, '4n');
-      //transport is in charge of meter, bpm. (Its the thing that drives loop)
-      Tone.Transport.start();
-      loopBeat.start(0);
     },
 
-    song: function(time) {
-      console.log(time)
-      this.bassSynth.triggerAttackRelease('c1', '8n', this.now)
-    }
+    playSnare: function(){
+      this.snare.toDestination()
+      this.snare.triggerAttackRelease("8n");
+    },
+
+    // playClosedHihat: function(){
+    //   this.closedHiHat.toDestination()
+    //   this.closedHiHat.triggerAttackRelease("8n");
+    // }
+
+
+    // loopBeat: function() {
+    //   Tone.start();
+    //
+    //   this.bassSynth.toDestination()
+    //   this.snare.toDestination()
+    //
+    //
+    //   //interval: time interval for which song is updated (4n=quarter note)
+    //   const loopBeat = new Tone.Loop(this.song, '4n');
+    //   //transport is in charge of meter, bpm. (Its the thing that drives loop)
+    //   Tone.Transport.start();
+    //   loopBeat.start(0);
+    // },
+    //
+    // song: function(time) {
+    //   this.bassSynth.triggerAttackRelease('c1', '8n', Tone.now())
+    //   console.log(time)
+    //
+    // }
 
   }
 
@@ -367,7 +415,7 @@ ul .drumPad {
   //border-left:1px solid #222222;
   //border-bottom:1px solid #222222;
   border-radius: 5px 5px 5px 5px !important;
-  box-shadow:-1px 0 0 #555555 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
+  box-shadow:-1px 0 0 #777777 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
   background:linear-gradient(to bottom,#555555 0%,#444444 100%);
   color: black;
   display: flex;
