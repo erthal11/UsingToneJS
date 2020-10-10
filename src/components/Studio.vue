@@ -68,7 +68,7 @@
         <ul>
           <li @click="playKick" class = drumPad >Kick</li>
           <li @click="playSnare" class = drumPad >Snare</li>
-          <li class = drumPad >Hat</li>
+          <li @click="playClosedHihat" class = drumPad >Hat</li>
         </ul>
 
       </div>
@@ -104,7 +104,6 @@ export default {
 
       snare: new Tone.NoiseSynth(
           {
-
             noise  : {
               type  : "brown"
             }  ,
@@ -116,17 +115,20 @@ export default {
           }
       ),
 
+
+
       lowPass: new Tone.Filter({
         frequency: 14000,
       }).toDestination(),
 
-      // closedHiHat: new Tone.NoiseSynth({
-      //   volume: -10,
-      //   envelope: {
-      //     attack: 0.01,
-      //     decay: 0.15
-      //   },
-      // }).connect(this.lowPass),
+      hat: new Tone.NoiseSynth(
+          {
+        volume: -10,
+        envelope: {
+          attack: 0.001,
+          decay: 0.07
+        },
+      }),
     }
   },
 
@@ -274,10 +276,10 @@ export default {
       this.snare.triggerAttackRelease("8n");
     },
 
-    // playClosedHihat: function(){
-    //   this.closedHiHat.toDestination()
-    //   this.closedHiHat.triggerAttackRelease("8n");
-    // }
+    playClosedHihat: function(){
+      this.closedHiHat.toDestination()
+      this.closedHiHat.triggerAttackRelease("8n");
+    }
 
 
     // loopBeat: function() {
