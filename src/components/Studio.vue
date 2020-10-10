@@ -68,7 +68,7 @@
 
         <button @click="playDrumsKeys()">Use Keyboard</button>
 
-        <ul>
+        <ul class = "drums">
           <li @click="playKick" class = drumPad >Kick<br>1</li>
           <li @click="playSnare" class = drumPad >Snare<br>2</li>
           <li @click="playCymbalSynth('closed')" class = drumPad >Hat<br>3</li>
@@ -489,6 +489,10 @@ ul li:first-child {
 
 ul li:last-child {
   border-radius:0 5px 5px 5px
+}
+
+.drums {
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)), #7D88B5 !important;
 }
 
 ul .drumPad {
