@@ -69,6 +69,8 @@
           <li @click="playKick" class = drumPad >Kick</li>
           <li @click="playSnare" class = drumPad >Snare</li>
           <li @click="playClosedHihat" class = drumPad >Hat</li>
+          <li @click="playSample" class = drumPad >Chord</li>
+          <li @click="playSample2" class = drumPad >Chord</li>
         </ul>
 
       </div>
@@ -100,22 +102,34 @@ export default {
       octaveSwitch: 0,
       synth: new Tone.Synth(),
       bassSynth: new Tone.MembraneSynth(),
-      //snare: new Tone.Player('samples/505/snare.mp3'),
+
+
+
 
       snare: new Tone.NoiseSynth(
           {
             noise  : {
-              type  : "brown"
+              type  : "pink"
             }  ,
             envelope  : {
               attack  : 0.005 ,
               decay  : 0.1 ,
-              sustain  : 0.02
-            }
+              sustain  : 0.02,
+            },
+            volume: +20,
           }
       ),
 
 
+
+
+      sampler: new Tone.Sampler({
+        urls: {
+          A1: "A1.mp3",
+          A2: "A2.mp3",
+        },
+        baseUrl: "https://tonejs.github.io/audio/casio/",
+      }).toDestination(),
 
       lowPass: new Tone.Filter({
         frequency: 14000,
@@ -123,7 +137,7 @@ export default {
 
       hat: new Tone.NoiseSynth(
           {
-        volume: -10,
+        volume: -5,
         envelope: {
           attack: 0.001,
           decay: 0.07
@@ -181,7 +195,7 @@ export default {
             this.playSynth("B4",shape,0)
             break;
           case "k":
-            this.playSynth("C4",shape,0)
+            this.playSynth("C5",shape,0)
             break;
           case "o":
             this.playSynth("C#5",shape,0)
@@ -198,6 +212,12 @@ export default {
           case "'":
             this.playSynth("F5",shape,0)
             break;
+          case 'z':
+            this.octaveSwitch --;
+            break;
+            case 'x':
+              this.octaveSwitch ++;
+              break;
           default:
             return;
         }
@@ -280,7 +300,16 @@ export default {
     playClosedHihat: function(){
       this.hat.toDestination()
       this.hat.triggerAttackRelease("8n");
+    },
+
+    playSample: function() {
+      this.sampler.triggerAttackRelease(["C1", "E1", "G1", "B1"], 0.5);
+    },
+
+    playSample2: function() {
+      this.sampler.triggerAttackRelease(["G1", "B1", "E2", "C2"], 0.5);
     }
+
 
 
     // loopBeat: function() {
