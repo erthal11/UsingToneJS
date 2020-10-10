@@ -24,6 +24,58 @@ export default {
 </script>
 
 <style>
+.left {
+  padding-left: 100px;
+  float: left;
+  text-align: center;
+  margin: 0 auto;
+}
+.fade-inT {
+	opacity: 1;
+	animation: fadeInOpacity 2 ease-in;
+  animation-delay: 1.5s;
+}
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+  position: relative;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 3s;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.before-enter {
+  opacity: 0;
+  transform: translateY(200px);
+  transition: all 10s ease-out; 
+}
+.before-enter2 {
+  transform: translateY(200px);
+  transition: all 5s ease-out; 
+  transition-delay: 3s;
+}
+
+.enter {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+
+.before_intro {
+  padding-top: 100px;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;  
+}
 
 #app {
   //font-family: -apple-system, BlinkMacSystemFont,
@@ -75,23 +127,39 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
-  background-color: black;
+  background-color: blue;
+  animation: animatebk 5s ease-out infinite;
+  animation-delay: 5s;
+  margin-bottom: 70px;
 }
 
-
+.intro {
+  color: red;
+  padding: 150px;
+  width: 100vw;  
+}
 
 h1{
-  font-size: 80px;
+  opacity: 1;
+	animation-timing-function: ease-in;
   position: relative;
   color: #fff;
   //text-shadow: 0px 3px 10px rgba(0,0,0,.25);
   text-shadow: 0 0 50px #0f0,
-  0 0 100px #0f0,
-  0 0 200px #0f0,
+  0 0 500px #0f0,
+  0 0 300px #0f0,
   0 0 500px #0f0;
-  animation: animate 5s linear infinite;
+  animation: animate 5s linear infinite, fadeInOpacity 4s ease-in;
   margin-bottom: 70px;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 @keyframes animate
 {
@@ -105,6 +173,12 @@ h1{
   }
 }
 
+@keyframes animatebk
+{ 
+  10% { background-color: radial-gradient(ellipse at center,  #1e5799 0%,#7db9e8 100%); } 
+  50% { background-color: yellow; } 
+  100% { background-color: green; } 
+}
 
 h2 {
   font-size: 50px;

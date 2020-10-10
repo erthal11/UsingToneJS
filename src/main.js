@@ -5,7 +5,11 @@ import routes from './routes'
 import VueRouter from 'vue-router'
 import vueHeadful from 'vue-headful'
 
+import ScrollAnimation from './assets/directives/scrollanimation.js'
 
+import ScrollAnimationY from './assets/directives/scrollTranslateY.js'
+Vue.directive('scrollanimation', ScrollAnimation);
+Vue.directive('scrollanimationY', ScrollAnimationY);
 Vue.config.productionTip = false
 
 Vue.use(VueRouter)
@@ -19,7 +23,6 @@ Vue.config.productionTip = false
 
 // Use vue-headful to manage page headings.
 Vue.component('vue-headful', vueHeadful)
-
 
 
 
