@@ -128,7 +128,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-color: blue;
-  animation: animatebk 5s ease-out infinite;
+  animation: animatebk 10s ease-out infinite;
   animation-delay: 5s;
   margin-bottom: 70px;
 }
@@ -176,7 +176,7 @@ h1{
 @keyframes animatebk
 { 
   10% { background-color: radial-gradient(ellipse at center,  #1e5799 0%,#7db9e8 100%); } 
-  50% { background-color: yellow; } 
+  50% { background-color: #b3b300; } 
   100% { background-color: green; } 
 }
 
