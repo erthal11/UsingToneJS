@@ -134,6 +134,8 @@ export default {
 
   methods: {
 
+    micPlayer: function(){},
+
     playSynthKeys: function(shape){
 
       //for keyboard inputs
