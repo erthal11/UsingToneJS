@@ -133,6 +133,7 @@ export default {
   },
 
   methods: {
+    micPlayer: function(){},
 
     micPlayer: function(){},
 
@@ -279,8 +280,8 @@ export default {
     },
 
     playClosedHihat: function(){
-      this.closedHiHat.toDestination()
-      this.closedHiHat.triggerAttackRelease("8n");
+      this.hat.toDestination()
+      this.hat.triggerAttackRelease("8n");
     }
 
 
