@@ -28,7 +28,7 @@
         </select>
 
         <button @click="playSynthKeys(synthShape)">Use Keyboard</button>
-
+        <button @click="micSetup()">Record</button>
         <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
 
           <!--  same keyboard hold note bug with @keydown and @keyup in ul tag -->
@@ -134,7 +134,38 @@ export default {
 
   methods: {
 
-    micPlayer: function(){},
+    micSetup: function(){
+      var getUserMedia = require('get-user-media-promise');
+      var speaker = require('audio-speaker')
+      var MicrophoneStream = require('microphone-stream');
+      
+      document.getElementById('my-start-button').onclick = function() {
+      
+        // note: for iOS Safari, the constructor must be called in response to a tap, or else the AudioContext will remain
+        // suspended and will not provide any audio data.
+        var micStream = new MicrophoneStream();
+      
+        getUserMedia({ video: false, audio: true })
+          .then(function(stream) {
+            micStream.setStream(stream);
+          }).catch(function(error) {
+            console.log(error);
+          });
+      
+        // or pipe it to another stream
+        micStream.pipe(speaker);
+      
+        // It also emits a format event with various details (frequency, channels, etc)
+        micStream.on('format', function(format) {
+          console.log(format);
+        });
+      
+        // Stop when ready
+        document.getElementById('my-stop-button').onclick = function() {
+          micStream.stop();
+        };
+      }
+    },
 
     playSynthKeys: function(shape){
 
