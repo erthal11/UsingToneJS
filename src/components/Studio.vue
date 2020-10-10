@@ -66,13 +66,15 @@
 
       <div v-show="onDrums">
 
+        <button @click="playDrumsKeys()">Use Keyboard</button>
+
         <ul>
-          <li @click="playKick" class = drumPad >Kick</li>
-          <li @click="playSnare" class = drumPad >Snare</li>
-          <li @click="playCymbalSynth('closed')" class = drumPad >Hat</li>
-          <li @click="playCymbalSynth('open')" class = drumPad >Open Hat</li>
-          <li @click="playSample" class = drumPad >Chord 1</li>
-          <li @click="playSample2" class = drumPad >Chord 2</li>
+          <li @click="playKick" class = drumPad >Kick<br>1</li>
+          <li @click="playSnare" class = drumPad >Snare<br>2</li>
+          <li @click="playCymbalSynth('closed')" class = drumPad >Hat<br>3</li>
+          <li @click="playCymbalSynth('open')" class = drumPad >Open Hat<br>4</li>
+          <li @click="playSample" class = drumPad >Chord 1<br>5</li>
+          <li @click="playSample2" class = drumPad >Chord 2<br>6</li>
         </ul>
 
       </div>
@@ -294,10 +296,37 @@ export default {
         this.synth.triggerRelease(now)
       }
 
-      //attach a click listener to a play button
-      // document.querySelector('button')?.addEventListener('click', async () => {
-      //   await Tone.start()
-      // });
+
+    },
+
+
+    playDrumsKeys: function(){
+
+      document.addEventListener("keydown", note => {
+        // note object has the key property to tell which key was pressed
+        switch (note.key) {
+          case "1":
+            this.playKick()
+            break;
+          case "2":
+            this.playSnare()
+            break;
+          case "3":
+            this.playCymbalSynth("closed")
+            break;
+          case "4":
+            this.playCymbalSynth("open")
+            break;
+          case "5":
+            this.playSample()
+            break;
+          case "6":
+            this.playSample2()
+            break;
+          default:
+            return;
+        }
+      })
 
     },
 
@@ -470,7 +499,7 @@ ul .drumPad {
   //border-left:1px solid #222222;
   //border-bottom:1px solid #222222;
   border-radius: 5px 5px 5px 5px !important;
-  box-shadow:-1px 0 0 #777777 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
+  box-shadow:-1px 0 0 #555555 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
   background:linear-gradient(to bottom,#555555 0%,#444444 100%);
   color: black;
   display: flex;
@@ -479,6 +508,11 @@ ul .drumPad {
   padding-bottom: 10px;
   font-weight: bold;
   margin-left: 15px;
+}
+
+ul .drumPad:active {
+  box-shadow:-1px 0 0 rgba(0,0,0,0.2) inset,0 0 5px #000000 inset,0 0 3px #444444;
+  background:linear-gradient(to bottom,#444444 0%,#444444 100%);
 }
 
 
