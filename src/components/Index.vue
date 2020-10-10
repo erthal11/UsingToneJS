@@ -2,10 +2,9 @@
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
         <div class="container w-100 ">
-          <h1>Pro Loops</h1>
+          <h1>Wonder Beats</h1>
           <h4>Your online Studio</h4>
-          <h4>Specially crafted for the visually impaired!</h4>
-          <!--any better name ideas?-->
+          <h4>Specially crafted for the visually impaired.</h4>
 
           <div>
             <a></a>
