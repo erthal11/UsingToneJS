@@ -5,7 +5,6 @@
           <h1>Wonder Beats</h1>
           <h4>Your online Studio</h4>
           <h4>Specially crafted for the visually impaired.</h4>
-          <!--any better name ideas?-->
 
           <div>
             <a></a>
