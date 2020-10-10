@@ -1,14 +1,27 @@
 <template>
   <div id="index" class="text-center">
       <navbar :on_index="true"></navbar>
-        <div class="container w-100 ">
-          <h1>Wonder Beats</h1>
-          <h4>Your online Studio</h4>
-          <h4>Specially crafted for the visually impaired.</h4>
+        <div class="container w-100 , changing-color ">
+          <h1>Pro Loops</h1>
+          <h1>Your online Studio</h1>
+          <h1 style="padding-bottom: 150px;">Specially crafted for the visually impaired!</h1>
           <!--any better name ideas?-->
 
-          <div>
-            <a></a>
+          <div class= "before_intro" v-container fluid>
+          <v-row>
+            <v-col class="intro"> 
+            <div class="left" v-scrollanimation >
+              <img :src="require('../assets/drums.jpg')" contain height="100"/><br>
+              <p v-scrollanimation >You can sythesize <br> your drum instrumentals <br> by operating your keyboard</p>
+            </div>
+            </v-col>
+            <v-col>
+              <a> Hello </a>
+            </v-col>
+            <v-col>
+              <a> Hello </a>
+            </v-col>
+           </v-row>
           </div>
 
 
@@ -30,6 +43,11 @@ export default {
       {
         Navbar
       },
+  // name: "ScrollAnimation",
+  // components:
+  //   {
+  //     ScrollAnimation
+  //   }
 
 }
 
@@ -37,6 +55,5 @@ export default {
 </script>
 
 <style scoped>
-
 
 </style>
