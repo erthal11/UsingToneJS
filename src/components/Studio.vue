@@ -48,24 +48,24 @@
           <!--  @keydown="playSynth('C4',synthShape,0)" @keyup="playSynth('C4',synthShape,1)"-->
           <!--  abindex="1">-->
 
-          <li @mousedown="playSynth('C4',synthShape,0)" @mouseup="playSynth('C4',synthShape,1)" class="key">A</li>
-          <li @mousedown="playSynth('C#4',synthShape,0)" @mouseup="playSynth('C#4',synthShape,1)" class="black-key">W</li>
-          <li @mousedown="playSynth('D4',synthShape,0)" @mouseup="playSynth('D4',synthShape,1)" class="key thing">S</li>
-          <li @mousedown="playSynth('D#4',synthShape,0)" @mouseup="playSynth('D#4',synthShape,1)" class="black-key">E</li>
-          <li @mousedown="playSynth('E4',synthShape,0)" @mouseup="playSynth('E4',synthShape,1)" class="key thing">D</li>
-          <li @mousedown="playSynth('F4',synthShape,0)" @mouseup="playSynth('F4',synthShape,1)" class="key ">F</li>
-          <li @mousedown="playSynth('F#4',synthShape,0)" @mouseup="playSynth('F#4',synthShape,1)" class="black-key">T</li>
-          <li @mousedown="playSynth('G4',synthShape,0)" @mouseup="playSynth('G4',synthShape,1)" class="key thing">G</li>
-          <li @mousedown="playSynth('G#4',synthShape,0)" @mouseup="playSynth('G#4',synthShape,1)" class="black-key">Y</li>
-          <li @mousedown="playSynth('A4',synthShape,0)" @mouseup="playSynth('A4',synthShape,1)" class="key thing">H</li>
-          <li @mousedown="playSynth('A#4',synthShape,0)" @mouseup="playSynth('A#4',synthShape,1)" class="black-key">U</li>
-          <li @mousedown="playSynth('B4',synthShape,0)" @mouseup="playSynth('B4',synthShape,1)" class="key thing">J</li>
-          <li @mousedown="playSynth('C5',synthShape,0)" @mouseup="playSynth('C5',synthShape,1)" class="key ">K</li>
-          <li @mousedown="playSynth('C#5',synthShape,0)" @mouseup="playSynth('C#5',synthShape,1)" class="black-key">O</li>
-          <li @mousedown="playSynth('D5',synthShape,0)" @mouseup="playSynth('D5',synthShape,1)" class="key thing">L</li>
-          <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key">P</li>
-          <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing">;</li>
-          <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key ">'</li>
+          <li @mousedown="playSynth('C4',synthShape,0)" @mouseup="playSynth('C4',synthShape,1)" class="key" ref="akey">A</li>
+          <li @mousedown="playSynth('C#4',synthShape,0)" @mouseup="playSynth('C#4',synthShape,1)" class="black-key" ref="wkey">W</li>
+          <li @mousedown="playSynth('D4',synthShape,0)" @mouseup="playSynth('D4',synthShape,1)" class="key thing" ref="skey">S</li>
+          <li @mousedown="playSynth('D#4',synthShape,0)" @mouseup="playSynth('D#4',synthShape,1)" class="black-key" ref="ekey">E</li>
+          <li @mousedown="playSynth('E4',synthShape,0)" @mouseup="playSynth('E4',synthShape,1)" class="key thing" ref="dkey">D</li>
+          <li @mousedown="playSynth('F4',synthShape,0)" @mouseup="playSynth('F4',synthShape,1)" class="key " ref="fkey">F</li>
+          <li @mousedown="playSynth('F#4',synthShape,0)" @mouseup="playSynth('F#4',synthShape,1)" class="black-key" ref="tkey">T</li>
+          <li @mousedown="playSynth('G4',synthShape,0)" @mouseup="playSynth('G4',synthShape,1)" class="key thing" ref="gkey">G</li>
+          <li @mousedown="playSynth('G#4',synthShape,0)" @mouseup="playSynth('G#4',synthShape,1)" class="black-key" ref="ykey">Y</li>
+          <li @mousedown="playSynth('A4',synthShape,0)" @mouseup="playSynth('A4',synthShape,1)" class="key thing" ref="hkey">H</li>
+          <li @mousedown="playSynth('A#4',synthShape,0)" @mouseup="playSynth('A#4',synthShape,1)" class="black-key" ref="ukey">U</li>
+          <li @mousedown="playSynth('B4',synthShape,0)" @mouseup="playSynth('B4',synthShape,1)" class="key thing" ref="jkey">J</li>
+          <li @mousedown="playSynth('C5',synthShape,0)" @mouseup="playSynth('C5',synthShape,1)" class="key" ref="kkey">K</li>
+          <li @mousedown="playSynth('C#5',synthShape,0)" @mouseup="playSynth('C#5',synthShape,1)" class="black-key" ref="okey">O</li>
+          <li @mousedown="playSynth('D5',synthShape,0)" @mouseup="playSynth('D5',synthShape,1)" class="key thing" ref="lkey">L</li>
+          <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key" ref="pkey">P</li>
+          <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing" ref="semikey">;</li>
+          <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key" ref="apokey">'</li>
         </ul>
       </div>
 
@@ -178,9 +178,13 @@ export default {
 
   methods: {
     micPlayer: function(){},
-
-
     playSynthKeys: function(shape){
+
+      // document.addEventListener("keydown", note=> {
+      //   if(note.key>1)  {
+      //     var x+=20;
+      //   }
+
 
       //for keyboard inputs
       document.addEventListener("keydown", note => {
@@ -194,60 +198,83 @@ export default {
             //     resolve();
             //   }
             // })
+            console.log("A")
             break;
           case "w":
             this.playSynth("C#4",shape,0)
+            console.log("W")
             break;
           case "s":
             this.playSynth("D#4",shape,0)
+            console.log("S")
             break;
           case "d":
             this.playSynth("E4",shape,0)
+            console.log("D")
             break;
           case "f":
             this.playSynth("F4",shape,0)
+            console.log("F")
             break;
           case "t":
             this.playSynth("F#4",shape,0)
+            console.log("T")
             break;
           case "g":
             this.playSynth("G4",shape,0)
+            console.log("G")
             break;
           case "y":
             this.playSynth("G#4",shape,0)
+            console.log("Y")
             break;
           case "h":
             this.playSynth("A4",shape,0)
+            console.log("H")
             break;
           case "u":
             this.playSynth("A#4",shape,0)
+            console.log("U")
             break;
           case "j":
             this.playSynth("B4",shape,0)
+            console.log("J")
             break;
           case "k":
             this.playSynth("C5",shape,0)
+            console.log("K")
             break;
           case "o":
             this.playSynth("C#5",shape,0)
+            console.log("O")
             break;
           case "l":
             this.playSynth("D5",shape,0)
+            console.log("L")
             break;
           case "p":
             this.playSynth("D#5",shape,0)
+            console.log("P")
             break;
           case ";":
             this.playSynth("E5",shape,0)
+            console.log(";")
             break;
           case "'":
             this.playSynth("F5",shape,0)
+            console.log("'")
+            break;
+          case "e":
+            this.playSynth("D#4",shape,0)
+            console.log("'")
             break;
           case 'z':
             this.octaveSwitch --;
+            console.log("Z")
             break;
             case 'x':
               this.octaveSwitch ++;
+              console.log("X")
               break;
           default:
             return;
@@ -305,13 +332,144 @@ export default {
       if (time===0) {
         this.synth.triggerAttack(note, now)
         console.log(note)
+        if (event.type === "mousedown") {
+          event.target.style.background="green"
+        }
+        if (event.type === "keydown") {
+          if (event["key"] === "a") {
+            this.$refs.akey.style.background="green"
+          }
+          else if (event["key"] === "w") {
+            this.$refs.wkey.style.background="green"
+          }
+          else if (event["key"] === "e") {
+            this.$refs.ekey.style.background="green"
+          }
+          else if (event["key"] === "s") {
+            this.$refs.skey.style.background="green"
+          }
+          else if (event["key"] === "d") {
+            this.$refs.dkey.style.background="green"
+          }
+          else if (event["key"] === "f") {
+            this.$refs.fkey.style.background="green"
+          }
+          else if (event["key"] === "t") {
+            this.$refs.tkey.style.background="green"
+          }
+          else if (event["key"] === "y") {
+            this.$refs.ykey.style.background="green"
+          }
+          else if (event["key"] === "u") {
+            this.$refs.ukey.style.background="green"
+          }
+          else if (event["key"] === "o") {
+            this.$refs.okey.style.background="green"
+          }
+          else if (event["key"] === "p") {
+            this.$refs.pkey.style.background="green"
+          }
+          else if (event["key"] === "g") {
+            this.$refs.gkey.style.background="green"
+          }
+          else if (event["key"] === "t") {
+            this.$refs.tkey.style.background="green"
+          }
+          else if (event["key"] === "h") {
+            this.$refs.hkey.style.background="green"
+          }
+          else if (event["key"] === "j") {
+            this.$refs.jkey.style.background="green"
+          }
+          else if (event["key"] === "k") {
+            this.$refs.kkey.style.background="green"
+          }
+          else if (event["key"] === "l") {
+            this.$refs.lkey.style.background="green"
+          }
+          else if (event["key"] === ";") {
+            this.$refs.semikey.style.background="green"
+          }
+          else {
+            this.$refs.apokey.style.background="green"
+          }
+        }
       }
 
       // time 1 will release the note
       if (time===1) {
         this.synth.triggerRelease(now)
+        if (event.type === "mouseup") {
+          if (event.target.className === "black-key") {
+            event.target.style.background="linear-gradient(45deg,#222 0%,#555 100%)"
+          }
+          else {
+            event.target.style.background="white"
+          }
+        }
+        if (event.type === "keyup") {
+          if (event["key"] === "a") {
+            this.$refs.akey.style.background="white"
+          }
+          else if (event["key"] === "w") {
+            this.$refs.wkey.style.background="linear-gradient(45deg,#222 0%,#555 100%)"
+          }
+          else if (event["key"] === "s") {
+            this.$refs.skey.style.background="white"
+          }
+          else if (event["key"] === "d") {
+            this.$refs.dkey.style.background="white"
+          }
+          else if (event["key"] === "f") {
+            this.$refs.fkey.style.background="white"
+          }
+          else if (event["key"] === "g") {
+            this.$refs.gkey.style.background="white"
+          }
+          else if (event["key"] === "h") {
+            this.$refs.hkey.style.background="white"
+          }
+          else if (event["key"] === "j") {
+            this.$refs.jkey.style.background="white"
+          }
+          else if (event["key"] === "k") {
+            this.$refs.kkey.style.background="white"
+          }
+          else if (event["key"] === "l") {
+            this.$refs.lkey.style.background="white"
+          }
+          else if (event["key"] === "t") {
+            this.$refs.tkey.style.background="linear-gradient(45deg,#222 0%,#555 100%)"
+          }
+          else if (event["key"] === "y") {
+            this.$refs.ykey.style.background="linear-gradient(45deg,#222 0%,#555 100%)"
+          }
+          else if (event["key"] === "u") {
+            this.$refs.ukey.style.background="linear-gradient(45deg,#222 0%,#555 100%)"
+          }
+          else if (event["key"] === "o") {
+            this.$refs.okey.style.background="linear-gradient(45deg,#222 0%,#555 100%)"
+          }
+          else if (event["key"] === "p") {
+            this.$refs.pkey.style.background="linear-gradient(45deg,#222 0%,#555 100%)"
+          }
+          else if (event["key"] === ";") {
+            this.$refs.semikey.style.background="white"
+          }
+          else{
+            this.$refs.apokey.style.background="white"
+          }
+        }
       }
 
+      console.log(event.type)
+      console.log(event["key"])
+      // if (event.type === "keydown") {
+      //   event.target.style.background="red"
+      // }
+      // else {
+      //   event.target.style.background="white"
+      // }
 
     },
 
@@ -464,9 +622,23 @@ li {
   list-style:none;
   position:relative;
   float:left;
-
   list-style: none;
   display: flex;
+}
+
+/* li:after {
+  margin:0;
+  padding:0;
+  list-style:none;
+  position:relative;
+  float:left;
+  background-color: red;
+  list-style: none;
+  display: flex;
+} */
+
+
+li .key {
 
 }
 

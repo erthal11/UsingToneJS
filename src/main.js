@@ -6,7 +6,7 @@ import VueRouter from 'vue-router'
 import vueHeadful from 'vue-headful'
 
 //var Tone = require("tone");
-
+import ScrollAnimation from './assets/directives/scrollanimation.js'
 import ScrollAnimationY from './assets/directives/scrollTranslateY.js'
 Vue.directive('scrollanimation', ScrollAnimation);
 Vue.directive('scrollanimationY', ScrollAnimationY);

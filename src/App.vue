@@ -25,7 +25,8 @@ export default {
 
 <style>
 .left {
-  padding-left: 100px;
+  padding:57px;
+  padding-top: 0px!important;
   float: left;
   /* text-align: center;
   margin: 0 auto; */
@@ -56,7 +57,7 @@ export default {
 .before-enter {
   opacity: 0;
   transform: translateY(200px);
-  transition: all 10s ease-out; 
+  transition: all 3s ease-out; 
 }
 .before-enter2 {
   transform: translateY(200px);
@@ -71,9 +72,9 @@ export default {
 
 
 .before_intro {
-  padding-top: 100px;
+  padding-top: 0px;
   width: 100vw;
-  height: 100vh;
+  height: 60vh;
   background-color: white;  
   padding-bottom: 0px;
 }
@@ -84,7 +85,7 @@ export default {
   //“Ubuntu”, “Cantarell”, “Fira Sans”,
   //“Droid Sans”, “Helvetica Neue”, sans-serif;
   //font-family: "Big Caslon";
-  font-family: "AudioFont";
+  font-family: "Georgia";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;
@@ -128,8 +129,8 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-color: #63A4FF;
-  /* animation: animatebk 10s ease-out infinite; */
+  background-color: #130F40;
+  /* animation: animatebk 5s ease-out infinite; */
   animation-delay: 5s;
   margin-bottom: 70px;
 }
@@ -144,6 +145,8 @@ h1{
   opacity: 1;
 	animation-timing-function: ease-in;
   position: relative;
+  font-family: "AudioFont";
+  font-size: 65px;
   color: #fff;
   //text-shadow: 0px 3px 10px rgba(0,0,0,.25);
   text-shadow: 0 0 50px #0f0,
@@ -176,9 +179,20 @@ h1{
 
 @keyframes animatebk
 { 
-  10% { background-color: radial-gradient(ellipse at center,  #1e5799 0%,#7db9e8 100%); } 
+  10% { background-color: #434343; } 
+  filter: brightness(20%);
   50% { background-color: #b3b300; } 
-  100% { background-color: green; } 
+  filter: brightness(20%);
+  100% { background-color: #28313B; }
+  filter: brightness(20%); 
+  75% { background-color: #b3b300; } 
+  filter: brightness(20%);
+  50% { background-color: #434343; } 
+  filter: brightness(20%);
+  25% { background-color: #28313B; }
+  filter: brightness(20%);
+  10%  { background-color: #b3b300; }
+  filter: brightness(20%);
 }
 
 h2 {
@@ -201,7 +215,7 @@ h3 {
 h5 {
   letter-spacing: .004em;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 35px;
   padding-top: 13px;
   animation: fadeInOpacity 4s ease-in;
   animation-delay: .5s;
@@ -210,7 +224,7 @@ h5 {
 h6 {
   letter-spacing: .004em;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 35px;
   padding-top: 13px;
   animation: fadeInOpacity 4s ease-in;
   animation-delay: 1.5s;
@@ -260,8 +274,8 @@ ul {
 .container{
   width: 100%;
   max-width: 98rem;
-  /* margin: 0 auto;
-  padding: 0 1.5rem; */
+  padding: 0 !important;
+  margin: 0  !important;
 }
 
 .btn {
