@@ -5,7 +5,7 @@ import routes from './routes'
 import VueRouter from 'vue-router'
 import vueHeadful from 'vue-headful'
 
-import ScrollAnimation from './assets/directives/scrollanimation.js'
+//var Tone = require("tone");
 
 import ScrollAnimationY from './assets/directives/scrollTranslateY.js'
 Vue.directive('scrollanimation', ScrollAnimation);
@@ -30,3 +30,8 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+
+
+
+
