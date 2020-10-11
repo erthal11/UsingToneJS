@@ -27,9 +27,9 @@
 
       <div v-show="onPiano">
         <!--lower the octave -->
-        <button @click="octaveSwitch --" >-</button>
+        <button @click="octaveSwitch --" >Octave lower (-)</button>
         <!-- raise the octave-->
-        <button @click="octaveSwitch ++">+</button>
+        <button @click="octaveSwitch ++">octave higher (+)</button>
         <!-- dropdown list to change wave shape (sine/triangle/saw/square) -->
         <select v-model="synthShape" v-show="onPiano" name="shape" id="shapes">
           <option @click="synthShape='sine'" value="sine">sine</option>
@@ -456,6 +456,9 @@ export default {
             console.log("layup");
             break;
           case "s":
+            this.playSynth("D4",shape,0)
+            break;
+          case "e":
             this.playSynth("D#4",shape,0)
             break;
           case "d":
@@ -810,7 +813,7 @@ export default {
 <style scoped>
 
 .drumMachine{
-  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)), darkred !important;
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)), orangered !important;
   width: 39em;
 }
 
@@ -1062,6 +1065,31 @@ h5 {
   margin-right: 100%;
 }
 
+button {
+  background-color: white;
+  border-radius: 2rem;
+  color: black;
+  display: inline-block;
+  margin-top: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  //margin-bottom: 2rem;
+  padding: 0.7rem;
+  transition: all .2s ease-in-out;
+  width: 170px;
+  font-size: large;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+input{
+  width: 80px;
+  height: 40px;
+  font-size: large;
+  text-align: center;
+}
 
 
 </style>
