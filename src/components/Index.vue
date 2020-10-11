@@ -4,7 +4,7 @@
     <div class="container w-100 , changing-color ">
       <h1>Wonder Beats</h1>
       <h5>Your online Studio</h5>
-      <h6 style="padding-bottom: 100px;">Specially crafted for the visually impaired!</h6>
+      <h5 style="padding-bottom: 100px;">Specially crafted for the visually impaired!</h5>
       <!--any better name ideas?-->
       <v-row>
         <div class="lbg">
@@ -83,6 +83,10 @@ h2 {
   font-size: 30px;
   color: white;
 
+}
+
+h5 {
+  font-size: xx-large;
 }
 
 </style>
