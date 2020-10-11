@@ -18,31 +18,25 @@
           <v-col class="intro">
             <div style="padding-left: 10px!important;" class="left" >
               <img v-scrollanimation  :src="require('../assets/drums.jpg')" contain height="100"/><br>
-              <p v-scrollanimation >You can sythesize <br> your drum instrumentals <br> by operating your keyboard. <br> Also sports a drum machine</p>
+              <p v-scrollanimation >You can play <br> drum instrumentals <br> by operating your keyboard.</p>
             </div>
           </v-col>
           <v-col>
             <div class="left" >
               <img v-scrollanimation  :src="require('../assets/audioWaves.png')" contain height="100"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with octave levels. <br> yayadyddydydyd</p>
+              <p style="font-color:black;" v-scrollanimation >You can synthesize <br> with a wide variety of octave levels.</p>
             </div>
           </v-col>
           <v-col>
             <div class="left" >
               <img v-scrollanimation  :src="require('../assets/octave.png')" contain height="100"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
+              <p style="font-color:black;" v-scrollanimation >You can synthesize <br> by operating only <br> with your keyboard</p>
             </div>
           </v-col>
           <v-col>
             <div class="left" >
               <img v-scrollanimation  :src="require('../assets/beat.png')" contain height="100"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
-            </div>
-          </v-col>
-          <v-col>
-            <div class="left" >
-              <img v-scrollanimation  :src="require('../assets/blind.png')" contain height="80"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
+              <p style="font-color:black;" v-scrollanimation >You can create drum loops <br> with the drum machine <br> by using the sequencer</p>
             </div>
           </v-col>
         </v-row>
