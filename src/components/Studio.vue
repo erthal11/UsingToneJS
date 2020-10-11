@@ -11,11 +11,7 @@
 <!--      <button id="start-recording" onclick="gMicSetup()">Ask Question</button>-->
 <!--      <button id="stop-recording" onclick="gMicStopper()">Stop</button>-->
 
-      <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
-      <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
-      <button v-show="!playing" playing=true>Record</button>
-
-      <form>
+      <form>BPM:
         <input v-model="bpm" id="bpm" type="number" value="120">
         <!--<button type="button" @click="submitBPM()">Enter BPM</button> -->
       </form>
@@ -99,6 +95,9 @@
       <button v-show="onDrumMachine" @click="onDrumMachine=false">Hide Drum Machine</button>
 
       <div v-show="onDrumMachine">
+
+        <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
+        <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
 
         <ul class ="drumMachine">
 
@@ -214,10 +213,10 @@
       </div>
 
       <!-- How can we make this respond to the value on our output from the Tone.js variable "meter" ??? -->
-      <div class="levels" id="levels">
-        <div class="level" id="level1"></div>
-        <div class="level" id="level2"></div>
-      </div>
+<!--      <div class="levels" id="levels">-->
+<!--        <div class="level" id="level1"></div>-->
+<!--        <div class="level" id="level2"></div>-->
+<!--      </div>-->
 
 
     </div>
@@ -311,11 +310,6 @@ export default {
       ),
 
 
-      tick: new Tone.Player("../assets/samples/snare1").toDestination(),
-
-
-
-
       sampler: new Tone.Sampler({
         urls: {
           A1: "A1.mp3",
@@ -328,18 +322,20 @@ export default {
         frequency: 14000,
       }).toDestination(),
 
-      cymbalSynth: new Tone.MetalSynth({
-        "frequency": 250,
-        "envelope": {
-          "attack": 0.001,
-          "decay": 0.1,
-          "release": 0.01
-        },
-        "harmonicity": 3.1,
-        "modulationIndex": 16,
-        "resonance": 8000,
-        "octaves": 0.5
-      }).toDestination()
+      // cymbalSynth: new Tone.MetalSynth({
+      //   "frequency": 250,
+      //   "envelope": {
+      //     "attack": 0.001,
+      //     "decay": 0.1,
+      //     "release": 0.01
+      //   },
+      //   "harmonicity": 3.1,
+      //   "modulationIndex": 16,
+      //   "resonance": 8000,
+      //   "octaves": 0.5
+      // }).toDestination()
+
+      cymbalSynth: new Tone.MetalSynth().toDestination()
     }
   },
 
