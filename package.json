@@ -8,13 +8,17 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "audio-speaker": "^1.5.0",
     "core-js": "^3.6.5",
+    "get-user-media-promise": "^1.1.4",
+    "microphone-stream": "^5.1.0",
     "tone": "^14.7.58",
     "v-image": "^2.0.2",
     "vue": "^2.6.11",
     "vue-headful": "^2.1.0",
     "vue-mobile-detection": "^1.0.0",
-    "vue-router": "^3.4.3"
+    "vue-router": "^3.4.3",
+    "vuejs-logger": "1.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

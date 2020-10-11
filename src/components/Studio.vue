@@ -1,3 +1,4 @@
+
 <template>
   <div class="studio">
     <navbar :on_studio="true"></navbar>
@@ -7,11 +8,10 @@
 <!--      <button @click="loopBeat">Play</button>-->
 
 
-      <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
-      <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
-      <button v-show="!playing" playing=true>Record</button>
+<!--      <button id="start-recording" onclick="gMicSetup()">Ask Question</button>-->
+<!--      <button id="stop-recording" onclick="gMicStopper()">Stop</button>-->
 
-      <form>
+      <form>BPM:
         <input v-model="bpm" id="bpm" type="number" value="120">
         <!--<button type="button" @click="submitBPM()">Enter BPM</button> -->
       </form>
@@ -27,9 +27,9 @@
 
       <div v-show="onPiano">
         <!--lower the octave -->
-        <button @click="octaveSwitch --" >-</button>
+        <button @click="octaveSwitch --" >Octave lower (-)</button>
         <!-- raise the octave-->
-        <button @click="octaveSwitch ++">+</button>
+        <button @click="octaveSwitch ++">octave higher (+)</button>
         <!-- dropdown list to change wave shape (sine/triangle/saw/square) -->
         <select v-model="synthShape" v-show="onPiano" name="shape" id="shapes">
           <option @click="synthShape='sine'" value="sine">sine</option>
@@ -40,7 +40,6 @@
         </select>
 
         <button @click="playSynthKeys(synthShape)">Use Keyboard</button>
-
         <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
 
           <!--  same keyboard hold note bug with @keydown and @keyup in ul tag -->
@@ -66,6 +65,25 @@
           <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key" ref="pkey">P</li>
           <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing" ref="semikey">;</li>
           <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key" ref="apokey">'</li>
+          <li @mousedown="playSynth('C4',synthShape,0)" @mouseup="playSynth('C4',synthShape,1)" class="key">A</li>
+          <li @mousedown="playSynth('C#4',synthShape,0)" @mouseup="playSynth('C#4',synthShape,1)" class="black-key">W</li>
+          <li @mousedown="playSynth('D4',synthShape,0)" @mouseup="playSynth('D4',synthShape,1)" class="key thing">S</li>
+          <li @mousedown="playSynth('D#4',synthShape,0)" @mouseup="playSynth('D#4',synthShape,1)" class="black-key">E</li>
+          <li @mousedown="playSynth('E4',synthShape,0)" @mouseup="playSynth('E4',synthShape,1)" class="key thing">D</li>
+          <li @mousedown="playSynth('F4',synthShape,0)" @mouseup="playSynth('F4',synthShape,1)" class="key ">F</li>
+          <li @mousedown="playSynth('F#4',synthShape,0)" @mouseup="playSynth('F#4',synthShape,1)" class="black-key">T</li>
+          <li @mousedown="playSynth('G4',synthShape,0)" @mouseup="playSynth('G4',synthShape,1)" class="key thing">G</li>
+          <li @mousedown="playSynth('G#4',synthShape,0)" @mouseup="playSynth('G#4',synthShape,1)" class="black-key">Y</li>
+          <li @mousedown="playSynth('A4',synthShape,0)" @mouseup="playSynth('A4',synthShape,1)" class="key thing">H</li>
+          <li @mousedown="playSynth('A#4',synthShape,0)" @mouseup="playSynth('A#4',synthShape,1)" class="black-key">U</li>
+          <li @mousedown="playSynth('B4',synthShape,0)" @mouseup="playSynth('B4',synthShape,1)" class="key thing">J</li>
+          <li @mousedown="playSynth('C5',synthShape,0)" @mouseup="playSynth('C5',synthShape,1)" class="key ">K</li>
+          <li @mousedown="playSynth('C#5',synthShape,0)" @mouseup="playSynth('C#5',synthShape,1)" class="black-key">O</li>
+          <li @mousedown="playSynth('D5',synthShape,0)" @mouseup="playSynth('D5',synthShape,1)" class="key thing">L</li>
+          <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key">P</li>
+          <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing">;</li>
+          <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key ">'</li>
+
         </ul>
       </div>
 
@@ -90,16 +108,139 @@
 
       </div>
 
-      <!-- How can we make this respond to the value on our output from the Tone.js variable "meter" ??? -->
-      <div class="levels" id="levels">
-        <div class="level" id="level1"></div>
-        <div class="level" id="level2"></div>
+
+      <button v-show="!onDrumMachine" @click="onDrumMachine=true">Drum Machine</button>
+      <button v-show="onDrumMachine" @click="onDrumMachine=false">Hide Drum Machine</button>
+
+      <div v-show="onDrumMachine">
+
+        <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
+        <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
+
+        <ul class ="drumMachine">
+
+          <li>kick:</li>
+          <li class ="drumMachineNote" v-show="!note1IsActive" @click="note1IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note1IsActive" @click="note1IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note2IsActive" @click="note2IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note2IsActive" @click="note2IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note3IsActive" @click="note3IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note3IsActive" @click="note3IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note4IsActive" @click="note4IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note4IsActive" @click="note4IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note5IsActive" @click="note5IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note5IsActive" @click="note5IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note6IsActive" @click="note6IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note6IsActive" @click="note6IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note7IsActive" @click="note7IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note7IsActive" @click="note7IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note8IsActive" @click="note8IsActive=true"><br/></li>
+          <li class ="drumMachineNote noteOn" v-show="note8IsActive" @click="note8IsActive=false"></li>
+
+          <li>hat:</li>
+          <li class ="drumMachineNote" v-show="!note1IsActiveHat" @click="note1IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note1IsActiveHat" @click="note1IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note2IsActiveHat" @click="note2IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note2IsActiveHat" @click="note2IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note3IsActiveHat" @click="note3IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note3IsActiveHat" @click="note3IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note4IsActiveHat" @click="note4IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note4IsActiveHat" @click="note4IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note5IsActiveHat" @click="note5IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note5IsActiveHat" @click="note5IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note6IsActiveHat" @click="note6IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note6IsActiveHat" @click="note6IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note7IsActiveHat" @click="note7IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note7IsActiveHat" @click="note7IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note8IsActiveHat" @click="note8IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note8IsActiveHat" @click="note8IsActiveHat=false"></li>
+
+          <li>Snare:</li>
+          <li class ="drumMachineNote" v-show="!note1IsActiveSnare" @click="note1IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note1IsActiveSnare" @click="note1IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note2IsActiveSnare" @click="note2IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note2IsActiveSnare" @click="note2IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note3IsActiveSnare" @click="note3IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note3IsActiveSnare" @click="note3IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note4IsActiveSnare" @click="note4IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note4IsActiveSnare" @click="note4IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note5IsActiveSnare" @click="note5IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note5IsActiveSnare" @click="note5IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note6IsActiveSnare" @click="note6IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note6IsActiveSnare" @click="note6IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note7IsActiveSnare" @click="note7IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note7IsActiveSnare" @click="note7IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note8IsActiveSnare" @click="note8IsActiveSnare=true"><br/></li>
+          <li class ="drumMachineNote noteOn" v-show="note8IsActiveSnare" @click="note8IsActiveSnare=false"></li>
+
+
+          <!-- Drum machine lights-->
+          <li class ="drumMachineLight " v-show="!light1On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light1On"></li>
+
+          <li class ="drumMachineLight " v-show="!light2On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light2On"></li>
+
+          <li class ="drumMachineLight " v-show="!light3On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light3On"></li>
+
+          <li class ="drumMachineLight " v-show="!light4On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light4On"></li>
+
+          <li class ="drumMachineLight " v-show="!light5On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light5On"></li>
+
+          <li class ="drumMachineLight " v-show="!light6On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light6On"></li>
+
+          <li class ="drumMachineLight " v-show="!light7On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light7On"></li>
+
+          <li class ="drumMachineLight " v-show="!light8On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light8On"></li>
+
+
+
+
+
+        </ul>
+
+
+
       </div>
+
+      <!-- How can we make this respond to the value on our output from the Tone.js variable "meter" ??? -->
+<!--      <div class="levels" id="levels">-->
+<!--        <div class="level" id="level1"></div>-->
+<!--        <div class="level" id="level2"></div>-->
+<!--      </div>-->
 
 
     </div>
   </div>
 </template>
+
 
 <script>
 
@@ -117,10 +258,53 @@ export default {
 
   data() {
     return {
+
+      counter: 0,
+
+      //socketio: this.io(),
+
       bpm: 120,
       playing: false,
       onPiano: false,
       onDrums: false,
+      onDrumMachine: false,
+
+      note1IsActive: false,
+      note2IsActive: false,
+      note3IsActive: false,
+      note4IsActive: false,
+      note5IsActive: false,
+      note6IsActive: false,
+      note7IsActive: false,
+      note8IsActive: false,
+
+      note1IsActiveHat: false,
+      note2IsActiveHat: false,
+      note3IsActiveHat: false,
+      note4IsActiveHat: false,
+      note5IsActiveHat: false,
+      note6IsActiveHat: false,
+      note7IsActiveHat: false,
+      note8IsActiveHat: false,
+
+      note1IsActiveSnare: false,
+      note2IsActiveSnare: false,
+      note3IsActiveSnare: false,
+      note4IsActiveSnare: false,
+      note5IsActiveSnare: false,
+      note6IsActiveSnare: false,
+      note7IsActiveSnare: false,
+      note8IsActiveSnare: false,
+
+      light1On: false,
+      light2On: false,
+      light3On: false,
+      light4On: false,
+      light5On: false,
+      light6On: false,
+      light7On: false,
+      light8On: false,
+
       synthShape: "sine",
       octaveSwitch: 0,
       synth: new Tone.Synth(),
@@ -139,14 +323,9 @@ export default {
               decay  : 0.1 ,
               sustain  : 0.02,
             },
-            volume: +20,
+            volume: +15,
           }
       ),
-
-
-      tick: new Tone.Player("../assets/samples/snare1").toDestination(),
-
-
 
 
       sampler: new Tone.Sampler({
@@ -170,15 +349,114 @@ export default {
         },
         "harmonicity": 3.1,
         "modulationIndex": 16,
-        "resonance": 8000,
+        // resonance is making it not sound ??
+        //"resonance": 8000,
         "octaves": 0.5
       }).toDestination()
+
+      //cymbalSynth: new Tone.MetalSynth().toDestination()
     }
   },
 
   methods: {
+<<<<<<< HEAD
     micPlayer: function(){},
     playSynthKeys: function(shape){
+=======
+
+    // socket: function() { this.socketio.on('connect', function() {
+    //   this.startRecording.disabled = false;
+    // })},
+    //
+    // //5)
+    // gRecordAudio: function (){ this.RecordRTC(this.stream, {
+    //   type: 'audio',
+    //
+    //   //6)
+    //   mimeType: 'audio/webm',
+    //   sampleRate: 44100,
+    //   // used by StereoAudioRecorder
+    //   // the range 22050 to 96000.
+    //   // let us force 16khz recording:
+    //   desiredSampRate: 16000,
+    //   // this should match with Syour server code
+    //
+    //   // MediaStreamRecorder, StereoAudioRecorder, WebAssemblyRecorder
+    //   // CanvasRecorder, GifRecorder, WhammyRecorder
+    //   recorderType: this.StereoAudioRecorder,
+    //   // Dialogflow / STT requires mono audio
+    //   numberOfAudioChannels: 1
+    // });
+    // },
+    //
+    //
+    // gMicSetup: function(){
+    //   const startRecording = document.getElementById('start-recording');
+    //
+    //
+    //   //3)
+    //   startRecording.onclick = function() {
+    //       startRecording.disabled = true;
+    //
+    //       //4)
+    //       // make use of WebRTC JavaScript method getUserMedia()
+    //       // to capture the browser microphone stream
+    //       navigator.getUserMedia({
+    //           audio: true
+    //       }, function(this.stream) {
+    //
+    //
+    //
+    //           this.gRecordAudio.startRecording();
+    //           this.stopRecording.disabled = false;
+    //       }, function(error) {
+    //           console.error(JSON.stringify(error));
+    //       });
+    //   };
+    // },
+    //
+    // gMicStopper: function(){
+    //     const stopRecording = document.getElementById('stop-recording');
+    //     stopRecording.onclick = function() {
+    //       // recording stopped
+    //       this.startRecording.disabled = false;
+    //       stopRecording.disabled = true;
+    //
+    //       // stop audio recorder
+    //       recordAudio.stopRecording(function() {
+    //           // after stopping the audio, get the audio data
+    //           recordAudio.getDataURL(function(audioDataURL) {
+    //
+    //               //8)
+    //               var files = {
+    //                   audio: {
+    //                       type: this.recordAudio.getBlob().type || 'audio/wav',
+    //                       dataURL: audioDataURL
+    //                   }
+    //               };
+    //               // submit the audio file to the server
+    //               this.socketio.emit('message', files);
+    //           });
+    //       });
+    //   };
+    //
+    //   //9)
+    //   // when the server found results send
+    //   // it back to the client
+    //   const resultpreview = document.getElementById('results');
+    //   const intentInput = document.getElementById('intent');
+    //   const textInput = document.getElementById('queryText');
+    //   this.socketio.on('results', function (data) {
+    //       console.log(data);
+    //       // show the results on the screen
+    //       if(data[0].queryResult){
+    //           resultpreview.innerHTML += "" + data[0].queryResult.fulfillmentText;
+    //           intentInput.value = data[0].queryResult.intent.displayName;
+    //           textInput.value = "" + data[0].queryResult.queryText;
+    //       }
+    //   });
+    // },
+>>>>>>> master
 
       // document.addEventListener("keydown", note=> {
       //   if(note.key>1)  {
@@ -202,9 +480,16 @@ export default {
             break;
           case "w":
             this.playSynth("C#4",shape,0)
+<<<<<<< HEAD
             console.log("W")
+=======
+            console.log("layup");
+>>>>>>> master
             break;
           case "s":
+            this.playSynth("D4",shape,0)
+            break;
+          case "e":
             this.playSynth("D#4",shape,0)
             console.log("S")
             break;
@@ -544,7 +829,7 @@ export default {
 
 
       //interval: time interval for which song is updated (4n=quarter note)
-      const loopBeat = new Tone.Loop(this.song, '4n');
+      const loopBeat = new Tone.Loop(this.song, '16n');
       //transport is in charge of meter, bpm. (Its the thing that drives loop)
 
       if (command == "start") {
@@ -559,18 +844,134 @@ export default {
 
 
       Tone.Transport.bpm.value = this.bpm;
+
       //loopBeat.start(0);
     },
 
     song: function(time) {
-      //this.bassSynth.toDestination()
-      //this.bassSynth.triggerAttackRelease('c1', '4n', time)
-      this.playKick()
-      // Tone.loaded().then(() => {
-      //   //this.tick.autostart = true,
-      //   this.tick.start();
-      // });
 
+      // light 1
+      if (this.counter%16==0){
+        this.light1On=true;
+        this.light8On=false;
+        if(this.note1IsActive){
+          this.playKick();
+        }
+        if(this.note1IsActiveHat){
+          this.playCymbalSynth("closed")
+        }
+        if(this.note1IsActiveSnare){
+          this.playSnare()
+        }
+      }
+
+      // light 2
+      if (this.counter%16==2) {
+        this.light2On = true;
+        this.light1On = false;
+        if (this.note2IsActive) {
+          this.playKick();
+        }
+        if (this.note2IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note2IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 3
+      if (this.counter%16==4){
+        this.light3On=true;
+        this.light2On=false;
+        if (this.note3IsActive) {
+          this.playKick();
+        }
+        if (this.note3IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note3IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 4
+      if (this.counter%16==6){
+        this.light4On=true;
+        this.light3On=false;
+        if (this.note4IsActive) {
+          this.playKick();
+        }
+        if (this.note4IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note4IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 5
+      if (this.counter%16==8){
+        this.light5On=true;
+        this.light4On=false;
+        if (this.note5IsActive) {
+          this.playKick();
+        }
+        if (this.note5IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note5IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 6
+      if (this.counter%16==10){
+        this.light6On=true;
+        this.light5On=false;
+        if (this.note6IsActive) {
+          this.playKick();
+        }
+        if (this.note6IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note6IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 7
+      if (this.counter%16==12){
+        this.light7On=true;
+        this.light6On=false;
+        if (this.note7IsActive) {
+          this.playKick();
+        }
+        if (this.note7IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note7IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 8
+      if (this.counter%16==14){
+        this.light8On=true;
+        this.light7On=false;
+        if (this.note8IsActive) {
+          this.playKick();
+        }
+        if (this.note8IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note8IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+
+      this.counter= (this.counter + 1) % 16
 
       console.log(time)
 
@@ -593,6 +994,53 @@ export default {
 
 
 <style scoped>
+
+.drumMachine{
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)), orangered !important;
+  width: 39em;
+}
+
+.drumMachineNote {
+  height:3em;
+  width:3em;
+  z-index:1;
+  //border: 1px solid black;
+  border-radius: 0px 0px 0px 0px !important;
+  //box-shadow:-1px 0 0 #555555 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
+  background: #333333;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.noteOn {
+  background: yellowgreen !important;
+}
+
+.drumMachineLight{
+  height:1em;
+  width:1em;
+  z-index:1;
+  border: 1px solid black;
+  border-radius: 50% 50% 50% 50% !important;
+//box-shadow:-1px 0 0 #555555 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
+  background: #777777;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.lightOn{
+  background: #00ff00 !important;
+}
 
 * {
   box-sizing:border-box
@@ -619,6 +1067,7 @@ ul {
 li {
   margin:0;
   padding:0;
+  margin-bottom: 15px;
   list-style:none;
   position:relative;
   float:left;
@@ -808,6 +1257,36 @@ ul .drumPad:active {
   background-color: transparent;
 }
 
+h5 {
+  display: inline;
+  margin-right: 100%;
+}
+
+button {
+  background-color: white;
+  border-radius: 2rem;
+  color: black;
+  display: inline-block;
+  margin-top: 2rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  //margin-bottom: 2rem;
+  padding: 0.7rem;
+  transition: all .2s ease-in-out;
+  width: 170px;
+  font-size: large;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+input{
+  width: 80px;
+  height: 40px;
+  font-size: large;
+  text-align: center;
+}
 
 
 </style>
