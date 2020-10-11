@@ -178,14 +178,31 @@
           <li class ="drumMachineNote noteOn" v-show="note8IsActiveSnare" @click="note8IsActiveSnare=false"></li>
 
 
-          <li class ="drumMachineLight"></li>
-          <li class ="drumMachineLight"></li>
-          <li class ="drumMachineLight"></li>
-          <li class ="drumMachineLight"></li>
-          <li class ="drumMachineLight"></li>
-          <li class ="drumMachineLight"></li>
-          <li class ="drumMachineLight"></li>
-          <li class ="drumMachineLight"></li>
+          <!-- Drum machine lights-->
+          <li class ="drumMachineLight " v-show="!light1On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light1On"></li>
+
+          <li class ="drumMachineLight " v-show="!light2On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light2On"></li>
+
+          <li class ="drumMachineLight " v-show="!light3On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light3On"></li>
+
+          <li class ="drumMachineLight " v-show="!light4On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light4On"></li>
+
+          <li class ="drumMachineLight " v-show="!light5On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light5On"></li>
+
+          <li class ="drumMachineLight " v-show="!light6On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light6On"></li>
+
+          <li class ="drumMachineLight " v-show="!light7On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light7On"></li>
+
+          <li class ="drumMachineLight " v-show="!light8On"></li>
+          <li class ="drumMachineLight lightOn" v-show="light8On"></li>
+
 
 
 
@@ -225,6 +242,8 @@ export default {
   data() {
     return {
 
+      counter: 0,
+
       //socketio: this.io(),
 
       bpm: 120,
@@ -260,6 +279,15 @@ export default {
       note7IsActiveSnare: false,
       note8IsActiveSnare: false,
 
+      light1On: false,
+      light2On: false,
+      light3On: false,
+      light4On: false,
+      light5On: false,
+      light6On: false,
+      light7On: false,
+      light8On: false,
+
       synthShape: "sine",
       octaveSwitch: 0,
       synth: new Tone.Synth(),
@@ -278,7 +306,7 @@ export default {
               decay  : 0.1 ,
               sustain  : 0.02,
             },
-            volume: +20,
+            volume: +15,
           }
       ),
 
@@ -618,7 +646,7 @@ export default {
 
 
       //interval: time interval for which song is updated (4n=quarter note)
-      const loopBeat = new Tone.Loop(this.song, '4n');
+      const loopBeat = new Tone.Loop(this.song, '16n');
       //transport is in charge of meter, bpm. (Its the thing that drives loop)
 
       if (command == "start") {
@@ -633,18 +661,134 @@ export default {
 
 
       Tone.Transport.bpm.value = this.bpm;
+
       //loopBeat.start(0);
     },
 
     song: function(time) {
-      //this.bassSynth.toDestination()
-      //this.bassSynth.triggerAttackRelease('c1', '4n', time)
-      this.playKick()
-      // Tone.loaded().then(() => {
-      //   //this.tick.autostart = true,
-      //   this.tick.start();
-      // });
 
+      // light 1
+      if (this.counter%16==0){
+        this.light1On=true;
+        this.light8On=false;
+        if(this.note1IsActive){
+          this.playKick();
+        }
+        if(this.note1IsActiveHat){
+          this.playCymbalSynth("closed")
+        }
+        if(this.note1IsActiveSnare){
+          this.playSnare()
+        }
+      }
+
+      // light 2
+      if (this.counter%16==2) {
+        this.light2On = true;
+        this.light1On = false;
+        if (this.note2IsActive) {
+          this.playKick();
+        }
+        if (this.note2IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note2IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 3
+      if (this.counter%16==4){
+        this.light3On=true;
+        this.light2On=false;
+        if (this.note3IsActive) {
+          this.playKick();
+        }
+        if (this.note3IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note3IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 4
+      if (this.counter%16==6){
+        this.light4On=true;
+        this.light3On=false;
+        if (this.note4IsActive) {
+          this.playKick();
+        }
+        if (this.note4IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note4IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 5
+      if (this.counter%16==8){
+        this.light5On=true;
+        this.light4On=false;
+        if (this.note5IsActive) {
+          this.playKick();
+        }
+        if (this.note5IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note5IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 6
+      if (this.counter%16==10){
+        this.light6On=true;
+        this.light5On=false;
+        if (this.note6IsActive) {
+          this.playKick();
+        }
+        if (this.note6IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note6IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 7
+      if (this.counter%16==12){
+        this.light7On=true;
+        this.light6On=false;
+        if (this.note7IsActive) {
+          this.playKick();
+        }
+        if (this.note7IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note7IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+      // light 8
+      if (this.counter%16==14){
+        this.light8On=true;
+        this.light7On=false;
+        if (this.note8IsActive) {
+          this.playKick();
+        }
+        if (this.note8IsActiveHat) {
+          this.playCymbalSynth("closed")
+        }
+        if (this.note8IsActiveSnare) {
+          this.playSnare()
+        }
+      }
+
+
+      this.counter= (this.counter + 1) % 16
 
       console.log(time)
 
