@@ -1,3 +1,4 @@
+
 <template>
   <div class="studio">
     <navbar :on_studio="true"></navbar>
@@ -29,7 +30,8 @@
         </select>
 
         <button @click="playSynthKeys(synthShape)">Use Keyboard</button>
-        <button @click="micSetup()">Record</button>
+        <button id="start-recording" onclick="micSetup()">Ask Question</button>
+        <button id="stop-recording" onclick="micStopper()">Stop</button>
         <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
 
           <!--  same keyboard hold note bug with @keydown and @keyup in ul tag -->
@@ -55,6 +57,7 @@
           <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key">P</li>
           <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing">;</li>
           <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key ">'</li>
+
         </ul>
       </div>
 
@@ -87,9 +90,24 @@
     </div>
   </div>
 </template>
-
+<script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io-stream/0.9.1/socket.io-stream.js"></script>
 <script>
-
+import VueLogger from 'vuejs-logger';
+const isProduction = process.env.NODE_ENV === 'production';
+ 
+const options = {
+    isEnabled: true,
+    logLevel : isProduction ? 'error' : 'debug',
+    stringifyArguments : false,
+    showLogLevel : true,
+    showMethodName : true,
+    separator: '|',
+    showConsoleColors: true
+};
+ 
+//Vue.use(VueLogger, options);
 import Navbar from '@/components/Navbar'
 import * as Tone from 'tone'
 
@@ -160,39 +178,94 @@ export default {
   },
 
   methods: {
-    micPlayer: function(){},
 
     micSetup: function(){
-      var getUserMedia = require('get-user-media-promise');
-      var speaker = require('audio-speaker')
-      var MicrophoneStream = require('microphone-stream');
-      
-      document.getElementById('my-start-button').onclick = function() {
-      
-        // note: for iOS Safari, the constructor must be called in response to a tap, or else the AudioContext will remain
-        // suspended and will not provide any audio data.
-        var micStream = new MicrophoneStream();
-      
-        getUserMedia({ video: false, audio: true })
-          .then(function(stream) {
-            micStream.setStream(stream);
-          }).catch(function(error) {
-            console.log(error);
+      const startRecording = document.getElementById('start-recording');
+      let recordAudio;
+      const socketio = io();
+      const socket = socketio.on('connect', function() {
+          startRecording.disabled = false;
+      });
+
+      //3)
+      startRecording.onclick = function() {
+          startRecording.disabled = true;
+
+          //4)
+          // make use of WebRTC JavaScript method getUserMedia()
+          // to capture the browser microphone stream
+          navigator.getUserMedia({
+              audio: true
+          }, function(stream) {
+
+                  //5)
+                  recordAudio = RecordRTC(stream, {
+                      type: 'audio',
+
+                  //6)
+                      mimeType: 'audio/webm',
+                      sampleRate: 44100,
+                      // used by StereoAudioRecorder
+                      // the range 22050 to 96000.
+                      // let us force 16khz recording:
+                      desiredSampRate: 16000, 
+                      // this should match with Syour server code
+
+                      // MediaStreamRecorder, StereoAudioRecorder, WebAssemblyRecorder
+                      // CanvasRecorder, GifRecorder, WhammyRecorder
+                      recorderType: StereoAudioRecorder,
+                      // Dialogflow / STT requires mono audio
+                      numberOfAudioChannels: 1
+              });
+
+              recordAudio.startRecording();
+              stopRecording.disabled = false;
+          }, function(error) {
+              console.error(JSON.stringify(error));
           });
-      
-        // or pipe it to another stream
-        micStream.pipe(speaker);
-      
-        // It also emits a format event with various details (frequency, channels, etc)
-        micStream.on('format', function(format) {
-          console.log(format);
-        });
-      
-        // Stop when ready
-        document.getElementById('my-stop-button').onclick = function() {
-          micStream.stop();
-        };
-      }
+      };
+    },
+
+    micStopper: function(){
+        const stopRecording = document.getElementById('stop-recording');
+        stopRecording.onclick = function() {
+          // recording stopped
+          startRecording.disabled = false;
+          stopRecording.disabled = true;
+
+          // stop audio recorder
+          recordAudio.stopRecording(function() {
+              // after stopping the audio, get the audio data
+              recordAudio.getDataURL(function(audioDataURL) {
+
+                  //8)
+                  var files = {
+                      audio: {
+                          type: recordAudio.getBlob().type || 'audio/wav',
+                          dataURL: audioDataURL
+                      }
+                  };
+                  // submit the audio file to the server
+                  socketio.emit('message', files);
+              });
+          });
+      };
+
+      //9)
+      // when the server found results send
+      // it back to the client
+      const resultpreview = document.getElementById('results');
+      const intentInput = document.getElementById('intent');
+      const textInput = document.getElementById('queryText');
+      socketio.on('results', function (data) {
+          console.log(data);
+          // show the results on the screen
+          if(data[0].queryResult){
+              resultpreview.innerHTML += "" + data[0].queryResult.fulfillmentText;
+              intentInput.value = data[0].queryResult.intent.displayName;
+              textInput.value = "" + data[0].queryResult.queryText;
+          }
+      });
     },
 
     playSynthKeys: function(shape){
@@ -212,6 +285,7 @@ export default {
             break;
           case "w":
             this.playSynth("C#4",shape,0)
+            console.log("layup");
             break;
           case "s":
             this.playSynth("D#4",shape,0)
