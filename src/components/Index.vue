@@ -8,10 +8,9 @@
           <!--any better name ideas?-->
           <v-row>
           <div class="lbg">
-          <img v-scrollanimation  :src="require('../assets/steviewonderGoat.jpg')" contain height="400"/><br>
-          <h2 v-scrollanimation> We dedicated this project to the great Stevie Wonder who is a 25 GRAMMYs winner and one of the most influential
-          musicians of all time, despite him being blind. There are people like Wonder who don't have the option to create 
-          music at their disposable, and this website sets out to do that. </h2>
+          <img v-scrollanimation  :src="require('../assets/steviewonderGoat.jpg')" contain height="100"/><br>
+          <h2>We dedicated this project to the great Stevie Wonder, the 25 time GRAMMY awards winner and one of the most influential
+          artists of all time, despite his disability. This website sets out to aid in creating music for people with the same disability. </h2>
           </div>
           </v-row>
 
@@ -83,7 +82,7 @@ export default {
 <style scoped>
 h2 {
   font-size: 30px;
-  color: black;
+  color: white;
 
 }
 
