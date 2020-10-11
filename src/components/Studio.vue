@@ -6,11 +6,22 @@
 
 <!--      <button @click="loopBeat">Play</button>-->
 
+
+      <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
+      <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
+      <button v-show="!playing" playing=true>Record</button>
+
+      <form>
+        <input v-model="bpm" id="bpm" type="number" value="120">
+        <!--<button type="button" @click="submitBPM()">Enter BPM</button> -->
+      </form>
+
+
+
       <!--To Do:
       fix bug on hold keyboard note
       make keys play on sliding from notes
       -->
-
       <button v-show="!onPiano" @click="onPiano=true">Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide Synth</button>
 
@@ -66,13 +77,15 @@
 
       <div v-show="onDrums">
 
-        <ul>
-          <li @click="playKick" class = drumPad >Kick</li>
-          <li @click="playSnare" class = drumPad >Snare</li>
-          <li @click="playCymbalSynth('closed')" class = drumPad >Hat</li>
-          <li @click="playCymbalSynth('open')" class = drumPad >Open Hat</li>
-          <li @click="playSample" class = drumPad >Chord 1</li>
-          <li @click="playSample2" class = drumPad >Chord 2</li>
+        <button @click="playDrumsKeys()">Use Keyboard</button>
+
+        <ul class = "drums">
+          <li @click="playKick" class = drumPad >Kick<br>1</li>
+          <li @click="playSnare" class = drumPad >Snare<br>2</li>
+          <li @click="playCymbalSynth('closed')" class = drumPad >Hat<br>3</li>
+          <li @click="playCymbalSynth('open')" class = drumPad >Open Hat<br>4</li>
+          <li @click="playSample" class = drumPad >Chord 1<br>5</li>
+          <li @click="playSample2" class = drumPad >Chord 2<br>6</li>
         </ul>
 
       </div>
@@ -104,6 +117,8 @@ export default {
 
   data() {
     return {
+      bpm: 120,
+      playing: false,
       onPiano: false,
       onDrums: false,
       synthShape: "sine",
@@ -112,7 +127,6 @@ export default {
       bassSynth: new Tone.MembraneSynth(),
 
       meter:new Tone.Meter(),
-
 
 
       snare: new Tone.NoiseSynth(
@@ -128,6 +142,9 @@ export default {
             volume: +20,
           }
       ),
+
+
+      tick: new Tone.Player("../assets/samples/snare1").toDestination(),
 
 
 
@@ -161,6 +178,7 @@ export default {
 
   methods: {
     micPlayer: function(){},
+
 
     playSynthKeys: function(shape){
 
@@ -294,10 +312,37 @@ export default {
         this.synth.triggerRelease(now)
       }
 
-      //attach a click listener to a play button
-      // document.querySelector('button')?.addEventListener('click', async () => {
-      //   await Tone.start()
-      // });
+
+    },
+
+
+    playDrumsKeys: function(){
+
+      document.addEventListener("keydown", note => {
+        // note object has the key property to tell which key was pressed
+        switch (note.key) {
+          case "1":
+            this.playKick()
+            break;
+          case "2":
+            this.playSnare()
+            break;
+          case "3":
+            this.playCymbalSynth("closed")
+            break;
+          case "4":
+            this.playCymbalSynth("open")
+            break;
+          case "5":
+            this.playSample()
+            break;
+          case "6":
+            this.playSample2()
+            break;
+          default:
+            return;
+        }
+      })
 
     },
 
@@ -331,37 +376,63 @@ export default {
 
     playSample2: function() {
       this.sampler.triggerAttackRelease(["G1", "B1", "E2", "C2"], 0.5);
+    },
+
+
+
+
+    loopBeat: function(command) {
+
+
+
+      //interval: time interval for which song is updated (4n=quarter note)
+      const loopBeat = new Tone.Loop(this.song, '4n');
+      //transport is in charge of meter, bpm. (Its the thing that drives loop)
+
+      if (command == "start") {
+        Tone.start();
+        Tone.Transport.start();
+        loopBeat.start(0);
+      }
+      if (command == "stop") {
+        Tone.Transport.stop();
+        loopBeat.stop()
+      }
+
+
+      Tone.Transport.bpm.value = this.bpm;
+      //loopBeat.start(0);
+    },
+
+    song: function(time) {
+      //this.bassSynth.toDestination()
+      //this.bassSynth.triggerAttackRelease('c1', '4n', time)
+      this.playKick()
+      // Tone.loaded().then(() => {
+      //   //this.tick.autostart = true,
+      //   this.tick.start();
+      // });
+
+
+      console.log(time)
+
     }
-
-
-
-    // loopBeat: function() {
-    //   Tone.start();
-    //
-    //   this.bassSynth.toDestination()
-    //   this.snare.toDestination()
-    //
-    //
-    //   //interval: time interval for which song is updated (4n=quarter note)
-    //   const loopBeat = new Tone.Loop(this.song, '4n');
-    //   //transport is in charge of meter, bpm. (Its the thing that drives loop)
-    //   Tone.Transport.start();
-    //   loopBeat.start(0);
-    // },
-    //
-    // song: function(time) {
-    //   this.bassSynth.triggerAttackRelease('c1', '8n', Tone.now())
-    //   console.log(time)
-    //
-    // }
 
   }
 
 }
 
 
-
 </script>
+
+
+
+
+
+
+
+
+
 
 <style scoped>
 
@@ -462,6 +533,10 @@ ul li:last-child {
   border-radius:0 5px 5px 5px
 }
 
+.drums {
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)), #7D88B5 !important;
+}
+
 ul .drumPad {
   height:6em;
   width:6em;
@@ -470,7 +545,7 @@ ul .drumPad {
   //border-left:1px solid #222222;
   //border-bottom:1px solid #222222;
   border-radius: 5px 5px 5px 5px !important;
-  box-shadow:-1px 0 0 #777777 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
+  box-shadow:-1px 0 0 #555555 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
   background:linear-gradient(to bottom,#555555 0%,#444444 100%);
   color: black;
   display: flex;
@@ -479,6 +554,11 @@ ul .drumPad {
   padding-bottom: 10px;
   font-weight: bold;
   margin-left: 15px;
+}
+
+ul .drumPad:active {
+  box-shadow:-1px 0 0 rgba(0,0,0,0.2) inset,0 0 5px #000000 inset,0 0 3px #444444;
+  background:linear-gradient(to bottom,#444444 0%,#444444 100%);
 }
 
 
