@@ -5,6 +5,7 @@ import routes from './routes'
 import VueRouter from 'vue-router'
 import vueHeadful from 'vue-headful'
 
+//var Tone = require("tone");
 
 Vue.config.productionTip = false
 
@@ -27,3 +28,8 @@ new Vue({
   router,
   render: h => h(App),
 }).$mount('#app')
+
+
+
+
+

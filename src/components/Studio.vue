@@ -6,11 +6,22 @@
 
 <!--      <button @click="loopBeat">Play</button>-->
 
+
+      <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
+      <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
+      <button v-show="!playing" playing=true>Record</button>
+
+      <form>
+        <input v-model="bpm" id="bpm" type="number" value="120">
+        <!--<button type="button" @click="submitBPM()">Enter BPM</button> -->
+      </form>
+
+
+
       <!--To Do:
       fix bug on hold keyboard note
       make keys play on sliding from notes
       -->
-
       <button v-show="!onPiano" @click="onPiano=true">Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide Synth</button>
 
@@ -106,6 +117,8 @@ export default {
 
   data() {
     return {
+      bpm: 120,
+      playing: false,
       onPiano: false,
       onDrums: false,
       synthShape: "sine",
@@ -114,7 +127,6 @@ export default {
       bassSynth: new Tone.MembraneSynth(),
 
       meter:new Tone.Meter(),
-
 
 
       snare: new Tone.NoiseSynth(
@@ -130,6 +142,9 @@ export default {
             volume: +20,
           }
       ),
+
+
+      tick: new Tone.Player("../assets/samples/snare1").toDestination(),
 
 
 
@@ -163,6 +178,7 @@ export default {
 
   methods: {
     micPlayer: function(){},
+
 
     playSynthKeys: function(shape){
 
@@ -360,37 +376,63 @@ export default {
 
     playSample2: function() {
       this.sampler.triggerAttackRelease(["G1", "B1", "E2", "C2"], 0.5);
+    },
+
+
+
+
+    loopBeat: function(command) {
+
+
+
+      //interval: time interval for which song is updated (4n=quarter note)
+      const loopBeat = new Tone.Loop(this.song, '4n');
+      //transport is in charge of meter, bpm. (Its the thing that drives loop)
+
+      if (command == "start") {
+        Tone.start();
+        Tone.Transport.start();
+        loopBeat.start(0);
+      }
+      if (command == "stop") {
+        Tone.Transport.stop();
+        loopBeat.stop()
+      }
+
+
+      Tone.Transport.bpm.value = this.bpm;
+      //loopBeat.start(0);
+    },
+
+    song: function(time) {
+      //this.bassSynth.toDestination()
+      //this.bassSynth.triggerAttackRelease('c1', '4n', time)
+      this.playKick()
+      // Tone.loaded().then(() => {
+      //   //this.tick.autostart = true,
+      //   this.tick.start();
+      // });
+
+
+      console.log(time)
+
     }
-
-
-
-    // loopBeat: function() {
-    //   Tone.start();
-    //
-    //   this.bassSynth.toDestination()
-    //   this.snare.toDestination()
-    //
-    //
-    //   //interval: time interval for which song is updated (4n=quarter note)
-    //   const loopBeat = new Tone.Loop(this.song, '4n');
-    //   //transport is in charge of meter, bpm. (Its the thing that drives loop)
-    //   Tone.Transport.start();
-    //   loopBeat.start(0);
-    // },
-    //
-    // song: function(time) {
-    //   this.bassSynth.triggerAttackRelease('c1', '8n', Tone.now())
-    //   console.log(time)
-    //
-    // }
 
   }
 
 }
 
 
-
 </script>
+
+
+
+
+
+
+
+
+
 
 <style scoped>
 
