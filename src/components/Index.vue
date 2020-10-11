@@ -8,7 +8,7 @@
           <!--any better name ideas?-->
           <v-row>
           <div class="lbg">
-          <img v-scrollanimation  :src="require('../assets/steviewonderGoat.jpg')" contain height="100"/><br>
+          <img v-scrollanimation  :src="require('../assets/steviewonderGoat.jpg')" contain height="400"/><br>
           <h2 v-scrollanimation> We dedicated this project to the great Stevie Wonder who is a 25 GRAMMYs winner and one of the most influential
           musicians of all time, despite him being blind. There are people like Wonder who don't have the option to create 
           music at their disposable, and this website sets out to do that. </h2>

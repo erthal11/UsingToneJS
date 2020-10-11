@@ -65,25 +65,7 @@
           <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key" ref="pkey">P</li>
           <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing" ref="semikey">;</li>
           <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key" ref="apokey">'</li>
-          <li @mousedown="playSynth('C4',synthShape,0)" @mouseup="playSynth('C4',synthShape,1)" class="key">A</li>
-          <li @mousedown="playSynth('C#4',synthShape,0)" @mouseup="playSynth('C#4',synthShape,1)" class="black-key">W</li>
-          <li @mousedown="playSynth('D4',synthShape,0)" @mouseup="playSynth('D4',synthShape,1)" class="key thing">S</li>
-          <li @mousedown="playSynth('D#4',synthShape,0)" @mouseup="playSynth('D#4',synthShape,1)" class="black-key">E</li>
-          <li @mousedown="playSynth('E4',synthShape,0)" @mouseup="playSynth('E4',synthShape,1)" class="key thing">D</li>
-          <li @mousedown="playSynth('F4',synthShape,0)" @mouseup="playSynth('F4',synthShape,1)" class="key ">F</li>
-          <li @mousedown="playSynth('F#4',synthShape,0)" @mouseup="playSynth('F#4',synthShape,1)" class="black-key">T</li>
-          <li @mousedown="playSynth('G4',synthShape,0)" @mouseup="playSynth('G4',synthShape,1)" class="key thing">G</li>
-          <li @mousedown="playSynth('G#4',synthShape,0)" @mouseup="playSynth('G#4',synthShape,1)" class="black-key">Y</li>
-          <li @mousedown="playSynth('A4',synthShape,0)" @mouseup="playSynth('A4',synthShape,1)" class="key thing">H</li>
-          <li @mousedown="playSynth('A#4',synthShape,0)" @mouseup="playSynth('A#4',synthShape,1)" class="black-key">U</li>
-          <li @mousedown="playSynth('B4',synthShape,0)" @mouseup="playSynth('B4',synthShape,1)" class="key thing">J</li>
-          <li @mousedown="playSynth('C5',synthShape,0)" @mouseup="playSynth('C5',synthShape,1)" class="key ">K</li>
-          <li @mousedown="playSynth('C#5',synthShape,0)" @mouseup="playSynth('C#5',synthShape,1)" class="black-key">O</li>
-          <li @mousedown="playSynth('D5',synthShape,0)" @mouseup="playSynth('D5',synthShape,1)" class="key thing">L</li>
-          <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key">P</li>
-          <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing">;</li>
-          <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key ">'</li>
-
+         
         </ul>
       </div>
 
@@ -359,14 +341,12 @@ export default {
   },
 
   methods: {
-<<<<<<< HEAD
     micPlayer: function(){},
     playSynthKeys: function(shape){
-=======
 
     // socket: function() { this.socketio.on('connect', function() {
     //   this.startRecording.disabled = false;
-    // })},
+    // })}, 
     //
     // //5)
     // gRecordAudio: function (){ this.RecordRTC(this.stream, {
@@ -456,7 +436,6 @@ export default {
     //       }
     //   });
     // },
->>>>>>> master
 
       // document.addEventListener("keydown", note=> {
       //   if(note.key>1)  {
@@ -480,11 +459,8 @@ export default {
             break;
           case "w":
             this.playSynth("C#4",shape,0)
-<<<<<<< HEAD
             console.log("W")
-=======
             console.log("layup");
->>>>>>> master
             break;
           case "s":
             this.playSynth("D4",shape,0)
@@ -549,10 +525,10 @@ export default {
             this.playSynth("F5",shape,0)
             console.log("'")
             break;
-          case "e":
-            this.playSynth("D#4",shape,0)
-            console.log("'")
-            break;
+          // case "e":
+          //   this.playSynth("D#4",shape,0)
+          //   console.log("e")
+          //   break;
           case 'z':
             this.octaveSwitch --;
             console.log("Z")
