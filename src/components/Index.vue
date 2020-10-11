@@ -1,19 +1,57 @@
 <template>
   <div id="index" class="text-center">
-      <navbar :on_index="true"></navbar>
-        <div class="container w-100 ">
-          <h1>Wonder Beats</h1>
-          <h4>Your online Studio</h4>
-          <h4>Specially crafted for the visually impaired.</h4>
-
-          <div>
-            <a></a>
-          </div>
-
-
-
-
+    <navbar :on_index="true"></navbar>
+    <div class="container w-100 , changing-color ">
+      <h1>Wonder Beats</h1>
+      <h5>Your online Studio</h5>
+      <h5 style="padding-bottom: 100px;">Specially crafted for the visually impaired!</h5>
+      <!--any better name ideas?-->
+      <v-row>
+        <div class="lbg">
+          <h2>We dedicated this project to the great Stevie Wonder, the 25 time GRAMMY awards winner and one of the most influential
+            artists of all time, despite his disability. This website sets out to aid in creating music for people with the same disability. </h2>
         </div>
+      </v-row>
+
+      <div class= "before_intro" v-container fluid>
+        <v-row>
+          <v-col class="intro">
+            <div style="padding-left: 10px!important;" class="left" >
+              <img v-scrollanimation  :src="require('../assets/drums.jpg')" contain height="100"/><br>
+              <p v-scrollanimation >You can sythesize <br> your drum instrumentals <br> by operating your keyboard. <br> Also sports a drum machine</p>
+            </div>
+          </v-col>
+          <v-col>
+            <div class="left" >
+              <img v-scrollanimation  :src="require('../assets/audioWaves.png')" contain height="100"/><br>
+              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with octave levels. <br> yayadyddydydyd</p>
+            </div>
+          </v-col>
+          <v-col>
+            <div class="left" >
+              <img v-scrollanimation  :src="require('../assets/octave.png')" contain height="100"/><br>
+              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
+            </div>
+          </v-col>
+          <v-col>
+            <div class="left" >
+              <img v-scrollanimation  :src="require('../assets/beat.png')" contain height="100"/><br>
+              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
+            </div>
+          </v-col>
+          <v-col>
+            <div class="left" >
+              <img v-scrollanimation  :src="require('../assets/blind.png')" contain height="80"/><br>
+              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
+            </div>
+          </v-col>
+        </v-row>
+      </div>
+
+
+
+
+    </div>
   </div>
 </template>
 
@@ -29,6 +67,11 @@ export default {
       {
         Navbar
       },
+  // name: "ScrollAnimation",
+  // components:
+  //   {
+  //     ScrollAnimation
+  //   }
 
 }
 
@@ -36,6 +79,14 @@ export default {
 </script>
 
 <style scoped>
+h2 {
+  font-size: 30px;
+  color: white;
 
+}
+
+h5 {
+  font-size: xx-large;
+}
 
 </style>
