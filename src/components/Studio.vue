@@ -322,20 +322,21 @@ export default {
         frequency: 14000,
       }).toDestination(),
 
-      // cymbalSynth: new Tone.MetalSynth({
-      //   "frequency": 250,
-      //   "envelope": {
-      //     "attack": 0.001,
-      //     "decay": 0.1,
-      //     "release": 0.01
-      //   },
-      //   "harmonicity": 3.1,
-      //   "modulationIndex": 16,
-      //   "resonance": 8000,
-      //   "octaves": 0.5
-      // }).toDestination()
+      cymbalSynth: new Tone.MetalSynth({
+        "frequency": 250,
+        "envelope": {
+          "attack": 0.001,
+          "decay": 0.1,
+          "release": 0.01
+        },
+        "harmonicity": 3.1,
+        "modulationIndex": 16,
+        // resonance is making it not sound ??
+        //"resonance": 8000,
+        "octaves": 0.5
+      }).toDestination()
 
-      cymbalSynth: new Tone.MetalSynth().toDestination()
+      //cymbalSynth: new Tone.MetalSynth().toDestination()
     }
   },
 
