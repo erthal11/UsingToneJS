@@ -3,9 +3,8 @@
       <navbar :on_index="true"></navbar>
         <div class="container w-100 , changing-color ">
           <h1>Wonder Beats</h1>
-          <h1>Your online Studio</h1>
-          <h1 style="padding-bottom: 150px;">Specially crafted for the visually impaired!</h1>
-          <!--any better name ideas?-->
+          <h4>Your online Studio</h4>
+          <h4>Specially crafted for the visually impaired.</h4>
 
           <div class= "before_intro" v-container fluid>
           <v-row>
