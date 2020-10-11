@@ -94,6 +94,108 @@
 
       </div>
 
+
+      <button v-show="!onDrumMachine" @click="onDrumMachine=true">Drum Machine</button>
+      <button v-show="onDrumMachine" @click="onDrumMachine=false">Hide Drum Machine</button>
+
+      <div v-show="onDrumMachine">
+
+        <ul class ="drumMachine">
+
+          <li>kick:</li>
+          <li class ="drumMachineNote" v-show="!note1IsActive" @click="note1IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note1IsActive" @click="note1IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note2IsActive" @click="note2IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note2IsActive" @click="note2IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note3IsActive" @click="note3IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note3IsActive" @click="note3IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note4IsActive" @click="note4IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note4IsActive" @click="note4IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note5IsActive" @click="note5IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note5IsActive" @click="note5IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note6IsActive" @click="note6IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note6IsActive" @click="note6IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note7IsActive" @click="note7IsActive=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note7IsActive" @click="note7IsActive=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note8IsActive" @click="note8IsActive=true"><br/></li>
+          <li class ="drumMachineNote noteOn" v-show="note8IsActive" @click="note8IsActive=false"></li>
+
+          <li>hat:</li>
+          <li class ="drumMachineNote" v-show="!note1IsActiveHat" @click="note1IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note1IsActiveHat" @click="note1IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note2IsActiveHat" @click="note2IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note2IsActiveHat" @click="note2IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note3IsActiveHat" @click="note3IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note3IsActiveHat" @click="note3IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note4IsActiveHat" @click="note4IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note4IsActiveHat" @click="note4IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note5IsActiveHat" @click="note5IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note5IsActiveHat" @click="note5IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note6IsActiveHat" @click="note6IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note6IsActiveHat" @click="note6IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note7IsActiveHat" @click="note7IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note7IsActiveHat" @click="note7IsActiveHat=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note8IsActiveHat" @click="note8IsActiveHat=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note8IsActiveHat" @click="note8IsActiveHat=false"></li>
+
+          <li>Snare:</li>
+          <li class ="drumMachineNote" v-show="!note1IsActiveSnare" @click="note1IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note1IsActiveSnare" @click="note1IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note2IsActiveSnare" @click="note2IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note2IsActiveSnare" @click="note2IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note3IsActiveSnare" @click="note3IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note3IsActiveSnare" @click="note3IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note4IsActiveSnare" @click="note4IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note4IsActiveSnare" @click="note4IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note5IsActiveSnare" @click="note5IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note5IsActiveSnare" @click="note5IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note6IsActiveSnare" @click="note6IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note6IsActiveSnare" @click="note6IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note7IsActiveSnare" @click="note7IsActiveSnare=true"></li>
+          <li class ="drumMachineNote noteOn" v-show="note7IsActiveSnare" @click="note7IsActiveSnare=false"></li>
+
+          <li class ="drumMachineNote" v-show="!note8IsActiveSnare" @click="note8IsActiveSnare=true"><br/></li>
+          <li class ="drumMachineNote noteOn" v-show="note8IsActiveSnare" @click="note8IsActiveSnare=false"></li>
+
+
+          <li class ="drumMachineLight"></li>
+          <li class ="drumMachineLight"></li>
+          <li class ="drumMachineLight"></li>
+          <li class ="drumMachineLight"></li>
+          <li class ="drumMachineLight"></li>
+          <li class ="drumMachineLight"></li>
+          <li class ="drumMachineLight"></li>
+          <li class ="drumMachineLight"></li>
+
+
+
+
+        </ul>
+
+
+
+      </div>
+
       <!-- How can we make this respond to the value on our output from the Tone.js variable "meter" ??? -->
       <div class="levels" id="levels">
         <div class="level" id="level1"></div>
@@ -129,6 +231,35 @@ export default {
       playing: false,
       onPiano: false,
       onDrums: false,
+      onDrumMachine: false,
+
+      note1IsActive: false,
+      note2IsActive: false,
+      note3IsActive: false,
+      note4IsActive: false,
+      note5IsActive: false,
+      note6IsActive: false,
+      note7IsActive: false,
+      note8IsActive: false,
+
+      note1IsActiveHat: false,
+      note2IsActiveHat: false,
+      note3IsActiveHat: false,
+      note4IsActiveHat: false,
+      note5IsActiveHat: false,
+      note6IsActiveHat: false,
+      note7IsActiveHat: false,
+      note8IsActiveHat: false,
+
+      note1IsActiveSnare: false,
+      note2IsActiveSnare: false,
+      note3IsActiveSnare: false,
+      note4IsActiveSnare: false,
+      note5IsActiveSnare: false,
+      note6IsActiveSnare: false,
+      note7IsActiveSnare: false,
+      note8IsActiveSnare: false,
+
       synthShape: "sine",
       octaveSwitch: 0,
       synth: new Tone.Synth(),
@@ -537,6 +668,53 @@ export default {
 
 <style scoped>
 
+.drumMachine{
+  background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)), darkred !important;
+  width: 39em;
+}
+
+.drumMachineNote {
+  height:3em;
+  width:3em;
+  z-index:1;
+  //border: 1px solid black;
+  border-radius: 0px 0px 0px 0px !important;
+  //box-shadow:-1px 0 0 #555555 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
+  background: #333333;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+.noteOn {
+  background: yellowgreen !important;
+}
+
+.drumMachineLight{
+  height:1em;
+  width:1em;
+  z-index:1;
+  border: 1px solid black;
+  border-radius: 50% 50% 50% 50% !important;
+//box-shadow:-1px 0 0 #555555 inset,0 0 5px #000000 inset,0 0 3px rgba(0,0,0,0.2);
+  background: #777777;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.lightOn{
+  background: #00ff00 !important;
+}
+
 * {
   box-sizing:border-box
 }
@@ -562,6 +740,7 @@ ul {
 li {
   margin:0;
   padding:0;
+  margin-bottom: 15px;
   list-style:none;
   position:relative;
   float:left;
@@ -735,6 +914,11 @@ ul .drumPad:active {
   background-repeat: repeat-y;
   background-size: 100% 4px; /* 4px LED height */
   background-color: transparent;
+}
+
+h5 {
+  display: inline;
+  margin-right: 100%;
 }
 
 
