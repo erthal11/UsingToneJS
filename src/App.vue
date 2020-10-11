@@ -1,6 +1,14 @@
 <template>
   <div id="app" class="center fixed">
     <router-view></router-view>
+
+    <df-messenger
+        intent="WELCOME"
+        chat-title="NewAgent"
+        agent-id="db0f23d5-c462-4f1d-adcd-402f2738ac57"
+        language-code="en"
+    ></df-messenger>
+
   </div>
 </template>
 
