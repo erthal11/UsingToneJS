@@ -8,8 +8,8 @@
           <!--any better name ideas?-->
           <v-row>
           <div class="lbg">
-          <img v-scrollanimation  :src="require('../assets/steviewonderGoat.jpg')" contain height="100"/><br>
-          <h2>We dedicated this project to the great Stevie Wonder, the 25 time GRAMMY awards winner and one of the most influential
+          <img v-scrollanimation  :src="require('../assets/steviewonderGoat.jpg')" contain height="400"/><br>
+          <h2 img v-scrollanimation>We dedicated this project to the great Stevie Wonder, the 25 time GRAMMY awards winner and one of the most influential
           artists of all time, despite his disability. This website sets out to aid in creating music for people with the same disability. </h2>
           </div>
           </v-row>
@@ -19,31 +19,25 @@
             <v-col class="intro"> 
             <div style="padding-left: 10px!important;" class="left" >
               <img v-scrollanimation  :src="require('../assets/drums.jpg')" contain height="100"/><br>
-              <p v-scrollanimation >You can sythesize <br> your drum instrumentals <br> by operating your keyboard. <br> Also sports a drum machine</p>
+              <p v-scrollanimation >Create beats with <br> drum instrumentals <br> by operating your keyboard. <br> Also sports a drum machine</p>
             </div>
             </v-col>
             <v-col>
                <div class="left" >
               <img v-scrollanimation  :src="require('../assets/audioWaves.png')" contain height="100"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with octave levels. <br> yayadyddydydyd</p>
+              <p style="font-color:black;" v-scrollanimation >Synthesize <br> with octave levels <br> sin, sin2, traingle, etc.</p>
             </div>
             </v-col>
             <v-col>
                <div class="left" >
               <img v-scrollanimation  :src="require('../assets/octave.png')" contain height="100"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
+              <p style="font-color:black;" v-scrollanimation >Play with the <br>  musical intrument  keyboard <br> by operating only <br> with the first and <br> second row of your keyboard! </p>
             </div>
             </v-col>
              <v-col>
                <div class="left" >
-              <img v-scrollanimation  :src="require('../assets/beat.png')" contain height="100"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
-            </div>
-            </v-col>
-             <v-col>
-               <div class="left" >
-              <img v-scrollanimation  :src="require('../assets/blind.png')" contain height="80"/><br>
-              <p style="font-color:black;" v-scrollanimation >You can sythesize <br> with the Piano <br> by operating only <br> with your keyboard</p>
+              <img v-scrollanimation  :src="require('../assets/blind.png')" contain height="100"/><br>
+              <p style="font-color:black;" v-scrollanimation > Easy for visual impaired <br> individuals that <br> are passionate about music </p>
             </div>
             </v-col>
            </v-row>

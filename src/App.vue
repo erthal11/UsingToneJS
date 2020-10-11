@@ -33,7 +33,7 @@ export default {
 
 <style>
 .left {
-  padding:57px;
+  padding:75px;
   padding-top: 0px!important;
   float: left;
   /* text-align: center;
@@ -80,16 +80,17 @@ export default {
 
 
 .before_intro {
-  padding-top: 0px;
+  padding-top: 50px;
   width: 100vw;
   height: 60vh;
+  /* padding-right: 5px; */
   background-color: white;  
   padding-bottom: 0px;
 }
 
 #app {
   //font-family: -apple-system, BlinkMacSystemFont,
-  //“Segoe UI”, “Roboto”, “Oxygen”,
+  //“Segoe UI”, “Roboto”, “Oxygen” ,
   //“Ubuntu”, “Cantarell”, “Fira Sans”,
   //“Droid Sans”, “Helvetica Neue”, sans-serif;
   //font-family: "Big Caslon";
