@@ -27,8 +27,8 @@ export default {
 .left {
   padding-left: 100px;
   float: left;
-  text-align: center;
-  margin: 0 auto;
+  /* text-align: center;
+  margin: 0 auto; */
 }
 .fade-inT {
 	opacity: 1;
@@ -75,6 +75,7 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: white;  
+  padding-bottom: 0px;
 }
 
 #app {
@@ -127,14 +128,14 @@ body {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-color: blue;
-  animation: animatebk 10s ease-out infinite;
+  background-color: #63A4FF;
+  /* animation: animatebk 10s ease-out infinite; */
   animation-delay: 5s;
   margin-bottom: 70px;
 }
 
 .intro {
-  color: red;
+  color: black;
   padding: 150px;
   width: 100vw;  
 }
@@ -200,13 +201,27 @@ h3 {
 h5 {
   letter-spacing: .004em;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 15px;
   padding-top: 13px;
+  animation: fadeInOpacity 4s ease-in;
+  animation-delay: .5s;
+  animation-fill-mode: both;
+}
+h6 {
+  letter-spacing: .004em;
+  font-weight: 400;
+  font-size: 15px;
+  padding-top: 13px;
+  animation: fadeInOpacity 4s ease-in;
+  animation-delay: 1.5s;
+   animation-fill-mode: both;
 }
 
 p {
-  font-size: 1.6rem;
+  transition-delay: 2s;
+  font-size: 1.3rem;
   font-weight: 300;
+  color: black;
 }
 
 ::selection {
@@ -245,8 +260,8 @@ ul {
 .container{
   width: 100%;
   max-width: 98rem;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  /* margin: 0 auto;
+  padding: 0 1.5rem; */
 }
 
 .btn {
