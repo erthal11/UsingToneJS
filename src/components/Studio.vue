@@ -82,9 +82,12 @@
 
       <div v-show="onDrumMachine">
 
+        <form>BPM:
+          <input v-model="bpm" id="bpm" type="number" value="120">
+        </form>
+
         <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
         <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
-
 
 
         <ul class ="drumMachine">
