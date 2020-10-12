@@ -5,18 +5,6 @@
     <div class="container w-100">
 
 
-<!--      <button @click="loopBeat">Play</button>-->
-
-
-<!--      <button id="start-recording" onclick="gMicSetup()">Ask Question</button>-->
-<!--      <button id="stop-recording" onclick="gMicStopper()">Stop</button>-->
-
-      <form>BPM:
-        <input v-model="bpm" id="bpm" type="number" value="120">
-        <!--<button type="button" @click="submitBPM()">Enter BPM</button> -->
-      </form>
-
-
 
       <!--To Do:
       fix bug on hold keyboard note
@@ -95,6 +83,8 @@
       <button v-show="onDrumMachine" @click="onDrumMachine=false">Hide Drum Machine</button>
 
       <div v-show="onDrumMachine">
+
+
 
         <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
         <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
@@ -1089,6 +1079,10 @@ input{
   height: 40px;
   font-size: large;
   text-align: center;
+}
+
+.studio{
+  font-family: AudioFont;
 }
 
 

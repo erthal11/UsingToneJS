@@ -39,7 +39,7 @@ export default {
   //“Ubuntu”, “Cantarell”, “Fira Sans”,
   //“Droid Sans”, “Helvetica Neue”, sans-serif;
   //font-family: "Big Caslon";
-  font-family: "AudioFont";
+  font-family: "Kanit-ExtraLight";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;
@@ -226,6 +226,9 @@ div {
   }
 }
 
+h1 {
+  font-family: AudioFont;
+}
 
 
 </style>
