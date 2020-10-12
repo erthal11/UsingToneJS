@@ -10,7 +10,7 @@
       fix bug on hold keyboard note
       make keys play on sliding from notes
       -->
-      <button v-show="!onPiano" @click="onPiano=true">Synth</button>
+      <button v-show="!onPiano" @click="onPiano=true,playSynthKeys(synthShape)">Open Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide Synth</button>
 
       <div v-show="onPiano">
@@ -27,7 +27,7 @@
           <option @click="synthShape='square'" value="square">square</option>
         </select>
 
-        <button @click="playSynthKeys(synthShape)">Use Keyboard</button>
+
         <ul id="piano" v-show="onPiano" @mousedown="clickDown=true" @mouseup="clickDown=false">
 
           <!--  same keyboard hold note bug with @keydown and @keyup in ul tag -->
@@ -60,12 +60,10 @@
 
       <!-- Drum Machine -->
 
-      <button v-show="!onDrums" @click="onDrums=true">Drums</button>
+      <button v-show="!onDrums" @click="onDrums=true, playDrumsKeys()">Drums</button>
       <button v-show="onDrums" @click="onDrums=false">Hide Drums</button>
 
       <div v-show="onDrums">
-
-        <button @click="playDrumsKeys()">Use Keyboard</button>
 
         <ul class = "drums">
           <li @click="playKick" class = drumPad >Kick<br>1</li>
@@ -86,6 +84,8 @@
 
         <button v-show="!playing" @click="loopBeat('start'), playing=true">Play</button>
         <button v-show="playing" @click="loopBeat('stop'), playing=false">Pause</button>
+
+
 
         <ul class ="drumMachine">
 
@@ -433,81 +433,81 @@ export default {
 
     playSynthKeys: function(shape){
 
-      //for keyboard inputs
-      document.addEventListener("keydown", note => {
-        // note object has the key property to tell which key was pressed
-        switch (note.key) {
-          case "a":
-            this.playSynth("C4",shape,0)
-            // return new Promise((resolve) => {
-            //   document.addEventListener('keyup', onKeyHandler);
-            //   while (key) {
-            //     resolve();
-            //   }
-            // })
-            break;
-          case "w":
-            this.playSynth("C#4",shape,0)
-            console.log("layup");
-            break;
-          case "s":
-            this.playSynth("D4",shape,0)
-            break;
-          case "e":
-            this.playSynth("D#4",shape,0)
-            break;
-          case "d":
-            this.playSynth("E4",shape,0)
-            break;
-          case "f":
-            this.playSynth("F4",shape,0)
-            break;
-          case "t":
-            this.playSynth("F#4",shape,0)
-            break;
-          case "g":
-            this.playSynth("G4",shape,0)
-            break;
-          case "y":
-            this.playSynth("G#4",shape,0)
-            break;
-          case "h":
-            this.playSynth("A4",shape,0)
-            break;
-          case "u":
-            this.playSynth("A#4",shape,0)
-            break;
-          case "j":
-            this.playSynth("B4",shape,0)
-            break;
-          case "k":
-            this.playSynth("C5",shape,0)
-            break;
-          case "o":
-            this.playSynth("C#5",shape,0)
-            break;
-          case "l":
-            this.playSynth("D5",shape,0)
-            break;
-          case "p":
-            this.playSynth("D#5",shape,0)
-            break;
-          case ";":
-            this.playSynth("E5",shape,0)
-            break;
-          case "'":
-            this.playSynth("F5",shape,0)
-            break;
-          case 'z':
-            this.octaveSwitch --;
-            break;
-            case 'x':
-              this.octaveSwitch ++;
+        //for keyboard inputs
+        document.addEventListener("keydown", note => {
+          // note object has the key property to tell which key was pressed
+          switch (note.key) {
+            case "a":
+              this.playSynth("C4", shape, 0)
+              // return new Promise((resolve) => {
+              //   document.addEventListener('keyup', onKeyHandler);
+              //   while (key) {
+              //     resolve();
+              //   }
+              // })
               break;
-          default:
-            return;
-        }
-      })
+            case "w":
+              this.playSynth("C#4", shape, 0)
+              console.log("layup");
+              break;
+            case "s":
+              this.playSynth("D4", shape, 0)
+              break;
+            case "e":
+              this.playSynth("D#4", shape, 0)
+              break;
+            case "d":
+              this.playSynth("E4", shape, 0)
+              break;
+            case "f":
+              this.playSynth("F4", shape, 0)
+              break;
+            case "t":
+              this.playSynth("F#4", shape, 0)
+              break;
+            case "g":
+              this.playSynth("G4", shape, 0)
+              break;
+            case "y":
+              this.playSynth("G#4", shape, 0)
+              break;
+            case "h":
+              this.playSynth("A4", shape, 0)
+              break;
+            case "u":
+              this.playSynth("A#4", shape, 0)
+              break;
+            case "j":
+              this.playSynth("B4", shape, 0)
+              break;
+            case "k":
+              this.playSynth("C5", shape, 0)
+              break;
+            case "o":
+              this.playSynth("C#5", shape, 0)
+              break;
+            case "l":
+              this.playSynth("D5", shape, 0)
+              break;
+            case "p":
+              this.playSynth("D#5", shape, 0)
+              break;
+            case ";":
+              this.playSynth("E5", shape, 0)
+              break;
+            case "'":
+              this.playSynth("F5", shape, 0)
+              break;
+            case 'z':
+              this.octaveSwitch--;
+              break;
+            case 'x':
+              this.octaveSwitch++;
+              break;
+            default:
+              return;
+          }
+        })
 
       //when the key is released, audio is released as well
       document.addEventListener("keyup", e => {
