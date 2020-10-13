@@ -640,26 +640,25 @@ export default {
 
     loopBeat: function(command) {
 
+      Tone.start();
 
+
+      Tone.Transport.bpm.value = this.bpm;
 
       //interval: time interval for which song is updated (4n=quarter note)
       const loopBeat = new Tone.Loop(this.song, '16n');
       //transport is in charge of meter, bpm. (Its the thing that drives loop)
 
       if (command == "start") {
-        Tone.start();
+        loopBeat.start();
         Tone.Transport.start();
-        loopBeat.start(0);
       }
       if (command == "stop") {
+        loopBeat.cancel()
         Tone.Transport.stop();
-        loopBeat.stop()
+        window.location.reload()
       }
 
-
-      Tone.Transport.bpm.value = this.bpm;
-
-      //loopBeat.start(0);
     },
 
     song: function(time) {

@@ -4,6 +4,7 @@ import routes from './routes'
 
 import VueRouter from 'vue-router'
 import vueHeadful from 'vue-headful'
+//import * as Tone from "tone";
 
 //var Tone = require("tone");
 
