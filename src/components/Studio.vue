@@ -551,7 +551,6 @@ export default {
 
       }
 
-      const now = Tone.now();
       // Tone.Synth is a basic synthesizer with a single oscillator
       // Set the tone to sine
       this.synth.oscillator.type = shape;
@@ -561,13 +560,13 @@ export default {
 
       // time 0 will trigger the note
       if (time===0) {
-        this.synth.triggerAttack(note, now)
+        this.synth.triggerAttack(note, Tone.context.currentTime)
         console.log(note)
       }
 
       // time 1 will release the note
       if (time===1) {
-        this.synth.triggerRelease(now)
+        this.synth.triggerRelease(Tone.context.currentTime)
       }
 
 
@@ -606,13 +605,13 @@ export default {
 
     playKick: function(){
       this.bassSynth.toDestination()
-      this.bassSynth.triggerAttackRelease('c1', '4n', Tone.now())
+      this.bassSynth.triggerAttackRelease('c1', '4n', Tone.context.currentTime)
 
     },
 
     playSnare: function(){
       this.snare.toDestination()
-      this.snare.triggerAttackRelease("8n");
+      this.snare.triggerAttackRelease('4n',Tone.context.currentTime);
     },
 
 
@@ -624,16 +623,16 @@ export default {
         this.cymbalSynth.envelope.decay = 0.5
       }
       this.cymbalSynth.toDestination()
-      this.cymbalSynth.triggerAttackRelease('32n', 0.3);
+      this.cymbalSynth.triggerAttackRelease('32n', 0.3,Tone.context.currentTime);
     },
 
 
     playSample: function() {
-      this.sampler.triggerAttackRelease(["C1", "E1", "G1", "B1"], 0.5);
+      this.sampler.triggerAttackRelease(["C1", "E1", "G1", "B1"], 0.5,Tone.context.currentTime);
     },
 
     playSample2: function() {
-      this.sampler.triggerAttackRelease(["G1", "B1", "E2", "C2"], 0.5);
+      this.sampler.triggerAttackRelease(["G1", "B1", "E2", "C2"], 0.5,Tone.context.currentTime);
     },
 
 
