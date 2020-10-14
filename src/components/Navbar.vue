@@ -15,11 +15,19 @@
     <div class="collapse navbar-collapse w-100 dual-collapse2 my-3 text-black">
       <ul class="navbar-nav ml-auto">
 
+
+        <li class="nav-item active text-center" v-show="on_studio">
+          <router-link class="nav-link onpage" to="/">Studio</router-link>
+        </li>
+        <li class="nav-item text-center" v-show="!on_studio">
+          <router-link class="nav-link" to="/">Studio</router-link>
+        </li>
+
         <li class="nav-item active text-center" v-show="on_index">
-          <router-link class="nav-link onpage" to="/">Home</router-link>
+          <router-link class="nav-link onpage" to="/about">About</router-link>
         </li>
         <li class="nav-item text-center" v-show="!on_index">
-          <router-link class="nav-link" to="/">Home</router-link>
+          <router-link class="nav-link" to="/about">About</router-link>
         </li>
 
         <!--
@@ -30,15 +38,6 @@
           <router-link class="nav-link" to="/projects">Projects</router-link>
         </li>
         -->
-
-        <li class="nav-item active text-center" v-show="on_studio">
-          <router-link class="nav-link onpage" to="/studio">Studio</router-link>
-        </li>
-        <li class="nav-item text-center" v-show="!on_studio">
-          <router-link class="nav-link" to="/studio">Studio</router-link>
-        </li>
-
-
 
       </ul>
     </div>
@@ -100,7 +99,7 @@ export default {
 }
 
 .onpage{
-  //color: #444444;
+  color: #444444;
 }
 
 a{

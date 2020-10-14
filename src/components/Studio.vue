@@ -1,16 +1,20 @@
 
 <template>
   <div class="studio">
-    <navbar :on_studio="true"></navbar>
-    <div class="container w-100">
+<!--    <navbar :on_studio="true"></navbar>-->
+    <div class="container w-100 align">
 
-
+      <div>
+        <h1>Wonder Beats</h1>
+        <h4>Your online Studio</h4>
+        <h5> For the best audio experience, please your your computer browser.</h5>
+      </div>
 
       <!--To Do:
       fix bug on hold keyboard note
       make keys play on sliding from notes
       -->
-      <button v-show="!onPiano" @click="onPiano=true,playSynthKeys(synthShape)">Open Synth</button>
+      <button v-show="!onPiano" @click="onPiano=true,playSynthKeys()">Open Synth</button>
       <button v-show="onPiano" @click="onPiano=false">Hide Synth</button>
 
       <div v-show="onPiano">
@@ -35,24 +39,24 @@
           <!--  @keydown="playSynth('C4',synthShape,0)" @keyup="playSynth('C4',synthShape,1)"-->
           <!--  abindex="1">-->
 
-          <li @mousedown="playSynth('C4',synthShape,0)" @mouseup="playSynth('C4',synthShape,1)" class="key">A</li>
-          <li @mousedown="playSynth('C#4',synthShape,0)" @mouseup="playSynth('C#4',synthShape,1)" class="black-key">W</li>
-          <li @mousedown="playSynth('D4',synthShape,0)" @mouseup="playSynth('D4',synthShape,1)" class="key thing">S</li>
-          <li @mousedown="playSynth('D#4',synthShape,0)" @mouseup="playSynth('D#4',synthShape,1)" class="black-key">E</li>
-          <li @mousedown="playSynth('E4',synthShape,0)" @mouseup="playSynth('E4',synthShape,1)" class="key thing">D</li>
-          <li @mousedown="playSynth('F4',synthShape,0)" @mouseup="playSynth('F4',synthShape,1)" class="key ">F</li>
-          <li @mousedown="playSynth('F#4',synthShape,0)" @mouseup="playSynth('F#4',synthShape,1)" class="black-key">T</li>
-          <li @mousedown="playSynth('G4',synthShape,0)" @mouseup="playSynth('G4',synthShape,1)" class="key thing">G</li>
-          <li @mousedown="playSynth('G#4',synthShape,0)" @mouseup="playSynth('G#4',synthShape,1)" class="black-key">Y</li>
-          <li @mousedown="playSynth('A4',synthShape,0)" @mouseup="playSynth('A4',synthShape,1)" class="key thing">H</li>
-          <li @mousedown="playSynth('A#4',synthShape,0)" @mouseup="playSynth('A#4',synthShape,1)" class="black-key">U</li>
-          <li @mousedown="playSynth('B4',synthShape,0)" @mouseup="playSynth('B4',synthShape,1)" class="key thing">J</li>
-          <li @mousedown="playSynth('C5',synthShape,0)" @mouseup="playSynth('C5',synthShape,1)" class="key ">K</li>
-          <li @mousedown="playSynth('C#5',synthShape,0)" @mouseup="playSynth('C#5',synthShape,1)" class="black-key">O</li>
-          <li @mousedown="playSynth('D5',synthShape,0)" @mouseup="playSynth('D5',synthShape,1)" class="key thing">L</li>
-          <li @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key">P</li>
-          <li @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing">;</li>
-          <li @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key ">'</li>
+          <li id="c4" @mousedown="playSynth('C4',synthShape,0)" @mouseup="playSynth('C4',synthShape,1)" class="key">A</li>
+          <li id="c#4" @mousedown="playSynth('C#4',synthShape,0)" @mouseup="playSynth('C#4',synthShape,1)" class="black-key">W</li>
+          <li id="d4" @mousedown="playSynth('D4',synthShape,0)" @mouseup="playSynth('D4',synthShape,1)" class="key thing">S</li>
+          <li id="d#4" @mousedown="playSynth('D#4',synthShape,0)" @mouseup="playSynth('D#4',synthShape,1)" class="black-key">E</li>
+          <li id="e4" @mousedown="playSynth('E4',synthShape,0)" @mouseup="playSynth('E4',synthShape,1)" class="key thing">D</li>
+          <li id="f4" @mousedown="playSynth('F4',synthShape,0)" @mouseup="playSynth('F4',synthShape,1)" class="key ">F</li>
+          <li id="f#4" @mousedown="playSynth('F#4',synthShape,0)" @mouseup="playSynth('F#4',synthShape,1)" class="black-key">T</li>
+          <li id="g4" @mousedown="playSynth('G4',synthShape,0)" @mouseup="playSynth('G4',synthShape,1)" class="key thing">G</li>
+          <li id="g#4" @mousedown="playSynth('G#4',synthShape,0)" @mouseup="playSynth('G#4',synthShape,1)" class="black-key">Y</li>
+          <li id="a4" @mousedown="playSynth('A4',synthShape,0)" @mouseup="playSynth('A4',synthShape,1)" class="key thing">H</li>
+          <li id="a#4" @mousedown="playSynth('A#4',synthShape,0)" @mouseup="playSynth('A#4',synthShape,1)" class="black-key">U</li>
+          <li id="b4" @mousedown="playSynth('B4',synthShape,0)" @mouseup="playSynth('B4',synthShape,1)" class="key thing">J</li>
+          <li id="c5" @mousedown="playSynth('C5',synthShape,0)" @mouseup="playSynth('C5',synthShape,1)" class="key ">K</li>
+          <li id="c#5" @mousedown="playSynth('C#5',synthShape,0)" @mouseup="playSynth('C#5',synthShape,1)" class="black-key">O</li>
+          <li id="d5" @mousedown="playSynth('D5',synthShape,0)" @mouseup="playSynth('D5',synthShape,1)" class="key thing">L</li>
+          <li id="d#5" @mousedown="playSynth('D#5',synthShape,0)" @mouseup="playSynth('D#5',synthShape,1)" class="black-key">P</li>
+          <li id="e5" @mousedown="playSynth('E5',synthShape,0)" @mouseup="playSynth('E5',synthShape,1)" class="key thing">;</li>
+          <li id="f5" @mousedown="playSynth('F5',synthShape,0)" @mouseup="playSynth('F5',synthShape,1)" class="key ">'</li>
 
         </ul>
       </div>
@@ -224,7 +228,7 @@
 
 <script>
 
-import Navbar from '@/components/Navbar'
+//import Navbar from '@/components/Navbar'
 import * as Tone from 'tone'
 
 
@@ -233,7 +237,7 @@ export default {
   name: "Studio",
 
   components: {
-    Navbar
+    //Navbar
   },
 
   data() {
@@ -434,14 +438,17 @@ export default {
     // },
 
 
-    playSynthKeys: function(shape){
+    playSynthKeys: function(){
+
+
 
         //for keyboard inputs
         document.addEventListener("keydown", note => {
           // note object has the key property to tell which key was pressed
           switch (note.key) {
             case "a":
-              this.playSynth("C4", shape, 0)
+              this.playSynth("C4", this.synthShape, 0)
+              document.getElementById("c4").classList.add("whiteKeyActive");
               // return new Promise((resolve) => {
               //   document.addEventListener('keyup', onKeyHandler);
               //   while (key) {
@@ -450,56 +457,72 @@ export default {
               // })
               break;
             case "w":
-              this.playSynth("C#4", shape, 0)
-              console.log("layup");
+              this.playSynth("C#4", this.synthShape, 0)
+              document.getElementById("c#4").classList.add("blackKeyActive");
               break;
             case "s":
-              this.playSynth("D4", shape, 0)
+              this.playSynth("D4", this.synthShape, 0)
+              document.getElementById("d4").classList.add("whiteKeyActive");
               break;
             case "e":
-              this.playSynth("D#4", shape, 0)
+              this.playSynth("D#4", this.synthShape, 0)
+              document.getElementById("d#4").classList.add("blackKeyActive");
               break;
             case "d":
-              this.playSynth("E4", shape, 0)
+              this.playSynth("E4", this.synthShape, 0)
+              document.getElementById("e4").classList.add("whiteKeyActive");
               break;
             case "f":
-              this.playSynth("F4", shape, 0)
+              this.playSynth("F4", this.synthShape, 0)
+              document.getElementById("f4").classList.add("whiteKeyActive");
               break;
             case "t":
-              this.playSynth("F#4", shape, 0)
+              this.playSynth("F#4", this.synthShape, 0)
+              document.getElementById("f#4").classList.add("blackKeyActive");
               break;
             case "g":
-              this.playSynth("G4", shape, 0)
+              this.playSynth("G4", this.synthShape, 0)
+              document.getElementById("g4").classList.add("whiteKeyActive");
               break;
             case "y":
-              this.playSynth("G#4", shape, 0)
+              this.playSynth("G#4", this.synthShape, 0)
+              document.getElementById("g#4").classList.add("blackKeyActive");
               break;
             case "h":
-              this.playSynth("A4", shape, 0)
+              this.playSynth("A4", this.synthShape, 0)
+              document.getElementById("a4").classList.add("whiteKeyActive");
               break;
             case "u":
-              this.playSynth("A#4", shape, 0)
+              this.playSynth("A#4", this.synthShape, 0)
+              document.getElementById("a#4").classList.add("blackKeyActive");
               break;
             case "j":
-              this.playSynth("B4", shape, 0)
+              this.playSynth("B4", this.synthShape, 0)
+              document.getElementById("b4").classList.add("whiteKeyActive");
               break;
             case "k":
-              this.playSynth("C5", shape, 0)
+              this.playSynth("C5", this.synthShape, 0)
+              document.getElementById("c5").classList.add("whiteKeyActive");
               break;
             case "o":
-              this.playSynth("C#5", shape, 0)
+              this.playSynth("C#5", this.synthShape, 0)
+              document.getElementById("c#5").classList.add("blackKeyActive");
               break;
             case "l":
-              this.playSynth("D5", shape, 0)
+              this.playSynth("D5", this.synthShape, 0)
+              document.getElementById("d5").classList.add("whiteKeyActive");
               break;
             case "p":
-              this.playSynth("D#5", shape, 0)
+              this.playSynth("D#5", this.synthShape, 0)
+              document.getElementById("d#5").classList.add("blackKeyActive");
               break;
             case ";":
-              this.playSynth("E5", shape, 0)
+              this.playSynth("E5", this.synthShape, 0)
+              document.getElementById("e5").classList.add("whiteKeyActive");
               break;
             case "'":
-              this.playSynth("F5", shape, 0)
+              this.playSynth("F5", this.synthShape, 0)
+              document.getElementById("f5").classList.add("whiteKeyActive");
               break;
             case 'z':
               this.octaveSwitch--;
@@ -516,23 +539,79 @@ export default {
       document.addEventListener("keyup", e => {
         switch (e.key) {
           case "a":
-          case "w":
+            this.playSynth("C4",this.synthShape,1)
+            document.getElementById("c4").classList.remove("whiteKeyActive");
+            break;
           case "s":
+            this.playSynth("D4",this.synthShape,1)
+            document.getElementById("d4").classList.remove("whiteKeyActive");
+            break;
           case "d":
+            this.playSynth("E4",this.synthShape,1)
+            document.getElementById("e4").classList.remove("whiteKeyActive");
+            break;
           case "f":
-          case "t":
+            this.playSynth("F4",this.synthShape,1)
+            document.getElementById("f4").classList.remove("whiteKeyActive");
+            break;
           case "g":
-          case "y":
+            this.playSynth("G4",this.synthShape,1)
+            document.getElementById("g4").classList.remove("whiteKeyActive");
+            break;
           case "h":
-          case "u":
+            this.playSynth("A4",this.synthShape,1)
+            document.getElementById("a4").classList.remove("whiteKeyActive");
+            break;
           case "j":
+            this.playSynth("B4",this.synthShape,1)
+            document.getElementById("b4").classList.remove("whiteKeyActive");
+            break;
           case "k":
-          case "o":
+            this.playSynth("C5",this.synthShape,1)
+            document.getElementById("c5").classList.remove("whiteKeyActive");
+            break;
           case "l":
-          case "p":
+            this.playSynth("D5",this.synthShape,1)
+            document.getElementById("d5").classList.remove("whiteKeyActive");
+            break;
           case ";":
+            this.playSynth("E5",this.synthShape,1)
+            document.getElementById("e5").classList.remove("whiteKeyActive");
+            break;
           case "'":
-            this.playSynth("C4",shape,1)
+            this.playSynth("F5",this.synthShape,1)
+            document.getElementById("f5").classList.remove("whiteKeyActive");
+            break;
+
+          case "w":
+            this.playSynth("C#4",this.synthShape,1)
+            document.getElementById("c#4").classList.remove("blackKeyActive");
+            break;
+          case "e":
+            this.playSynth("D#4",this.synthShape,1)
+            document.getElementById("d#4").classList.remove("blackKeyActive");
+            break;
+          case "t":
+            this.playSynth("F#4",this.synthShape,1)
+            document.getElementById("f#4").classList.remove("blackKeyActive");
+            break;
+          case "y":
+            this.playSynth("G#4",this.synthShape,1)
+            document.getElementById("g#4").classList.remove("blackKeyActive");
+            break;
+          case "u":
+            this.playSynth("A#4",this.synthShape,1)
+            document.getElementById("a#4").classList.remove("blackKeyActive");
+            break;
+          case "o":
+            this.playSynth("C#5",this.synthShape,1)
+            document.getElementById("c#5").classList.remove("blackKeyActive");
+            break;
+          case "p":
+            this.playSynth("D#5",this.synthShape,1)
+            document.getElementById("d#5").classList.remove("blackKeyActive");
+            break;
+
         }
 
       });
@@ -940,6 +1019,18 @@ ul .key:active {
   background:linear-gradient(to right,#444 0%,#222 100%)
 }
 
+.whiteKeyActive{
+  border-top:1px solid #777 !important;
+  border-left:1px solid #999 !important;
+  border-bottom:1px solid #999 !important;
+  box-shadow:2px 0 3px rgba(0,0,0,0.1) inset,-5px 5px 20px rgba(0,0,0,0.2) inset,0 0 3px rgba(0,0,0,0.2) !important;
+  background:linear-gradient(to bottom,#fff 0%,#e9e9e9 100%) !important;
+}
+.blackKeyActive {
+  box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -2px 2px 3px rgba(0,0,0,0.6) inset,0 1px 2px rgba(0,0,0,0.5);
+  background:linear-gradient(to right,#444 0%,#222 100%)
+}
+
 .thing {
   margin:0 0 0 -2em
 }
@@ -1058,8 +1149,8 @@ ul .drumPad:active {
 }
 
 h5 {
-  display: inline;
-  margin-right: 100%;
+  //display: inline;
+  //margin-right: 100%;
 }
 
 button {
