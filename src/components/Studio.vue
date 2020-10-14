@@ -654,9 +654,8 @@ export default {
         Tone.Transport.start();
       }
       if (command == "stop") {
-        loopBeat.cancel()
-        Tone.Transport.stop();
-        window.location.reload()
+        loopBeat.cancel(Tone.context.currentTime)
+        Tone.Transport.cancel(Tone.context.currentTime)
       }
 
     },
